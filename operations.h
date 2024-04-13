@@ -26,3 +26,11 @@ public:
 	virtual void Act();
 };
 
+class operAddRect :public operation
+{
+public:
+	operAddRect(game* r_pGame);
+	virtual void Act();
+};
+
+

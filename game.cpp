@@ -68,7 +68,11 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_SIGN:
 		op = new operAddSign(this);
 		break;
+	case ITM_RECT:
+		op = new operAddRect(this);
+		break;
 	}
+
 	return op;
 }
 

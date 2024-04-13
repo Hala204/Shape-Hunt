@@ -1,5 +1,6 @@
 #include "operations.h"
 #include "game.h"
+#include "BasicShapes.h"
 #include "CompositeShapes.h"
 /////////////////////////////////// class operation  //////////////////
 operation::operation(game* r_pGame)
@@ -34,5 +35,18 @@ void operAddSign::Act()
 	//Add the shape to the grid
 	grid* pGrid = pGame->getGrid();
 	pGrid->setActiveShape(psh);
+
+}
+
+/////////////////////////////////// class operAddRect  //////////////////
+
+
+operAddRect::operAddRect(game* r_pGame) :operation(r_pGame)
+{
+	
+}
+
+void operAddRect::Act()
+{
 
 }
