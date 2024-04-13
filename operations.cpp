@@ -63,3 +63,29 @@ void operAddRect::Act()
     pGrid->setActiveShape(psh);
 
 }
+
+
+/////////////////////////////////// class operAddCirc  //////////////////
+
+
+operAddCirc::operAddCirc(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operAddCirc::Act()
+{
+    window* pw = pGame->getWind();
+
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+
+    point CircShapeRef = { xGrid, yGrid };
+
+    int radius = 80;
+
+    shape* psh = new circle(pGame, CircShapeRef, radius);
+
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
+}

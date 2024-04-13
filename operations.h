@@ -33,4 +33,9 @@ public:
 	virtual void Act();
 };
 
-
+class operAddCirc :public operation
+{
+public:
+	operAddCirc(game* r_pGame);
+	virtual void Act();
+};

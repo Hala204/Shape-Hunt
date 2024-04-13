@@ -71,8 +71,10 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_RECT:
 		op = new operAddRect(this);
 		break;
+	case ITM_CIRC:
+		op = new operAddCirc(this);
+		break;
 	}
-
 	return op;
 }
 
