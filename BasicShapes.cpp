@@ -45,4 +45,24 @@ void circle::draw() const
 
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here
+Triangle::Triangle(game* r_pGame, point ref, int sl) :shape(r_pGame, ref)
+{
+	pGame = r_pGame;
+	sidelength = sl;
+}
+
+void Triangle::draw() const
+{
+	window* pW = pGame->getWind();	//get interface window
+	pW->SetPen(borderColor, config.penWidth);
+	pW->SetBrush(fillColor);
+	point LeftBottomPoint, UpperPoint, RightBottomPoint;
+	LeftBottomPoint.x = RefPoint.x - sidelength / 2;
+	LeftBottomPoint.y = RefPoint.y - sidelength / 2;
+	UpperPoint.x = RefPoint.x;
+	UpperPoint.y = RefPoint.y + sidelength / 2;
+	RightBottomPoint.x = RefPoint.x + sidelength / 2;
+	RightBottomPoint.y = RefPoint.y - sidelength / 2;
+	pW->DrawTriangle(LeftBottomPoint.x, LeftBottomPoint.y, UpperPoint.x, UpperPoint.y, RightBottomPoint.x, RightBottomPoint.y, FILLED);
+}
 

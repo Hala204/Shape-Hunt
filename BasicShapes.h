@@ -30,6 +30,17 @@ class circle :public shape
 {
 	int rad;
 public:	
-	circle(game* r_pGame, point ref, int r);	//add more parameters for the constructor if needed
+	circle(game* r_pGame, point ref, int r);	
+	virtual void draw() const;
+};
+
+
+////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
+//Reference point of the triangle is its center
+class Triangle :public shape
+{
+	int sidelength;
+public:
+	Triangle(game* r_pGame, point ref, int sl);
 	virtual void draw() const;
 };
