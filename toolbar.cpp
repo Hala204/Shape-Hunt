@@ -15,6 +15,7 @@ toolbar::toolbar(game* pG)
 
 	//First prepare List of images for each toolbar item
 	toolbarItemImages[ITM_RECT] = "images\\toolbarItems\\toolbar_Rect.jpg";
+	toolbarItemImages[ITM_CIRC] = "images\\toolbarItems\\toolbar_Circ.jpg";
 	toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_sign.jpg";
 	toolbarItemImages[ITM_EXIT] = "images\\toolbarItems\\toolbar_Exit.jpg";
 
