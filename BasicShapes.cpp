@@ -18,9 +18,9 @@ void Rect::draw() const
 	pW->SetBrush(config.fillColor);
 	point upperLeft, lowerBottom;
 	upperLeft.x = RefPoint.x - wdth / 2;
-	upperLeft.y = RefPoint.y - hght / 2;
+	upperLeft.y = RefPoint.y + hght / 2;     //update
 	lowerBottom.x = RefPoint.x + wdth / 2;
-	lowerBottom.y = RefPoint.y + hght / 2;
+	lowerBottom.y = RefPoint.y - hght / 2;   //update
 
 	pW->DrawRectangle(upperLeft.x, upperLeft.y, lowerBottom.x, lowerBottom.y, FILLED);
 }
