@@ -50,8 +50,10 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	//Note: Items are ordered here as they appear in the toolbar
 	//If you want to change the toolbar items order, just change the order here
 
-	ITM_RECT,       //Rect item
+	ITM_RECT,       //Rectangle shape item
 
+
+	ITM_CIRC,       //Circle shape item
 
 
 	ITM_SIGN,		//Sign shape item
