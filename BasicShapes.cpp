@@ -29,6 +29,7 @@ void Rect::draw() const
 //TODO: Add implementation for class circle here
 circle::circle(game* r_pGame, point ref, int r):shape(r_pGame,ref)
 {
+	pGame = r_pGame;
 	rad = r;
 }
 

@@ -28,7 +28,6 @@ public:
 //Reference point of the circle is its center
 class circle :public shape
 {
-	//Add data memebrs for class circle
 	int rad;
 public:	
 	circle(game* r_pGame, point ref, int r);	//add more parameters for the constructor if needed
