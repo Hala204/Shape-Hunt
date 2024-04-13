@@ -49,7 +49,13 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 {
 	//Note: Items are ordered here as they appear in the toolbar
 	//If you want to change the toolbar items order, just change the order here
+
+	ITM_RECT,       //Rect item
+
+
+
 	ITM_SIGN,		//Sign shape item
+
 
 	ITM_EXIT,		//Exit item
 	//TODO: Add more items names here

@@ -14,8 +14,10 @@ toolbar::toolbar(game* pG)
 	//You can draw the tool bar icons in any way you want.
 
 	//First prepare List of images for each toolbar item
+	toolbarItemImages[ITM_RECT] = "images\\toolbarItems\\toolbar_Rect.jpg";
 	toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_sign.jpg";
 	toolbarItemImages[ITM_EXIT] = "images\\toolbarItems\\toolbar_Exit.jpg";
+
 
 	//TODO: Prepare image for each toolbar item and add it to the list
 
