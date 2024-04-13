@@ -58,11 +58,11 @@ void Triangle::draw() const
 	pW->SetBrush(fillColor);
 	point LeftBottomPoint, UpperPoint, RightBottomPoint;
 	LeftBottomPoint.x = RefPoint.x - sidelength / 2;
-	LeftBottomPoint.y = RefPoint.y - sidelength / 2;
+	LeftBottomPoint.y = RefPoint.y + sidelength / 2;
 	UpperPoint.x = RefPoint.x;
-	UpperPoint.y = RefPoint.y + sidelength / 2;
+	UpperPoint.y = RefPoint.y - sidelength / 2;
 	RightBottomPoint.x = RefPoint.x + sidelength / 2;
-	RightBottomPoint.y = RefPoint.y - sidelength / 2;
+	RightBottomPoint.y = RefPoint.y + sidelength / 2;
 	pW->DrawTriangle(LeftBottomPoint.x, LeftBottomPoint.y, UpperPoint.x, UpperPoint.y, RightBottomPoint.x, RightBottomPoint.y, FILLED);
 }
 

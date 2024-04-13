@@ -56,6 +56,9 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_CIRC,       //Circle shape item
 
 
+	ITM_TRI,        //Triangle shape item
+
+
 	ITM_SIGN,		//Sign shape item
 
 

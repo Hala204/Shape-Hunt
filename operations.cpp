@@ -89,3 +89,29 @@ void operAddCirc::Act()
     pGrid->setActiveShape(psh);
 
 }
+
+
+/////////////////////////////////// class operAddTri  //////////////////
+
+
+operAddTri::operAddTri(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operAddTri::Act()
+{
+    window* pw = pGame->getWind();
+
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+
+    point TriShapeRef = { xGrid, yGrid };
+
+    int _sidelength = 160;
+
+    shape* psh = new Triangle(pGame, TriShapeRef, _sidelength);
+
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
+}

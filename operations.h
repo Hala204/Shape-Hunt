@@ -39,3 +39,11 @@ public:
 	operAddCirc(game* r_pGame);
 	virtual void Act();
 };
+
+
+class operAddTri :public operation
+{
+public:
+	operAddTri(game* r_pGame);
+	virtual void Act();
+};

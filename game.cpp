@@ -74,6 +74,9 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_CIRC:
 		op = new operAddCirc(this);
 		break;
+	case ITM_TRI:
+		op = new operAddTri(this);
+		break;
 	}
 	return op;
 }
