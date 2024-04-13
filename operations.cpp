@@ -43,10 +43,23 @@ void operAddSign::Act()
 
 operAddRect::operAddRect(game* r_pGame) :operation(r_pGame)
 {
-	
 }
 
 void operAddRect::Act()
 {
+    window* pw = pGame->getWind();
+
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+
+    point rectShapeRef = { xGrid, yGrid };
+
+    int rectHeight = 120; 
+    int rectWidth = 200; 
+
+    shape* psh = new Rect(pGame, rectShapeRef, rectHeight, rectWidth);
+
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
 
 }
