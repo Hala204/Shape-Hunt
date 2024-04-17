@@ -25,6 +25,16 @@ void Rect::draw() const
 	pW->DrawRectangle(upperLeft.x, upperLeft.y, lowerBottom.x, lowerBottom.y, FILLED);
 }
 
+void Rect::Rotate()
+{
+
+	int temp;
+	temp = wdth;
+	wdth = hght;
+	hght = temp;
+
+}
+
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //TODO: Add implementation for class circle here
 circle::circle(game* r_pGame, point ref, int r):shape(r_pGame,ref)
@@ -40,6 +50,9 @@ void circle::draw() const
 	pW->SetBrush(fillColor);
 	pW->DrawCircle(RefPoint.x, RefPoint.y, rad, FILLED);
 }
+
+void circle::Rotate() //circle can't be rotated 
+{}
 
 
 
@@ -66,3 +79,6 @@ void Triangle::draw() const
 	pW->DrawTriangle(LeftBottomPoint.x, LeftBottomPoint.y, UpperPoint.x, UpperPoint.y, RightBottomPoint.x, RightBottomPoint.y, FILLED);
 }
 
+
+void Triangle::Rotate()
+{}

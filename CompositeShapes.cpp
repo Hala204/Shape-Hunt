@@ -18,3 +18,5 @@ void Sign::draw() const
 }
 
 
+void Sign::Rotate()
+{}
