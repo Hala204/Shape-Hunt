@@ -123,5 +123,8 @@ operRotate::operRotate(game* r_pGame) :operation(r_pGame)
 
 void operRotate::Act()
 {
-   
+    grid* pGrid = pGame->getGrid();
+    shape* p = pGrid->getActiveShape();
+    if (p)
+        p->Rotate();
 }

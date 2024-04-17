@@ -77,6 +77,9 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_TRI:
 		op = new operAddTri(this);
 		break;
+	case ITM_ROTATE:
+		op = new operRotate(this);
+		break;
 	}
 	return op;
 }
