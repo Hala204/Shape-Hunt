@@ -18,6 +18,7 @@ toolbar::toolbar(game* pG)
 	toolbarItemImages[ITM_CIRC] = "images\\toolbarItems\\toolbar_Circ.jpg";
 	toolbarItemImages[ITM_TRI] = "images\\toolbarItems\\toolbar_Tri.jpg";
 	toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_sign.jpg";
+	toolbarItemImages[ITM_ROTATE] = "images\\toolbarItems\\toolbar_Rotate.jpg";
 	toolbarItemImages[ITM_EXIT] = "images\\toolbarItems\\toolbar_Exit.jpg";
 
 

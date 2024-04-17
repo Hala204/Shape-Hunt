@@ -62,6 +62,9 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_SIGN,		//Sign shape item
 
 
+	ITM_ROTATE,     //Rotate shape item
+
+
 	ITM_EXIT,		//Exit item
 	//TODO: Add more items names here
 
