@@ -47,3 +47,11 @@ public:
 	operAddTri(game* r_pGame);
 	virtual void Act();
 };
+
+
+class operRotate :public operation
+{
+public:
+	operRotate(game* r_pGame);
+	virtual void Act();
+};

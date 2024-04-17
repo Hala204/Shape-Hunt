@@ -76,4 +76,9 @@ void grid::setActiveShape(shape* actShape)
 	activeShape = actShape;
 }
 
+shape* grid::getActiveShape()
+{
+	return activeShape;
+}
+
 

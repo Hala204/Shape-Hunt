@@ -115,3 +115,13 @@ void operAddTri::Act()
     pGrid->setActiveShape(psh);
 
 }
+
+
+operRotate::operRotate(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operRotate::Act()
+{
+   
+}
