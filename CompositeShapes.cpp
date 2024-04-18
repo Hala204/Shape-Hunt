@@ -20,3 +20,9 @@ void Sign::draw() const
 
 void Sign::Rotate()
 {}
+
+void Sign::resize(double factor)
+{
+	base->resize(factor);
+	top->resize(factor);
+}

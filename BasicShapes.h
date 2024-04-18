@@ -20,6 +20,7 @@ public:
 	Rect(game* r_pGame, point ref, int r_hght, int r_wdth);
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void resize(double factor);
 
 
 };
@@ -34,6 +35,8 @@ public:
 	circle(game* r_pGame, point ref, int r);	
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void resize(double factor);
+
 
 };
 
@@ -47,5 +50,6 @@ public:
 	Triangle(game* r_pGame, point ref, int sl);
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void resize(double factor);
 
 };

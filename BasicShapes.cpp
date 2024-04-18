@@ -35,6 +35,12 @@ void Rect::Rotate()
 
 }
 
+void Rect::resize(double factor)
+{
+	wdth *= factor;
+	hght *= factor;
+}
+
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //TODO: Add implementation for class circle here
 circle::circle(game* r_pGame, point ref, int r):shape(r_pGame,ref)
@@ -55,6 +61,11 @@ void circle::Rotate() //circle can't be rotated
 {}
 
 
+
+void circle::resize(double factor)
+{
+	rad *= factor;
+}
 
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here
@@ -82,3 +93,8 @@ void Triangle::draw() const
 
 void Triangle::Rotate()
 {}
+
+void Triangle::resize(double factor)
+{
+	sidelength *= factor;
+}

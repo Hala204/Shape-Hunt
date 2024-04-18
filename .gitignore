@@ -2,6 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
-/.gitignore
-/Debug
+/.vs/CIE202-project/v17
+/.vs/CIE202-project/FileContentIndex
