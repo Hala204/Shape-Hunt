@@ -14,10 +14,27 @@ toolbar::toolbar(game* pG)
 	//You can draw the tool bar icons in any way you want.
 
 	//First prepare List of images for each toolbar item
+	//basic shapes
+	toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_Sign.jpg";
 	toolbarItemImages[ITM_RECT] = "images\\toolbarItems\\toolbar_Rect.jpg";
 	toolbarItemImages[ITM_CIRC] = "images\\toolbarItems\\toolbar_Circ.jpg";
 	toolbarItemImages[ITM_TRI] = "images\\toolbarItems\\toolbar_Tri.jpg";
-	toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_sign.jpg";
+
+	//composite shapes
+	toolbarItemImages[ITM_WATCH] = "images\\toolbarItems\\watch.jpg";
+	toolbarItemImages[ITM_HOME] = "images\\toolbarItems\\home.jpg";
+	toolbarItemImages[ITM_ROCKET] = "images\\toolbarItems\\ROCKET.jpg";
+	toolbarItemImages[ITM_CONE] = "images\\toolbarItems\\cone.jpg";
+	
+	//icons
+	toolbarItemImages[ITM_INCREASE] = "images\\toolbarItems\\increase.jpg";
+	toolbarItemImages[ITM_DECREASE] = "images\\toolbarItems\\decrease.jpg";
+	toolbarItemImages[ITM_ROTATE] = "images\\toolbarItems\\rotate.jpg";
+	toolbarItemImages[ITM_REFRESH] = "images\\toolbarItems\\refresh.jpg";
+	toolbarItemImages[ITM_HINT] = "images\\toolbarItems\\hint.jpg";
+	toolbarItemImages[ITM_DELETE] = "images\\toolbarItems\\del.jpg";
+	toolbarItemImages[ITM_SELECT] = "images\\toolbarItems\\select.jpg";
+	toolbarItemImages[ITM_SAVE] = "images\\toolbarItems\\save.jpg";
 	toolbarItemImages[ITM_EXIT] = "images\\toolbarItems\\toolbar_Exit.jpg";
 
 

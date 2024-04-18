@@ -60,6 +60,26 @@ void game::createGrid()
 	shapesGrid = new grid(gridUpperLeftPoint, config.windWidth, gridHeight, this);
 }
 
+
+
+void game::drawHome(window* &w, color c, int rx, int ry, int size) {
+	w->SetPen(BLACK, 2);
+
+	w->SetBrush(c);
+	w->DrawRectangle(rx, ry, rx + 1.5 * size, ry + size);
+
+	w->SetBrush(HUGE);
+	w->DrawTriangle(rx, ry, 1.5 * size + rx, ry, rx + 1.5 * size / 2, ry - size);
+
+	w->SetBrush(STEELBLUE);
+	w->DrawRectangle(rx + (size * .95), ry + (size * 0.15), rx + (1.5 * size * .9), ry + (size * .5));
+
+	w->SetBrush(BROWN);
+	w->DrawRectangle(rx + (size * .2), ry + (size * 0.42), rx + (size * .5), ry + (size));
+
+	w->DrawLine(rx + (size * .42), ry + (size * .75), rx + (size * .43), ry + (size * .76));
+}
+
 operation* game::createRequiredOperation(toolbarItem clickedItem)
 {
 	operation* op=nullptr;
@@ -67,15 +87,65 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	{
 	case ITM_SIGN:
 		op = new operAddSign(this);
+		printMessage("sign is pressed ");
+
 		break;
 	case ITM_RECT:
 		op = new operAddRect(this);
+		printMessage("rectangle is pressed ");
+
 		break;
 	case ITM_CIRC:
 		op = new operAddCirc(this);
+		printMessage("circle is pressed ");
+
 		break;
 	case ITM_TRI:
 		op = new operAddTri(this);
+		printMessage("triangle is pressed ");
+
+		break;
+
+	case ITM_WATCH:
+		printMessage("watch is pressed ");
+		break;
+	case ITM_HOME:
+		printMessage("home is pressed ");
+		drawHome(pWind , config.fillColor, config.RefX, config.RefY, 50);
+		break;
+	case ITM_CONE:
+		printMessage("cone is pressed ");
+
+		break;
+	case ITM_ROCKET:
+		printMessage("Rocket is pressed ");
+		break;
+	case ITM_INCREASE:
+		printMessage("ITM_INCREASE is pressed ");
+		break;
+	case ITM_DECREASE:
+		printMessage("ITM_DECREASE is pressed ");
+		break;
+	case ITM_ROTATE:
+		printMessage("ITM_ROTATE is pressed ");
+		break;
+	case ITM_REFRESH:
+		printMessage("ITM_REFRESH is pressed ");
+		break;
+	case ITM_HINT:
+		printMessage("ITM_HINT is pressed ");
+		break;
+	case ITM_DELETE:
+		printMessage("ITM_DELETE is pressed ");
+		break;
+	case ITM_SELECT:
+		printMessage("ITM_SELECT is pressed ");
+		break;
+	case ITM_SAVE:
+		printMessage("ITM_DELETE is pressed ");
+		break;
+	case ITM_EXIT:
+		printMessage("ITM_DELETE is pressed ");
 		break;
 	}
 	return op;
@@ -88,7 +158,7 @@ void game::printMessage(string msg) const	//Prints a message on status bar
 {
 	clearStatusBar();	//First clear the status bar
 
-	pWind->SetPen(config.penColor, 50);
+	pWind->SetPen(BLACK, 50);
 	pWind->SetFont(24, BOLD, BY_NAME, "Arial");
 	pWind->DrawString(10, config.windHeight - (int)(0.85 * config.statusBarHeight), msg);
 }
@@ -168,3 +238,4 @@ void game::run()
 
 	} while (clickedItem!=ITM_EXIT);
 }
+

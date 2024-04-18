@@ -47,3 +47,5 @@ public:
 	operAddTri(game* r_pGame);
 	virtual void Act();
 };
+
+
