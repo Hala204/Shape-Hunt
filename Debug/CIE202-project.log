@@ -1,0 +1,9 @@
+﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  toolbar.cpp
+E:\zewail\semesters\32CIE\cpp\project\Shape-Hunt\gameConfig.h(35,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'toolbar.cpp')
+  
+E:\zewail\semesters\32CIE\cpp\project\Shape-Hunt\gameConfig.h(36,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'toolbar.cpp')
+  
+  CIE202-project.vcxproj -> E:\zewail\semesters\32CIE\cpp\project\Shape-Hunt\Debug\CIE202-project.exe

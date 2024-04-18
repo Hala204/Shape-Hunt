@@ -58,16 +58,14 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_RECT,
 	ITM_CIRC,
 	ITM_TRI,
-	
+
+
 	ITM_WATCH,       //Rectangle shape item
-
-
 	ITM_HOME,       //Circle shape item
-
-
 	ITM_ROCKET,        //Triangle shape item
+	ITM_CONE,
 
-	ITM_ROTATE,     //Rotate shape item
+
 
 	ITM_MINI,		//Minimaize shape icon 
 
@@ -75,25 +73,12 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 
 	ITM_DEL,		//Delete shape Icon
 
-
-	ITM_EXIT,		//Exit item
-
-	ITM_CONE,		//Sign shape item
-
-
-	//TODO: Add more items names here
-	ITM_INCREASE,
-
-	ITM_DECREASE,
-
-	ITM_ROTATE,
+	ITM_ROTATE,     //Rotate shape item
 	
 	ITM_REFRESH,
 	
 	ITM_HINT,
-	 
-	ITM_DELETE, 
-	 
+	 	 
 	ITM_SELECT,
 	 
 	ITM_SAVE,

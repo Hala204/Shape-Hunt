@@ -111,7 +111,7 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 		break;
 	case ITM_HOME:
 		printMessage("home is pressed ");
-		drawHome(pWind , config.fillColor, config.RefX, config.RefY, 50);
+		//drawHome(pWind , config.fillColor, config.RefX, config.RefY, 50);
 		break;
 	case ITM_CONE:
 		printMessage("cone is pressed ");
@@ -120,24 +120,13 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_ROCKET:
 		printMessage("Rocket is pressed ");
 		break;
-	case ITM_INCREASE:
-		printMessage("ITM_INCREASE is pressed ");
-		break;
-	case ITM_DECREASE:
-		printMessage("ITM_DECREASE is pressed ");
-		break;
-	case ITM_ROTATE:
-		printMessage("ITM_ROTATE is pressed ");
-		break;
 	case ITM_REFRESH:
 		printMessage("ITM_REFRESH is pressed ");
 		break;
 	case ITM_HINT:
 		printMessage("ITM_HINT is pressed ");
 		break;
-	case ITM_DELETE:
-		printMessage("ITM_DELETE is pressed ");
-		break;
+
 	case ITM_SELECT:
 		printMessage("ITM_SELECT is pressed ");
 		break;
@@ -149,15 +138,22 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 		break;
 	case ITM_ROTATE:
 		op = new operRotate(this);
+		printMessage("ITM_ROTATE is pressed ");
+
 		break;
 	case ITM_DEL:
 		op = new operDEL(this);
+		printMessage("ITM_DELETE is pressed ");
+
 		break;
 	case ITM_MINI:
 		op = new operMinimize(this);
+		printMessage("ITM_DECREASE is pressed ");
+
 		break;
 	case ITM_INC:
 		op = new operINC(this);
+		printMessage("ITM_INCREASE is pressed ");
 		break;
 	}
 	return op;

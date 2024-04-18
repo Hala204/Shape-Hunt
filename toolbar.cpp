@@ -27,12 +27,14 @@ toolbar::toolbar(game* pG)
 	toolbarItemImages[ITM_CONE] = "images\\toolbarItems\\cone.jpg";
 	
 	//icons
-	toolbarItemImages[ITM_INCREASE] = "images\\toolbarItems\\increase.jpg";
-	toolbarItemImages[ITM_DECREASE] = "images\\toolbarItems\\decrease.jpg";
-	toolbarItemImages[ITM_ROTATE] = "images\\toolbarItems\\rotate.jpg";
+	toolbarItemImages[ITM_MINI] = "images\\toolbarItems\\Mini.jpg";
+
+	toolbarItemImages[ITM_INC] = "images\\toolbarItems\\INC.jpg";
+	toolbarItemImages[ITM_DEL] = "images\\toolbarItems\\del.jpg";
+
+	toolbarItemImages[ITM_ROTATE] = "images\\toolbarItems\\toolbar_Rotate.jpg";
 	toolbarItemImages[ITM_REFRESH] = "images\\toolbarItems\\refresh.jpg";
 	toolbarItemImages[ITM_HINT] = "images\\toolbarItems\\hint.jpg";
-	toolbarItemImages[ITM_DELETE] = "images\\toolbarItems\\del.jpg";
 	toolbarItemImages[ITM_SELECT] = "images\\toolbarItems\\select.jpg";
 	toolbarItemImages[ITM_SAVE] = "images\\toolbarItems\\save.jpg";
 	toolbarItemImages[ITM_EXIT] = "images\\toolbarItems\\toolbar_Exit.jpg";
