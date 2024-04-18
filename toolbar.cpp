@@ -69,3 +69,15 @@ toolbarItem toolbar::getItemClicked(int x)
 
 }
 
+void toolbar::drawStart(window* wind)
+{
+	wind->SetBrush(BLACK);
+	wind->SetPen(BLACK);
+	wind->SetFont(20, PLAIN, ROMAN);
+	wind->DrawString(5, height, "Lives : " + to_string(config.lives));
+	wind->DrawString(width / 2, height, "Score : " + to_string(config.Score));
+	wind->DrawString(width - 100, height, "Level : " + to_string(config.level));
+	wind->SetPen(DARKBLUE, 3);
+	wind->DrawLine(0, height + 20, width + 20, height + 20);
+}
+

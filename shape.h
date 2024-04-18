@@ -34,6 +34,7 @@ protected:
 public:
     shape(game* r_pGame, point ref);
     virtual void draw() const=0;//for a shape to draw itself on the screen
+	virtual void Rotate() = 0;//for a shape to rotate itself on the screen
 	void setRefPoint(point p);
 								  
 							  
@@ -42,7 +43,7 @@ public:
 	//-- Decide the parameters that you should pass to each function	
 
 	//virtual void rotate() = 0;	//Rotate the shape
-	//virtual void resize() = 0;	//Resize the shape
+	virtual void resize(double factor) = 0;	//Resize the shape
 	//virtual void move() = 0;		//Move the shape
 	//virtual void save(ofstream &OutFile) = 0;	//Save the shape parameters to the file
 	//virtual void load(ifstream &Infile) = 0;	//Load the shape parameters to the file

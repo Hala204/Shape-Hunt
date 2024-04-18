@@ -147,6 +147,18 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_EXIT:
 		printMessage("ITM_DELETE is pressed ");
 		break;
+	case ITM_ROTATE:
+		op = new operRotate(this);
+		break;
+	case ITM_DEL:
+		op = new operDEL(this);
+		break;
+	case ITM_MINI:
+		op = new operMinimize(this);
+		break;
+	case ITM_INC:
+		op = new operINC(this);
+		break;
 	}
 	return op;
 }

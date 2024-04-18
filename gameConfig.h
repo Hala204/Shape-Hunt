@@ -41,7 +41,9 @@ struct
 		int baseWdth = 20, baseHeight = 80;
 		int topWdth = 100, topHeight = 50;
 	}sighShape;
-
+	int lives = 5;
+	int level = 1;
+	int Score = 0;
 }config;
 
 
@@ -65,6 +67,16 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 
 	ITM_ROCKET,        //Triangle shape item
 
+	ITM_ROTATE,     //Rotate shape item
+
+	ITM_MINI,		//Minimaize shape icon 
+
+	ITM_INC,		//Maximize shape icon
+
+	ITM_DEL,		//Delete shape Icon
+
+
+	ITM_EXIT,		//Exit item
 
 	ITM_CONE,		//Sign shape item
 

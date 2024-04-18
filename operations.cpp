@@ -115,3 +115,51 @@ void operAddTri::Act()
     pGrid->setActiveShape(psh);
 
 }
+
+
+operRotate::operRotate(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operRotate::Act()
+{
+    grid* pGrid = pGame->getGrid();
+    shape* p = pGrid->getActiveShape();
+    if (p)
+        p->Rotate();
+}
+
+
+operMinimize::operMinimize(game* r_pGame) : operation(r_pGame)
+{
+
+}
+
+void operMinimize::Act()
+{
+    grid* pGrid = pGame->getGrid();
+    shape* psh = pGrid->getActiveShape();
+    psh->resize(0.5);
+    pGrid->setActiveShape(psh);
+}
+
+operDEL::operDEL(game* r_pGame) : operation(r_pGame)
+{
+}
+
+void operDEL::Act()
+{
+    pGame->getGrid()->clearGrid();
+}
+
+operINC::operINC(game* e_pGame) : operation(e_pGame)
+{
+}
+
+void operINC::Act()
+{
+    grid* pGrid = pGame->getGrid();
+    shape* psh = pGrid->getActiveShape();
+    psh->resize(1.5);
+    pGrid->setActiveShape(psh);
+}

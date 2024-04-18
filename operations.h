@@ -49,3 +49,26 @@ public:
 };
 
 
+class operRotate :public operation
+{
+public:
+	operRotate(game* r_pGame);
+	virtual void Act();
+};
+
+
+class operMinimize : public operation {
+public:
+	operMinimize(game* r_pGame);
+	virtual void Act();
+};
+class operDEL : public operation {
+public:
+	operDEL(game* r_pGame);
+	virtual void Act();
+};
+class operINC : public operation {
+public:
+	operINC(game* e_pGame);
+	virtual void Act();
+};

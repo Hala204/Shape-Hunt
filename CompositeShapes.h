@@ -28,6 +28,8 @@ class Sign :public shape
 public:
 	Sign(game* r_pGame, point ref);
 	virtual void draw() const;
+	virtual void Rotate();
+	virtual void resize(double factor);
 
 
 };
