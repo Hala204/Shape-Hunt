@@ -30,7 +30,7 @@ void grid::draw() const
 {
 	clearGridArea();
 	window* pWind = pGame->getWind();
-	
+
 	pWind->SetPen(config.gridDotsColor,1);
 	pWind->SetBrush(config.gridDotsColor);
 
@@ -48,6 +48,8 @@ void grid::draw() const
 	//Draw the active shape
 	if(activeShape)
 		activeShape->draw();
+	//this->p_toolbar->drawStart(pWind);
+
 }
 
 void grid::clearGridArea() const

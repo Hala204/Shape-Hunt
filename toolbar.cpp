@@ -39,7 +39,6 @@ toolbar::toolbar(game* pG)
 	toolbarItemImages[ITM_SAVE] = "images\\toolbarItems\\save.jpg";
 	toolbarItemImages[ITM_EXIT] = "images\\toolbarItems\\toolbar_Exit.jpg";
 
-
 	//TODO: Prepare image for each toolbar item and add it to the list
 
 	//Draw toolbar item one image at a time
@@ -50,6 +49,8 @@ toolbar::toolbar(game* pG)
 	//Draw a line under the toolbar
 	pWind->SetPen(DARKBLUE, 3);
 	pWind->DrawLine(0, height,width , height);
+	drawStart(pWind);
+
 }
 
 

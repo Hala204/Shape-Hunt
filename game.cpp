@@ -10,11 +10,12 @@ game::game()
 	createWind(config.windWidth, config.windHeight, config.wx, config.wy);
 
 	//Create and draw the toolbar
-	createToolBar();
 
 	//Create and draw the grid
 	createGrid();
 	shapesGrid->draw();	//draw the grid and all shapes it contains.
+
+	createToolBar();
 
 	//Create and clear the status bar
 	clearStatusBar();
@@ -241,7 +242,7 @@ void game::run()
 
 			//4-Redraw the grid after each action
 			shapesGrid->draw();
-
+			gameToolbar->drawStart(pWind);
 		}	
 
 	} while (clickedItem!=ITM_EXIT);
