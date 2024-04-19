@@ -223,4 +223,14 @@
     <None Include="ClassDiagram.cd" />
     <None Include="ProjClassDiagram.cd" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\ToolbarItems\decrease.jpg" />
+    <Image Include="images\ToolbarItems\decrease.png" />
+    <Image Include="images\ToolbarItems\increase.png" />
+    <Image Include="images\ToolbarItems\toolbar_Circ.jpg" />
+    <Image Include="images\ToolbarItems\toolbar_Exit.jpg" />
+    <Image Include="images\ToolbarItems\toolbar_Rect.jpg" />
+    <Image Include="images\ToolbarItems\toolbar_Sign.jpg" />
+    <Image Include="images\ToolbarItems\toolbar_Tri.jpg" />
+  </ItemGroup>
 </Project>

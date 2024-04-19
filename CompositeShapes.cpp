@@ -19,7 +19,12 @@ void Sign::draw() const
 
 
 void Sign::Rotate()
-{}
+{
+	base->Rotate();
+	top->Rotate();
+	//The Adjustments of the shape after rotation (NOT YET)
+	//TO BE IMPLEMENTED 
+}
 
 void Sign::resize(double factor)
 {

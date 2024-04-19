@@ -1,5 +1,6 @@
 #pragma once
 #include "CompositeShapes.h"
+#include "toolbar.h"
 
 class game;
 
@@ -18,6 +19,9 @@ class grid
 
 	int shapeCount;		//current number of shapes in the list
 	game* pGame;
+
+	
+
 public:
 	grid(point r_uprleft, int r_width, int r_height, game* r_pGame);
 	~grid();
