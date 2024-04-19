@@ -55,8 +55,8 @@ void game::createToolBar()
 void game::createGrid()
 {	
 	//calc some grid parameters
-	point gridUpperLeftPoint = { 0, config.toolBarHeight };
-	int gridHeight = config.windHeight - config.toolBarHeight - config.statusBarHeight;
+	point gridUpperLeftPoint = { 0, config.toolBarHeight +20 };
+	int gridHeight = config.windHeight - config.toolBarHeight +20 - config.statusBarHeight;
 	//create the grid
 	shapesGrid = new grid(gridUpperLeftPoint, config.windWidth, gridHeight, this);
 }
