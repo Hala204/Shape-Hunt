@@ -108,8 +108,10 @@ void operAddTri::Act()
     point TriShapeRef = { xGrid, yGrid };
 
     int _sidelength = 160;
+    int rotation_angle = 0;
 
-    shape* psh = new Triangle(pGame, TriShapeRef, _sidelength);
+
+    shape* psh = new Triangle(pGame, TriShapeRef, _sidelength,rotation_angle);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);

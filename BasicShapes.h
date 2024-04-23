@@ -46,8 +46,9 @@ public:
 class Triangle :public shape
 {
 	int sidelength;
+	double rotation_angle;
 public:
-	Triangle(game* r_pGame, point ref, int sl);
+	Triangle(game* r_pGame, point ref, int sl, double ra) ;
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
