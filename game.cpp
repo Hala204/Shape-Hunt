@@ -122,8 +122,10 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 		break;
 
 	case ITM_ROCKET:
+		op = new operAddRocket(this);
 		printMessage("Rocket is pressed ");
 		break;
+
 	case ITM_REFRESH:
 		printMessage("ITM_REFRESH is pressed ");
 		break;

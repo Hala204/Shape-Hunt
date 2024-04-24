@@ -55,7 +55,7 @@ public:
 
 
 ///////////////////////////// Class Rocket //////////////////////////////////
-//This shape is composed of one circle, three triangles , one rectangle
+//This shape is composed of three triangles and one rectangle
 //The reference point of this shape is the reference point of the body (rectangle)
 
 
@@ -65,7 +65,6 @@ class Rocket :public shape
 	Triangle* _BottomLeft;
 	Triangle* _BottomRight;
 	Rect* Body;
-	circle* Mid;
 
 public:
 	Rocket(game* r_pGame, point ref);

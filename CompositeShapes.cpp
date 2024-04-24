@@ -66,16 +66,14 @@ void IceCream::resize(double factor)
 Rocket::Rocket(game* r_pGame, point ref) :shape(r_pGame, ref)
 {
 	point BodyRef = ref;   //body ref is the same as the rocket shape ref
-	point MidRef = { ref.x, ref.y - config.RocketShape.bodyhght / 4 };
 	point TopRef = { ref.x, ref.y - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2 };
-	point BottomRight{ ref.x + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 , ref.y + config.RocketShape.bodyhght / 2 - 15 };
-	point BottomLeft{ ref.x - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 , ref.y + config.RocketShape.bodyhght / 2 - 15 };
+	point BottomRight{ ref.x + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 , ref.y + config.RocketShape.bodyhght / 2 - 20 };
+	point BottomLeft{ ref.x - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 , ref.y + config.RocketShape.bodyhght / 2 - 20 };
 
 	Body = new Rect(pGame, BodyRef, config.RocketShape.bodyhght, config.RocketShape.bodywdth);
-	Mid = new circle(pGame, MidRef, config.RocketShape.radius);
 	Top = new Triangle(pGame, TopRef, config.RocketShape.___sidelength, config.RocketShape._rotation_ang);
-	_BottomLeft = new Triangle(pGame, TopRef, config.RocketShape.__sl, config.RocketShape.r_ang);
-	_BottomRight = new Triangle(pGame, TopRef, config.RocketShape.__sl, config.RocketShape.r_ang);
+	_BottomLeft = new Triangle(pGame, BottomLeft, config.RocketShape.__sl, config.RocketShape.r_ang1);
+	_BottomRight = new Triangle(pGame, BottomRight, config.RocketShape.__sl, config.RocketShape.r_ang2);
 
 }
 
@@ -83,7 +81,6 @@ void Rocket::draw() const
 {
 	Body->draw();
 	Top->draw();
-	Mid->draw();
 	_BottomLeft->draw();
 	_BottomRight->draw();
 
@@ -94,7 +91,6 @@ void Rocket::Rotate()
 {
 	Body->Rotate();
 	Top->Rotate();
-	Mid->Rotate();
 	_BottomLeft->Rotate();
 	_BottomRight->Rotate();
 	//The Adjustments of the shape after rotation (NOT YET)
