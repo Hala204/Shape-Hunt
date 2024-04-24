@@ -66,6 +66,33 @@ void operAddIceCream::Act()
 
 }
 
+/////////////////////////////////// class operAddRocket  //////////////////
+
+operAddRocket::operAddRocket(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operAddRocket::Act()
+{
+    window* pw = pGame->getWind();
+
+
+    //align reference point to the nearest grid point
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
+
+    //take the aligned point as the Rocket shape ref point
+    point RocketShapeRef = { xGrid,yGrid };
+
+    //create a Rocket shape
+    shape* psh = new Rocket(pGame, RocketShapeRef);
+
+    //Add the shape to the grid
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
+}
+
 
 /////////////////////////////////// class operAddRect  //////////////////
 

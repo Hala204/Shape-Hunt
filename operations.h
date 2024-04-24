@@ -33,7 +33,12 @@ public:
 	virtual void Act();
 };
 
-
+class operAddRocket :public operation
+{
+public:
+	operAddRocket(game* r_pGame);
+	virtual void Act();
+};
 
 class operAddRect :public operation
 {
