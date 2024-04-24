@@ -106,8 +106,8 @@ void Rocket::resize(double factor)
 Fish::Fish(game* r_pGame, point ref) :shape(r_pGame, ref)
 {
 	point FishBodyRef = ref;  //FishBody ref is the same as the Fish shape ref
-	point HeadRef = { ref.x + config.FishShape.Headsidelength / 2, ref.y };
-	point TailRef = { ref.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2,ref.y };
+	point HeadRef = { ref.x + config.FishShape.Headsidelength , ref.y };
+	point TailRef = { ref.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5 ,ref.y };
 	point AboveFinsRef = { ref.x , ref.y + config.FishShape.fradius };
 	point BelowFinsRef = { ref.x , ref.y - config.FishShape.fradius };
 

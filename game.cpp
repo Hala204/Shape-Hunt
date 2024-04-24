@@ -111,9 +111,9 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 		printMessage("watch is pressed ");
 		break;
 
-	case ITM_HOME:
-		printMessage("home is pressed ");
-		//drawHome(pWind , config.fillColor, config.RefX, config.RefY, 50);
+	case ITM_FISH:
+		op = new operAddFish(this);
+		printMessage("Fish is pressed ");
 		break;
 
 	case ITM_CONE:
