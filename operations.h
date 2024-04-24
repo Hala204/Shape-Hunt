@@ -40,6 +40,14 @@ public:
 	virtual void Act();
 };
 
+class operAddFish :public operation
+{
+public:
+	operAddFish(game* r_pGame);
+	virtual void Act();
+};
+
+
 class operAddRect :public operation
 {
 public:

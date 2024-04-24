@@ -94,6 +94,33 @@ void operAddRocket::Act()
 }
 
 
+/////////////////////////////////// class operAddFish  //////////////////
+
+operAddFish::operAddFish(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operAddFish::Act()
+{
+    window* pw = pGame->getWind();
+
+
+    //align reference point to the nearest grid point
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
+
+    //take the aligned point as the Fish shape ref point
+    point FishShapeRef = { xGrid,yGrid };
+
+    //create a Fish shape
+    shape* psh = new Fish(pGame, FishShapeRef);
+
+    //Add the shape to the grid
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
+}
+
 /////////////////////////////////// class operAddRect  //////////////////
 
 
