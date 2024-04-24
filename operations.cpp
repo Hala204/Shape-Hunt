@@ -38,6 +38,35 @@ void operAddSign::Act()
 
 }
 
+
+/////////////////////////////////// class operAddIceCream  //////////////////
+
+operAddIceCream::operAddIceCream(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operAddIceCream::Act()
+{
+    window* pw = pGame->getWind();
+
+
+    //align reference point to the nearest grid point
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
+
+    //take the aligned point as the ice cream shape ref point
+    point IceCreamShapeRef = { xGrid,yGrid };
+
+    //create an Ice Cream shape
+    shape* psh = new IceCream(pGame, IceCreamShapeRef);
+
+    //Add the shape to the grid
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
+}
+
+
 /////////////////////////////////// class operAddRect  //////////////////
 
 
