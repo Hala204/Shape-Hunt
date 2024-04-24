@@ -44,8 +44,8 @@ struct
 
 	////----- Ice Cream shape Configuration ------////
 	struct {
-		int _radius = 50;
-		int _sidelength = 100; double _rotation_angle = 180;
+		int _radius = 57;
+		int _sidelength = 125; double _rotation_angle = 180;
 	}IceCreamShape;
 
 

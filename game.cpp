@@ -110,14 +110,17 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_WATCH:
 		printMessage("watch is pressed ");
 		break;
+
 	case ITM_HOME:
 		printMessage("home is pressed ");
 		//drawHome(pWind , config.fillColor, config.RefX, config.RefY, 50);
 		break;
-	case ITM_CONE:
-		printMessage("cone is pressed ");
 
+	case ITM_CONE:
+		op = new operAddIceCream(this);
+		printMessage("cone is pressed ");
 		break;
+
 	case ITM_ROCKET:
 		printMessage("Rocket is pressed ");
 		break;
