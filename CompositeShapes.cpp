@@ -22,8 +22,13 @@ void Sign::Rotate()
 {
 	base->Rotate();
 	top->Rotate();
-	//The Adjustments of the shape after rotation (NOT YET)
-	//TO BE IMPLEMENTED 
+	
+	point NewtopRef = RefPoint;
+	point NewbaseRef = { RefPoint.x , RefPoint.y + config.sighShape.topHeight / 2 + config.sighShape.baseWdth / 2 +25.9};
+
+	base->setRefPoint(NewbaseRef);
+	top->setRefPoint(NewtopRef);
+
 }
 
 void Sign::resize(double factor)
