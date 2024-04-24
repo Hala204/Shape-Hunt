@@ -41,6 +41,14 @@ struct
 		int baseWdth = 20, baseHeight = 80;
 		int topWdth = 100, topHeight = 50;
 	}sighShape;
+
+	////----- Ice Cream shape Configuration ------////
+	struct {
+		int _radius = 50;
+		int _sidelength = 100; double _rotation_angle = 180;
+	}IceCreamShape;
+
+
 	int lives = 5;
 	int level = 1;
 	int Score = 0;

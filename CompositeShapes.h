@@ -34,3 +34,19 @@ public:
 
 };
 
+
+///////////////////////////// Class ice cream //////////////////////////////////
+//This shape is composed of one circle and one triangle
+
+class IceCream :public shape
+{
+	Triangle* Cone;
+	circle* Scoop;
+public:
+	IceCream(game* r_pGame, point ref);
+	virtual void draw() const;
+	virtual void Rotate();
+	virtual void resize(double factor);
+
+
+};

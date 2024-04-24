@@ -31,3 +31,33 @@ void Sign::resize(double factor)
 	base->resize(factor);
 	top->resize(factor);
 }
+
+
+////////////////////////////////////////////////////  class Ice Cream  ///////////////////////////////////////
+IceCream::IceCream(game* r_pGame, point ref) :shape(r_pGame, ref)
+{
+	//calc the ref point of the Ice Cream cone and scoop relative to the Ice Cream shape
+	point ScoopRef = ref;  //scoop ref is the same as the ice cream shape
+	point ConeRef = { ref.x , ref.y + config.IceCreamShape._sidelength / 2 };
+	Scoop = new circle(pGame, ScoopRef, config.IceCreamShape._radius);
+	Cone = new Triangle(pGame, ConeRef, config.IceCreamShape._sidelength, config.IceCreamShape._rotation_angle);
+}
+
+void IceCream::draw() const
+{
+    Scoop->draw();
+	Cone->draw();
+}
+
+
+void IceCream::Rotate()
+{
+	Scoop->Rotate();
+	Cone->Rotate();
+	//The Adjustments of the shape after rotation (NOT YET)
+	//TO BE IMPLEMENTED 
+}
+
+void IceCream::resize(double factor)
+{
+}
