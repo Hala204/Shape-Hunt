@@ -22,7 +22,7 @@ toolbar::toolbar(game* pG)
 
 	//composite shapes
 	toolbarItemImages[ITM_WATCH] = "images\\toolbarItems\\watch.jpg";
-	toolbarItemImages[ITM_HOME] = "images\\toolbarItems\\home.jpg";
+	toolbarItemImages[ITM_FISH] = "images\\toolbarItems\\Fish.jpg";
 	toolbarItemImages[ITM_ROCKET] = "images\\toolbarItems\\ROCKET.jpg";
 	toolbarItemImages[ITM_CONE] = "images\\toolbarItems\\cone.jpg";
 	

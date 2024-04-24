@@ -86,9 +86,9 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_TRI,
 
 
-	ITM_WATCH,       //Rectangle shape item
-	ITM_HOME,       //Circle shape item
-	ITM_ROCKET,        //Triangle shape item
+	ITM_WATCH,      
+	ITM_FISH,       
+	ITM_ROCKET,        
 	ITM_CONE,
 
 
