@@ -48,6 +48,17 @@ struct
 		int _sidelength = 125; double _rotation_angle = 180;
 	}IceCreamShape;
 
+	////------ Rocket shape Configuration -------////
+	struct {
+		int bodywdth = 30; int bodyhght = 90;
+		int radius = 15;
+		int ___sidelength = 30; double _rotation_ang = 0; //for the top triangle
+		int __sl = 20; double r_ang = 90; //for the bottomleft and bottomright triangles
+
+	}RocketShape;
+
+
+
 
 	int lives = 5;
 	int level = 1;

@@ -37,6 +37,8 @@ public:
 
 ///////////////////////////// Class ice cream //////////////////////////////////
 //This shape is composed of one circle and one triangle
+//The reference point of this shape is the center of the scoop (circle)
+
 
 class IceCream :public shape
 {
@@ -44,6 +46,29 @@ class IceCream :public shape
 	circle* Scoop;
 public:
 	IceCream(game* r_pGame, point ref);
+	virtual void draw() const;
+	virtual void Rotate();
+	virtual void resize(double factor);
+
+
+};
+
+
+///////////////////////////// Class Rocket //////////////////////////////////
+//This shape is composed of one circle, three triangles , one rectangle
+//The reference point of this shape is the reference point of the body (rectangle)
+
+
+class Rocket :public shape
+{
+	Triangle* Top;
+	Triangle* _BottomLeft;
+	Triangle* _BottomRight;
+	Rect* Body;
+	circle* Mid;
+
+public:
+	Rocket(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
