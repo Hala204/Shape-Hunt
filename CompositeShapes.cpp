@@ -100,3 +100,46 @@ void Rocket::Rotate()
 void Rocket::resize(double factor)
 {
 }
+
+
+////////////////////////////////////////////////////  class Fish  ///////////////////////////////////////
+Fish::Fish(game* r_pGame, point ref) :shape(r_pGame, ref)
+{
+	point FishBodyRef = ref;  //FishBody ref is the same as the Fish shape ref
+	point HeadRef = { ref.x + config.FishShape.Headsidelength / 2, ref.y };
+	point TailRef = { ref.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2,ref.y };
+	point AboveFinsRef = { ref.x , ref.y + config.FishShape.fradius };
+	point BelowFinsRef = { ref.x , ref.y - config.FishShape.fradius };
+
+	FishBody = new circle(pGame, FishBodyRef, config.FishShape.fradius);
+	Tail = new Triangle(pGame, TailRef, config.FishShape.Tailsidelength, config.FishShape.TailRotationang);
+	Head = new Triangle(pGame, HeadRef, config.FishShape.Headsidelength, config.FishShape.HeadRotationang);
+	AboveFins = new Rect(pGame, AboveFinsRef, config.FishShape.Finshght, config.FishShape.Finswdth);
+	BelowFins = new Rect(pGame, BelowFinsRef, config.FishShape.Finshght, config.FishShape.Finswdth);
+
+}
+
+void Fish::draw() const
+{
+	Head->draw();
+	AboveFins->draw();
+	BelowFins->draw();
+	Tail->draw();
+	FishBody->draw();
+}
+
+
+void Fish::Rotate()
+{
+	Head->Rotate();
+	AboveFins->Rotate();
+	BelowFins->Rotate();
+	Tail->Rotate();
+	FishBody->Rotate();
+	//The Adjustments of the shape after rotation (NOT YET)
+	//TO BE IMPLEMENTED 
+}
+
+void Fish::resize(double factor)
+{
+}

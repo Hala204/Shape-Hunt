@@ -74,3 +74,27 @@ public:
 
 
 };
+
+
+
+///////////////////////////// Class Fish //////////////////////////////////
+//This shape is composed of two triangles, two rectangles and one circle
+//The reference point of this shape is the center of the body of the fish (circle)
+
+
+class Fish :public shape
+{
+	Triangle* Tail;
+	Triangle* Head;
+	Rect* AboveFins;
+	Rect* BelowFins;
+	circle* FishBody;
+
+public:
+	Fish(game* r_pGame, point ref);
+	virtual void draw() const;
+	virtual void Rotate();
+	virtual void resize(double factor);
+
+
+};

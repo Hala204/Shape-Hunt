@@ -56,6 +56,14 @@ struct
 
 	}RocketShape;
 
+	////------ Fish shape Configuration --------////
+	struct {
+		int fradius = 60;
+		int Headsidelength = 120; double HeadRotationang = 90;
+		int Tailsidelength = 120; double TailRotationang = 90;
+		int Finswdth = 60; int Finshght = 50;
+
+	}FishShape;
 
 
 	 
