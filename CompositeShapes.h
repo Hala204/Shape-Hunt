@@ -91,6 +91,7 @@ class Fish :public shape
 	Rect* AboveFins;
 	Rect* BelowFins;
 	circle* FishBody;
+	double current_rotation_ang__;
 
 public:
 	Fish(game* r_pGame, point ref);

@@ -165,7 +165,7 @@ void Rocket::resize(double factor)
 
 
 ////////////////////////////////////////////////////  class Fish  ///////////////////////////////////////
-Fish::Fish(game* r_pGame, point ref) :shape(r_pGame, ref)
+Fish::Fish(game* r_pGame, point ref) :shape(r_pGame, ref),current_rotation_ang__(90)
 {
 	point FishBodyRef = ref;  //FishBody ref is the same as the Fish shape ref
 	point HeadRef = { ref.x + config.FishShape.Headsidelength , ref.y };
@@ -174,8 +174,8 @@ Fish::Fish(game* r_pGame, point ref) :shape(r_pGame, ref)
 	point BelowFinsRef = { ref.x , ref.y - config.FishShape.fradius };
 
 	FishBody = new circle(pGame, FishBodyRef, config.FishShape.fradius);
-	Tail = new Triangle(pGame, TailRef, config.FishShape.Tailsidelength, config.FishShape.TailRotationang);
-	Head = new Triangle(pGame, HeadRef, config.FishShape.Headsidelength, config.FishShape.HeadRotationang);
+	Tail = new Triangle(pGame, TailRef, config.FishShape.Tailsidelength, 90);
+	Head = new Triangle(pGame, HeadRef, config.FishShape.Headsidelength, 90);
 	AboveFins = new Rect(pGame, AboveFinsRef, config.FishShape.Finshght, config.FishShape.Finswdth);
 	BelowFins = new Rect(pGame, BelowFinsRef, config.FishShape.Finshght, config.FishShape.Finswdth);
 
@@ -198,8 +198,58 @@ void Fish::Rotate()
 	BelowFins->Rotate();
 	Tail->Rotate();
 	FishBody->Rotate();
-	//The Adjustments of the shape after rotation (NOT YET)
-	//TO BE IMPLEMENTED 
+
+	point FishBodyRef = RefPoint;
+	point AboveFinsRef;
+	point BelowFinsRef;
+	point HeadRef;
+	point TailRef;
+
+	//point HeadRef = { ref.x + config.FishShape.Headsidelength , ref.y };
+	//point TailRef = { ref.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5 ,ref.y };
+
+
+	current_rotation_ang__ += 90;
+	double s = current_rotation_ang__;
+	if (s >= 180 && s < 270)
+	{
+	    AboveFinsRef = { RefPoint.x + config.FishShape.fradius,RefPoint.y };
+		BelowFinsRef = { RefPoint.x - config.FishShape.fradius,RefPoint.y };
+		HeadRef = { RefPoint.x , RefPoint.y + config.FishShape.Headsidelength };
+		TailRef = { RefPoint.x , RefPoint.y - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5 };
+	}
+	else if (s >= 270 && s < 360)
+	{
+		AboveFinsRef = { RefPoint.x ,RefPoint.y + config.FishShape.fradius };
+		BelowFinsRef = { RefPoint.x ,RefPoint.y - config.FishShape.fradius };
+		HeadRef = { RefPoint.x - config.FishShape.Headsidelength , RefPoint.y };
+		TailRef = { RefPoint.x + config.FishShape.fradius + config.FishShape.Tailsidelength / 2 - 5, RefPoint.y };
+
+	}
+	else if (s >= 360)
+	{
+		AboveFinsRef = { RefPoint.x + config.FishShape.fradius,RefPoint.y };
+		BelowFinsRef = { RefPoint.x - config.FishShape.fradius,RefPoint.y };
+		HeadRef = { RefPoint.x , RefPoint.y - config.FishShape.Headsidelength };
+		TailRef = { RefPoint.x , RefPoint.y + config.FishShape.fradius + config.FishShape.Tailsidelength / 2 - 5 };
+		current_rotation_ang__ = 0;
+		
+	}
+	else
+	{
+	    AboveFinsRef = { RefPoint.x ,RefPoint.y + config.FishShape.fradius };
+		BelowFinsRef = { RefPoint.x ,RefPoint.y - config.FishShape.fradius };
+		HeadRef = { RefPoint.x + config.FishShape.Headsidelength , RefPoint.y };
+		TailRef = { RefPoint.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5, RefPoint.y };
+
+	}
+
+	Head->setRefPoint(HeadRef);
+	AboveFins->setRefPoint(AboveFinsRef);
+	BelowFins->setRefPoint(BelowFinsRef);
+	Tail->setRefPoint(TailRef);
+	FishBody->setRefPoint(FishBodyRef);
+
 }
 
 void Fish::resize(double factor)
