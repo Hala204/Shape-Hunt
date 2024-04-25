@@ -1,5 +1,6 @@
 #include "CompositeShapes.h"
 #include "gameConfig.h"
+#define PII 3.14159265358979323846 
 
 ////////////////////////////////////////////////////  class Sign  ///////////////////////////////////////
 Sign::Sign(game* r_pGame, point ref):shape(r_pGame, ref)
@@ -39,13 +40,13 @@ void Sign::resize(double factor)
 
 
 ////////////////////////////////////////////////////  class Ice Cream  ///////////////////////////////////////
-IceCream::IceCream(game* r_pGame, point ref) :shape(r_pGame, ref)
+IceCream::IceCream(game* r_pGame, point ref) :shape(r_pGame, ref), current_rotation_ang(180)
 {
 	//calc the ref point of the Ice Cream cone and scoop relative to the Ice Cream shape
 	point ScoopRef = ref;  //scoop ref is the same as the ice cream shape ref
 	point ConeRef = { ref.x , ref.y + config.IceCreamShape._sidelength / 2 };
 	Scoop = new circle(pGame, ScoopRef, config.IceCreamShape._radius);
-	Cone = new Triangle(pGame, ConeRef, config.IceCreamShape._sidelength, config.IceCreamShape._rotation_angle);
+	Cone = new Triangle(pGame, ConeRef, config.IceCreamShape._sidelength, current_rotation_ang);
 }
 
 void IceCream::draw() const
@@ -59,8 +60,26 @@ void IceCream::Rotate()
 {
 	Scoop->Rotate();
 	Cone->Rotate();
-	//The Adjustments of the shape after rotation (NOT YET)
-	//TO BE IMPLEMENTED 
+	
+	point NewScoopRef = RefPoint;
+	point NewConeRef;
+
+	current_rotation_ang += 90; 
+	double s = current_rotation_ang;
+	if (s >= 270 && s < 360) 
+		NewConeRef = { RefPoint.x - config.IceCreamShape._sidelength / 2 ,RefPoint.y };
+	else if (s >= 360)
+	{
+		NewConeRef = { RefPoint.x ,RefPoint.y - config.IceCreamShape._sidelength / 2 };
+		current_rotation_ang = 0;
+	}
+	else if (s >= 90 && s < 180) 
+		NewConeRef = { RefPoint.x + config.IceCreamShape._sidelength / 2,RefPoint.y };
+	else 
+		NewConeRef = { RefPoint.x ,RefPoint.y + config.IceCreamShape._sidelength / 2 };
+
+	Scoop->setRefPoint(NewScoopRef);
+	Cone->setRefPoint(NewConeRef);
 }
 
 void IceCream::resize(double factor)
@@ -98,8 +117,7 @@ void Rocket::Rotate()
 	Top->Rotate();
 	_BottomLeft->Rotate();
 	_BottomRight->Rotate();
-	//The Adjustments of the shape after rotation (NOT YET)
-	//TO BE IMPLEMENTED 
+	
 }
 
 void Rocket::resize(double factor)

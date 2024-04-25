@@ -44,6 +44,7 @@ class IceCream :public shape
 {
 	Triangle* Cone;
 	circle* Scoop;
+	double current_rotation_ang;
 public:
 	IceCream(game* r_pGame, point ref);
 	virtual void draw() const;
