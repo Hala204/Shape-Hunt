@@ -87,7 +87,7 @@ void IceCream::resize(double factor)
 }
 
 ////////////////////////////////////////////////////  class Rocket  ///////////////////////////////////////
-Rocket::Rocket(game* r_pGame, point ref) :shape(r_pGame, ref)
+Rocket::Rocket(game* r_pGame, point ref) :shape(r_pGame, ref),current_rotation_ang_(0)
 {
 	point BodyRef = ref;   //body ref is the same as the rocket shape ref
 	point TopRef = { ref.x, ref.y - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2 };
@@ -95,7 +95,7 @@ Rocket::Rocket(game* r_pGame, point ref) :shape(r_pGame, ref)
 	point BottomLeft{ ref.x - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 , ref.y + config.RocketShape.bodyhght / 2 - 20 };
 
 	Body = new Rect(pGame, BodyRef, config.RocketShape.bodyhght, config.RocketShape.bodywdth);
-	Top = new Triangle(pGame, TopRef, config.RocketShape.___sidelength, config.RocketShape._rotation_ang);
+	Top = new Triangle(pGame, TopRef, config.RocketShape.___sidelength, current_rotation_ang_);
 	_BottomLeft = new Triangle(pGame, BottomLeft, config.RocketShape.__sl, config.RocketShape.r_ang1);
 	_BottomRight = new Triangle(pGame, BottomRight, config.RocketShape.__sl, config.RocketShape.r_ang2);
 
@@ -117,6 +117,45 @@ void Rocket::Rotate()
 	Top->Rotate();
 	_BottomLeft->Rotate();
 	_BottomRight->Rotate();
+
+	point NewBodyRef = RefPoint;
+	point NewTopRef;
+	point NewBottomRightRef;
+	point  NewBottomLeftRef;
+	current_rotation_ang_ += 90;
+	double s = current_rotation_ang_;
+	if (s >= 90 && s < 180)
+	{
+		NewTopRef = { RefPoint.x + config.RocketShape.bodyhght / 2 + config.RocketShape.___sidelength / 2,RefPoint.y };
+		NewBottomRightRef = { RefPoint.x - config.RocketShape.bodyhght / 2 + 20 ,  RefPoint.y + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 };
+		NewBottomLeftRef = { RefPoint.x - config.RocketShape.bodyhght / 2 + 20 ,  RefPoint.y - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 };
+
+	}
+	else if (s >= 180 && s < 270)
+	{
+		NewTopRef = { RefPoint.x ,RefPoint.y + config.RocketShape.bodyhght / 2 + config.RocketShape.___sidelength / 2 };
+		NewBottomRightRef = { RefPoint.x - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 , RefPoint.y - config.RocketShape.bodyhght / 2 + 20 };
+		NewBottomLeftRef = { RefPoint.x + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 , RefPoint.y - config.RocketShape.bodyhght / 2 + 20 };
+
+	}
+	else if (s >= 270 && s < 360)
+	{
+		NewTopRef = { RefPoint.x - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2,RefPoint.y };
+		NewBottomRightRef = { RefPoint.x + config.RocketShape.bodyhght / 2 - 20 ,  RefPoint.y - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 };
+		NewBottomLeftRef = { RefPoint.x + config.RocketShape.bodyhght / 2 - 20 ,  RefPoint.y + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 };
+	}
+	else
+	{
+		NewTopRef = { RefPoint.x ,RefPoint.y - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2 };
+		NewBottomRightRef = { RefPoint.x + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 , RefPoint.y + config.RocketShape.bodyhght / 2 - 20 };
+		NewBottomLeftRef = { RefPoint.x - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 , RefPoint.y + config.RocketShape.bodyhght / 2 - 20 };
+		current_rotation_ang_ = 0;
+	}
+
+	Body->setRefPoint(NewBodyRef);
+	Top->setRefPoint(NewTopRef);
+	_BottomRight->setRefPoint(NewBottomRightRef);
+	_BottomLeft->setRefPoint(NewBottomLeftRef);
 	
 }
 

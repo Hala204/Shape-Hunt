@@ -66,6 +66,7 @@ class Rocket :public shape
 	Triangle* _BottomLeft;
 	Triangle* _BottomRight;
 	Rect* Body;
+	double current_rotation_ang_;
 
 public:
 	Rocket(game* r_pGame, point ref);
