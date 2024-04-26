@@ -267,15 +267,18 @@ Watch::Watch(game* r_pGame, point ref):shape(r_pGame, ref)
 {
 	point watchRef = ref;
 	point upperRectRef = { ref.x, ref.y - config.watchShape.radious - (.15 * config.watchShape.radious) };
+	point lowerTriRef = { ref.x, ref.y + config.watchShape.radious + config.watchShape.radious * .4 };
 
 	watchbody = new circle(pGame, watchRef, config.watchShape.radious);
-	upperRect = new Rect(pGame, upperRectRef, config.watchShape.radious*.2,config.watchShape.radious*.4);
+	upperRect = new Rect(pGame, upperRectRef, config.watchShape.radious*.2,config.watchShape.radious*.6);
+	lowerTri = new Triangle(pGame, lowerTriRef, config.watchShape.radious*.6, 180);
 }
 
 void Watch::draw() const
 {
 	watchbody->draw();
 	upperRect->draw();
+	lowerTri->draw();
 }
 
 void Watch::Rotate()
