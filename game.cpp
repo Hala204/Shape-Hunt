@@ -55,8 +55,8 @@ void game::createToolBar()
 void game::createGrid()
 {	
 	//calc some grid parameters
-	point gridUpperLeftPoint = { 0, config.toolBarHeight };
-	int gridHeight = config.windHeight - config.toolBarHeight - config.statusBarHeight;
+	point gridUpperLeftPoint = { 0, config.toolBarHeight +20 };
+	int gridHeight = config.windHeight - config.toolBarHeight +20 - config.statusBarHeight;
 	//create the grid
 	shapesGrid = new grid(gridUpperLeftPoint, config.windWidth, gridHeight, this);
 }
@@ -110,17 +110,22 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_WATCH:
 		printMessage("watch is pressed ");
 		break;
-	case ITM_HOME:
-		printMessage("home is pressed ");
-		//drawHome(pWind , config.fillColor, config.RefX, config.RefY, 50);
-		break;
-	case ITM_CONE:
-		printMessage("cone is pressed ");
 
+	case ITM_FISH:
+		op = new operAddFish(this);
+		printMessage("Fish is pressed ");
 		break;
+
+	case ITM_CONE:
+		op = new operAddIceCream(this);
+		printMessage("cone is pressed ");
+		break;
+
 	case ITM_ROCKET:
+		op = new operAddRocket(this);
 		printMessage("Rocket is pressed ");
 		break;
+
 	case ITM_REFRESH:
 		printMessage("ITM_REFRESH is pressed ");
 		break;

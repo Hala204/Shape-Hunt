@@ -35,12 +35,44 @@ struct
 	int RefX = windWidth *  (2.0 / 3);
 	int RefY = windHeight * (0.5);
 
+     double SizeOptions[3] = {0.5,1.0,2.0};
+     double* sighSize = SizeOptions + 1;
+     double* fishSize = SizeOptions + 1;
+double* carSize = SizeOptions + 1;
+double* rocketSize = SizeOptions + 1;
+
 	////-----  Sign Shape Confoguration ---------////
 	// For the Sign shape, define width and height of both rectangles
 	struct {
 		int baseWdth = 20, baseHeight = 80;
 		int topWdth = 100, topHeight = 50;
 	}sighShape;
+
+	////----- Ice Cream shape Configuration ------////
+	struct {
+		int _radius = 57;
+		int _sidelength = 125; double _rotation_angle = 180;
+	}IceCreamShape;
+
+	////------ Rocket shape Configuration -------////
+	struct {
+		int bodywdth = 40; int bodyhght = 200;
+		int ___sidelength = 40; double _rotation_ang = 0; //for the top triangle
+		int __sl = 20; double r_ang1 = -90; double r_ang2 = 90; //for the bottomleft and bottomright triangles
+
+	}RocketShape;
+
+	////------ Fish shape Configuration --------////
+	struct {
+		int fradius = 80;
+		int Headsidelength = 70; double HeadRotationang = 90;
+		int Tailsidelength = 60; double TailRotationang = 90;
+		int Finswdth = 60; int Finshght = 30;
+
+	}FishShape;
+
+
+	 
 	int lives = 5;
 	int level = 1;
 	int Score = 0;
@@ -60,9 +92,9 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_TRI,
 
 
-	ITM_WATCH,       //Rectangle shape item
-	ITM_HOME,       //Circle shape item
-	ITM_ROCKET,        //Triangle shape item
+	ITM_WATCH,      
+	ITM_FISH,       
+	ITM_ROCKET,        
 	ITM_CONE,
 
 

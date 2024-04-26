@@ -1,14 +1,17 @@
 #include "BasicShapes.h"
 #include "gameConfig.h"
 #include "game.h"
+#define PII 3.14159265358979323846 
 
 ////////////////////////////////////////////////////  class Rect  ///////////////////////////////////////
 
 Rect::Rect(game* r_pGame, point ref, int r_hght, int r_wdth):shape(r_pGame,ref)
 {
-	pGame = r_pGame;
-	hght = r_hght;
-	wdth = r_wdth;
+  pGame = r_pGame;
+  ihght = r_hght;
+  iwdth = r_wdth;
+  hght = r_hght;
+  wdth = r_wdth;
 }
 
 void Rect::draw() const
@@ -37,16 +40,17 @@ void Rect::Rotate()
 
 void Rect::resize(double factor)
 {
-	wdth *= factor;
-	hght *= factor;
+  wdth = iwdth*factor;
+  hght = ihght*factor;
 }
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //TODO: Add implementation for class circle here
 circle::circle(game* r_pGame, point ref, int r):shape(r_pGame,ref)
 {
-	pGame = r_pGame;
-	rad = r;
+  pGame = r_pGame;
+  rad = r;
+  irad = r;
 }
 
 void circle::draw() const
@@ -64,15 +68,15 @@ void circle::Rotate() //circle can't be rotated
 
 void circle::resize(double factor)
 {
-	rad *= factor;
+  rad = irad * factor;
 }
-
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here
-Triangle::Triangle(game* r_pGame, point ref, int sl) :shape(r_pGame, ref)
+Triangle::Triangle(game* r_pGame, point ref, int sl,double ra) :shape(r_pGame, ref)
 {
 	pGame = r_pGame;
 	sidelength = sl;
+	rotation_angle = ra;
 }
 
 void Triangle::draw() const
@@ -87,12 +91,29 @@ void Triangle::draw() const
 	UpperPoint.y = RefPoint.y - sidelength / 2;
 	RightBottomPoint.x = RefPoint.x + sidelength / 2;
 	RightBottomPoint.y = RefPoint.y + sidelength / 2;
-	pW->DrawTriangle(LeftBottomPoint.x, LeftBottomPoint.y, UpperPoint.x, UpperPoint.y, RightBottomPoint.x, RightBottomPoint.y, FILLED);
+
+
+	double s = (rotation_angle * PII) / 180;
+	point l, m, n;
+	l.x = RefPoint.x + (LeftBottomPoint.x - RefPoint.x ) * cos(s) - (LeftBottomPoint.y - RefPoint.y) * sin(s);
+	l.y = RefPoint.y + (LeftBottomPoint.x - RefPoint.x) * sin(s) + (LeftBottomPoint.y - RefPoint.y) * cos(s);
+	m.x = RefPoint.x + (UpperPoint.x - RefPoint.x) * cos(s) - (UpperPoint.y - RefPoint.y) * sin(s);
+	m.y = RefPoint.y + (UpperPoint.x - RefPoint.x) * sin(s) + (UpperPoint.y - RefPoint.y) * cos(s);
+	n.x = RefPoint.x + (RightBottomPoint.x - RefPoint.x) * cos(s) - (RightBottomPoint.y - RefPoint.y) * sin(s);
+	n.y = RefPoint.y + (RightBottomPoint.x - RefPoint.x) * sin(s) + (RightBottomPoint.y - RefPoint.y) * cos(s);
+	pW->DrawTriangle(l.x, l.y, m.x, m.y, n.x, n.y, FILLED);
+
+
+
+	//pW->DrawTriangle(LeftBottomPoint.x, LeftBottomPoint.y, UpperPoint.x, UpperPoint.y, RightBottomPoint.x, RightBottomPoint.y, FILLED);
 }
 
 
 void Triangle::Rotate()
-{}
+{
+	rotation_angle += 90;
+
+}
 
 void Triangle::resize(double factor)
 {

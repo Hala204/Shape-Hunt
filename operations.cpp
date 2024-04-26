@@ -38,6 +38,89 @@ void operAddSign::Act()
 
 }
 
+
+/////////////////////////////////// class operAddIceCream  //////////////////
+
+operAddIceCream::operAddIceCream(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operAddIceCream::Act()
+{
+    window* pw = pGame->getWind();
+
+
+    //align reference point to the nearest grid point
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
+
+    //take the aligned point as the ice cream shape ref point
+    point IceCreamShapeRef = { xGrid,yGrid };
+
+    //create an Ice Cream shape
+    shape* psh = new IceCream(pGame, IceCreamShapeRef);
+
+    //Add the shape to the grid
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
+}
+
+/////////////////////////////////// class operAddRocket  //////////////////
+
+operAddRocket::operAddRocket(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operAddRocket::Act()
+{
+    window* pw = pGame->getWind();
+
+
+    //align reference point to the nearest grid point
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
+
+    //take the aligned point as the Rocket shape ref point
+    point RocketShapeRef = { xGrid,yGrid };
+
+    //create a Rocket shape
+    shape* psh = new Rocket(pGame, RocketShapeRef);
+
+    //Add the shape to the grid
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
+}
+
+
+/////////////////////////////////// class operAddFish  //////////////////
+
+operAddFish::operAddFish(game* r_pGame) :operation(r_pGame)
+{
+}
+
+void operAddFish::Act()
+{
+    window* pw = pGame->getWind();
+
+
+    //align reference point to the nearest grid point
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
+
+    //take the aligned point as the Fish shape ref point
+    point FishShapeRef = { xGrid,yGrid };
+
+    //create a Fish shape
+    shape* psh = new Fish(pGame, FishShapeRef);
+
+    //Add the shape to the grid
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
+}
+
 /////////////////////////////////// class operAddRect  //////////////////
 
 
@@ -108,8 +191,10 @@ void operAddTri::Act()
     point TriShapeRef = { xGrid, yGrid };
 
     int _sidelength = 160;
+    int rotation_angle = 0;
 
-    shape* psh = new Triangle(pGame, TriShapeRef, _sidelength);
+
+    shape* psh = new Triangle(pGame, TriShapeRef, _sidelength,rotation_angle);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
@@ -139,8 +224,19 @@ void operMinimize::Act()
 {
     grid* pGrid = pGame->getGrid();
     shape* psh = pGrid->getActiveShape();
-    psh->resize(0.5);
-    pGrid->setActiveShape(psh);
+	
+    if (*config.sighSize == 0.5)
+    {
+        config.sighSize = config.SizeOptions + 2;
+    }
+    else {
+        config.sighSize = config.sighSize - 1;
+    }
+psh->resize(0);
+
+
+
+	
 }
 
 operDEL::operDEL(game* r_pGame) : operation(r_pGame)
@@ -160,6 +256,12 @@ void operINC::Act()
 {
     grid* pGrid = pGame->getGrid();
     shape* psh = pGrid->getActiveShape();
-    psh->resize(1.5);
-    pGrid->setActiveShape(psh);
+  if (*config.sighSize == 2.0)
+    {
+        config.sighSize = config.SizeOptions;
+    }
+    else {
+        config.sighSize = config.sighSize + 1;
+    }
+psh->resize(0);
 }
