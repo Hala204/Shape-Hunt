@@ -115,7 +115,7 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_FISH,       
 	ITM_ROCKET,        
 	ITM_CONE,
-	//ITM_CAR,
+	ITM_CAR,
 
 
 

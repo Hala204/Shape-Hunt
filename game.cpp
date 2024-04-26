@@ -106,6 +106,11 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	//	printMessage("triangle is pressed ");
 
 	//	break;
+	case ITM_CAR:
+		op = new operAddCar(this);
+		printMessage("car is pressed ");
+		break;
+
 	case ITM_Home:
 		op = new operAddHome(this);
 		printMessage("Home is pressed ");

@@ -314,3 +314,26 @@ void operAddHome::Act()
     pGrid->setActiveShape(psh);
 
 }
+
+operAddCar::operAddCar(game* r_pGame):operation(r_pGame)
+{
+    window* pw = pGame->getWind();
+
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+
+    point homeRefPoint = { xGrid, yGrid };
+
+
+
+
+
+    shape* psh = new Car(pGame, homeRefPoint);
+
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+}
+
+void operAddCar::Act()
+{
+}
