@@ -116,3 +116,16 @@ public:
 	virtual void Rotate();
 	virtual void resize(double factor);
 };
+
+class Home :public shape
+{
+	Rect* HomeBody;
+	Triangle* upperTri;
+	Rect* leftRect;
+
+public:
+	Home(game* r_pGame, point ref);
+	virtual void draw() const;
+	virtual void Rotate();
+	virtual void resize(double factor);
+};

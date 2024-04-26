@@ -281,11 +281,36 @@ void operAddWatch::Act()
     point watchRefPoint = { xGrid, yGrid };
 
 
-    int rotation_angle = 0;
 
 
     shape* psh = new Watch(pGame,watchRefPoint);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
+}
+
+
+operAddHome::operAddHome(game* r_pGame) : operation(r_pGame)
+{
+
+}
+
+void operAddHome::Act()
+{
+    window* pw = pGame->getWind();
+
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+
+    point homeRefPoint = { xGrid, yGrid };
+
+
+
+
+
+    shape* psh = new Home(pGame, homeRefPoint);
+
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+
 }

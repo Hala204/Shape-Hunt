@@ -21,6 +21,7 @@ toolbar::toolbar(game* pG)
 	//toolbarItemImages[ITM_TRI] = "images\\toolbarItems\\toolbar_Tri.jpg";
 
 	//composite shapes
+	toolbarItemImages[ITM_Home] = "images\\toolbarItems\\home.jpg";
 	toolbarItemImages[ITM_WATCH] = "images\\toolbarItems\\watch.jpg";
 	toolbarItemImages[ITM_FISH] = "images\\toolbarItems\\Fish.jpg";
 	toolbarItemImages[ITM_ROCKET] = "images\\toolbarItems\\ROCKET.jpg";

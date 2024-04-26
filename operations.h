@@ -54,6 +54,12 @@ public:
 	virtual void Act();
 };
 
+class operAddHome :public operation
+{
+public:
+	operAddHome(game* r_pGame);
+	virtual void Act();
+};
 
 class operAddRect :public operation
 {

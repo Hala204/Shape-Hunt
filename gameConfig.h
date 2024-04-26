@@ -76,6 +76,11 @@ double* rocketSize = SizeOptions + 1;
 		int radious = 100;
 
 	}watchShape;
+
+	struct {
+		int hight = 100;
+		int width = 160;
+	}homeshape;
 	 
 	int lives = 5;
 	int level = 1;
@@ -95,7 +100,7 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	//ITM_CIRC,
 	//ITM_TRI,
 
-
+	ITM_Home,
 	ITM_WATCH,      
 	ITM_FISH,       
 	ITM_ROCKET,        
