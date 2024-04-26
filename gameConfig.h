@@ -78,6 +78,14 @@ struct
 		int sidelength = 85;
 	}watchShape;
 	 
+	////------ car shape Configuration --------////
+	struct {
+		int bodyWidth = 100, bodyHeight = 60;
+		int windowSide = 30; double rotation = 90;
+		int wheelRadius = 25;
+		int roofWidth = 75, roofHeight = 30;
+	}carShape;
+
 	int lives = 5;
 	int level = 1;
 	int Score = 0;
@@ -101,6 +109,7 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_FISH,       
 	ITM_ROCKET,        
 	ITM_CONE,
+	ITM_CAR,
 
 
 
