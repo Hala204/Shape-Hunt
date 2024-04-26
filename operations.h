@@ -61,6 +61,13 @@ public:
 	virtual void Act();
 };
 
+class operAddCar :public operation
+{
+public:
+	operAddCar(game* r_pGame);
+	virtual void Act();
+};
+
 class operAddRect :public operation
 {
 public:

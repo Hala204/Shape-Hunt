@@ -26,7 +26,7 @@ toolbar::toolbar(game* pG)
 	toolbarItemImages[ITM_FISH] = "images\\toolbarItems\\Fish.jpg";
 	toolbarItemImages[ITM_ROCKET] = "images\\toolbarItems\\ROCKET.jpg";
 	toolbarItemImages[ITM_CONE] = "images\\toolbarItems\\cone.jpg";
-	//toolbarItemImages[ITM_CAR] = "images\\toolbarItems\\car.jpg";
+	toolbarItemImages[ITM_CAR] = "images\\toolbarItems\\car.jpg";
 
 	//icons
 	toolbarItemImages[ITM_MINI] = "images\\toolbarItems\\Mini.jpg";

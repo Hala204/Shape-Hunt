@@ -103,20 +103,20 @@ public:
 };
 
 
-//class Car : public shape
-//{
-//	Triangle* Window;
-//	circle* LeftWheel;
-//	circle* RightWheel;
-//	Rect* Body;
-//	Rect* Roof;
-//
-//public:
-//	Car(game* r_pGame, point ref);
-//	virtual void draw() const;
-//	virtual void Rotate();
-//	virtual void resize(double factor);
-//};
+class Car : public shape
+{
+	Triangle* Window;
+	circle* LeftWheel;
+	circle* RightWheel;
+	Rect* Body;
+	Rect* Roof;
+
+public:
+	Car(game* r_pGame, point ref);
+	virtual void draw() const;
+	virtual void Rotate();
+	virtual void resize(double factor);
+};
 
 
 
