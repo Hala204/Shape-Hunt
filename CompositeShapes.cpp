@@ -45,7 +45,7 @@ void Sign::resize(double factor)
 
 }
 
-Car::Car(game* c_pGame, point ref) : shape(c_pGame, ref)
+Car::Car(game* c_pGame, point ref) : shape(c_pGame, ref),current_rotation_anggg(90)
 {
 	point BodyRef = ref;
 	point windowRef = { ref.x - config.carShape.bodyWidth / 4, ref.y - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 };
@@ -76,8 +76,58 @@ void Car::Rotate()
 	Window->Rotate();
 	LeftWheel->Rotate();
 	RightWheel->Rotate();
-	//The Adjustments of the shape after rotation (NOT YET)
-	//TO BE IMPLEMENTED 
+
+
+	point BodyRef = RefPoint;
+	point RoofRef;
+	point WindowRef;
+	point LeftWheelRef;
+	point RightWheelRef;
+
+	current_rotation_anggg += 90;
+	double s = current_rotation_anggg;
+	if (s >= 180 && s < 270)
+	{
+		RoofRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.roofHeight / 2 , RefPoint.y + config.carShape.bodyWidth / 8 };
+		WindowRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.windowSide / 2 , RefPoint.y - config.carShape.bodyWidth / 4 };
+		LeftWheelRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius, RefPoint.y - config.carShape.bodyWidth / 4 };
+		RightWheelRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius, RefPoint.y + config.carShape.bodyWidth / 4 };
+		
+	}
+
+	else if (s >= 270 && s < 360)
+	{
+		RoofRef = { RefPoint.x - config.carShape.bodyWidth / 8 , RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.roofHeight / 2 };
+		WindowRef = { RefPoint.x + config.carShape.bodyWidth / 4 , RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.windowSide / 2 };
+		LeftWheelRef = { RefPoint.x + config.carShape.bodyWidth / 4 , RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius };
+		RightWheelRef = { RefPoint.x - config.carShape.bodyWidth / 4 , RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius };
+
+	}
+	else if (s >= 360)
+	{
+		RoofRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2 , RefPoint.y - config.carShape.bodyWidth / 8 };
+		WindowRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 , RefPoint.y + config.carShape.bodyWidth / 4 };
+		LeftWheelRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius, RefPoint.y + config.carShape.bodyWidth / 4 };
+		RightWheelRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius, RefPoint.y - config.carShape.bodyWidth / 4 };
+		current_rotation_anggg = 0;
+
+	}
+	else
+	{
+		RoofRef = { RefPoint.x + config.carShape.bodyWidth / 8, RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2 };
+		WindowRef = { RefPoint.x - config.carShape.bodyWidth / 4, RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 };
+		LeftWheelRef = { RefPoint.x - config.carShape.bodyWidth / 4, RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
+		RightWheelRef = { RefPoint.x + config.carShape.bodyWidth / 4, RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
+		
+
+	}
+	Body->setRefPoint(BodyRef);
+	Roof->setRefPoint(RoofRef);
+	Window->setRefPoint(WindowRef);
+	LeftWheel->setRefPoint(LeftWheelRef);
+	RightWheel->setRefPoint(RightWheelRef);
+
+
 }
 
 void Car::resize(double factor)

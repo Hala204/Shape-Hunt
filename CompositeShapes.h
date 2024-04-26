@@ -110,6 +110,7 @@ class Car : public shape
 	circle* RightWheel;
 	Rect* Body;
 	Rect* Roof;
+	double current_rotation_anggg;
 
 public:
 	Car(game* r_pGame, point ref);
