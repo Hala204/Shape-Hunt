@@ -281,9 +281,6 @@ void operAddWatch::Act()
     point watchRefPoint = { xGrid, yGrid };
 
 
-    int rotation_angle = 0;
-
-
     shape* psh = new Watch(pGame,watchRefPoint);
 
     grid* pGrid = pGame->getGrid();
