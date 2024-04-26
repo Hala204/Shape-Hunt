@@ -224,8 +224,19 @@ void operMinimize::Act()
 {
     grid* pGrid = pGame->getGrid();
     shape* psh = pGrid->getActiveShape();
-    psh->resize(0.5);
-    pGrid->setActiveShape(psh);
+	
+    if (*config.sighSize == 0.5)
+    {
+        config.sighSize = config.SizeOptions + 2;
+    }
+    else {
+        config.sighSize = config.sighSize - 1;
+    }
+psh->resize(0);
+
+
+
+	
 }
 
 operDEL::operDEL(game* r_pGame) : operation(r_pGame)
@@ -245,6 +256,12 @@ void operINC::Act()
 {
     grid* pGrid = pGame->getGrid();
     shape* psh = pGrid->getActiveShape();
-    psh->resize(1.5);
-    pGrid->setActiveShape(psh);
+  if (*config.sighSize == 2.0)
+    {
+        config.sighSize = config.SizeOptions;
+    }
+    else {
+        config.sighSize = config.sighSize + 1;
+    }
+psh->resize(0);
 }
