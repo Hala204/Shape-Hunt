@@ -262,3 +262,26 @@ void Fish::Rotate()
 void Fish::resize(double factor)
 {
 }
+
+Watch::Watch(game* r_pGame, point ref):shape(r_pGame, ref)
+{
+	point watchRef = ref;
+	point upperRectRef = { ref.x, ref.y - config.watchShape.radious - (.15 * config.watchShape.radious) };
+
+	watchbody = new circle(pGame, watchRef, config.watchShape.radious);
+	upperRect = new Rect(pGame, upperRectRef, config.watchShape.radious*.2,config.watchShape.radious*.4);
+}
+
+void Watch::draw() const
+{
+	watchbody->draw();
+	upperRect->draw();
+}
+
+void Watch::Rotate()
+{
+}
+
+void Watch::resize(double factor)
+{
+}

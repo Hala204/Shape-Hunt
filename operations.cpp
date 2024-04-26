@@ -265,3 +265,27 @@ void operINC::Act()
     }
 psh->resize(0);
 }
+
+
+operAddWatch::operAddWatch(game* r_pGame) : operation(r_pGame)
+{
+}
+
+void operAddWatch::Act()
+{
+    window* pw = pGame->getWind();
+
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+
+    point watchRefPoint = { xGrid, yGrid };
+
+
+    int rotation_angle = 0;
+
+
+    shape* psh = new Watch(pGame,watchRefPoint);
+
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
+}

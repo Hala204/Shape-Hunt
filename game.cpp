@@ -86,28 +86,29 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	operation* op=nullptr;
 	switch (clickedItem)
 	{
-	case ITM_SIGN:
-		op = new operAddSign(this);
-		printMessage("sign is pressed ");
+	//case ITM_SIGN:
+	//	op = new operAddSign(this);
+	//	printMessage("sign is pressed ");
 
-		break;
-	case ITM_RECT:
-		op = new operAddRect(this);
-		printMessage("rectangle is pressed ");
+	//	break;
+	//case ITM_RECT:
+	//	op = new operAddRect(this);
+	//	printMessage("rectangle is pressed ");
 
-		break;
-	case ITM_CIRC:
-		op = new operAddCirc(this);
-		printMessage("circle is pressed ");
+	//	break;
+	//case ITM_CIRC:
+	//	op = new operAddCirc(this);
+	//	printMessage("circle is pressed ");
 
-		break;
-	case ITM_TRI:
-		op = new operAddTri(this);
-		printMessage("triangle is pressed ");
+	//	break;
+	//case ITM_TRI:
+	//	op = new operAddTri(this);
+	//	printMessage("triangle is pressed ");
 
-		break;
+	//	break;
 
 	case ITM_WATCH:
+		op = new operAddWatch(this);
 		printMessage("watch is pressed ");
 		break;
 

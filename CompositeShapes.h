@@ -101,3 +101,17 @@ public:
 
 
 };
+
+
+
+class Watch :public shape
+{
+	circle* watchbody;
+	Rect* upperRect;
+
+public:
+	Watch(game* r_pGame, point ref);
+	virtual void draw() const;
+	virtual void Rotate();
+	virtual void resize(double factor);
+};

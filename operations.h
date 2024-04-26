@@ -47,6 +47,13 @@ public:
 	virtual void Act();
 };
 
+class operAddWatch :public operation
+{
+public:
+	operAddWatch(game* r_pGame);
+	virtual void Act();
+};
+
 
 class operAddRect :public operation
 {
