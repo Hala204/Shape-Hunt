@@ -263,15 +263,15 @@ void Fish::resize(double factor)
 {
 }
 
-Watch::Watch(game* r_pGame, point ref):shape(r_pGame, ref)
+Watch::Watch(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_ang___(180)
 {
 	point watchRef = ref;
-	point upperRectRef = { ref.x, ref.y - config.watchShape.radious - (.15 * config.watchShape.radious) };
-	point lowerTriRef = { ref.x, ref.y + config.watchShape.radious + config.watchShape.radious * .4 };
+	point upperRectRef = { ref.x, ref.y - config.watchShape.radious - config.watchShape.Rectwidth + 5 };
+	point lowerTriRef = { ref.x, ref.y + config.watchShape.radious + config.watchShape.sidelength - 35 };
 
 	watchbody = new circle(pGame, watchRef, config.watchShape.radious);
-	upperRect = new Rect(pGame, upperRectRef, config.watchShape.radious*.2,config.watchShape.radious*.6);
-	lowerTri = new Triangle(pGame, lowerTriRef, config.watchShape.radious*.6, 180);
+	upperRect = new Rect(pGame, upperRectRef, config.watchShape.Rectwidth, config.watchShape.RectHeight);
+	lowerTri = new Triangle(pGame, lowerTriRef, config.watchShape.sidelength, 180);
 }
 
 void Watch::draw() const
@@ -283,6 +283,46 @@ void Watch::draw() const
 
 void Watch::Rotate()
 {
+	watchbody->Rotate();
+	upperRect->Rotate();
+	lowerTri->Rotate();
+	
+	point watchRef = RefPoint;
+	point upperRectRef;
+	point lowerTriRef;
+
+
+	current_rotation_ang___ += 90;
+	double s = current_rotation_ang___;
+
+	if (s >= 270 && s < 360)
+	{
+		upperRectRef = { RefPoint.x + config.watchShape.radious + config.watchShape.Rectwidth - 5 ,RefPoint.y };
+		lowerTriRef = { RefPoint.x - config.watchShape.radious - config.watchShape.sidelength + 35 ,RefPoint.y };
+	}
+	else if (s >= 360)
+	{
+		upperRectRef = { RefPoint.x ,RefPoint.y + config.watchShape.radious + config.watchShape.Rectwidth - 5 };
+		lowerTriRef = { RefPoint.x ,RefPoint.y - config.watchShape.radious - config.watchShape.sidelength + 35 };
+		current_rotation_ang___ = 0;
+
+	}
+	else if (s >= 90 && s < 180)
+	{
+		upperRectRef = { RefPoint.x - config.watchShape.radious - config.watchShape.Rectwidth + 5 ,RefPoint.y };
+		lowerTriRef = { RefPoint.x + config.watchShape.radious + config.watchShape.sidelength - 35 ,RefPoint.y };
+	}
+	else
+	{
+		upperRectRef = { RefPoint.x ,RefPoint.y - config.watchShape.radious - config.watchShape.Rectwidth + 5 };
+		lowerTriRef = { RefPoint.x ,RefPoint.y + config.watchShape.radious + config.watchShape.sidelength - 35 };
+	}
+
+	watchbody->setRefPoint(watchRef);
+	upperRect->setRefPoint(upperRectRef);
+	lowerTri->setRefPoint(lowerTriRef);
+
+
 }
 
 void Watch::resize(double factor)

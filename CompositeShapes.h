@@ -109,6 +109,7 @@ class Watch :public shape
 	circle* watchbody;
 	Rect* upperRect;
 	Triangle* lowerTri;
+	double current_rotation_ang___;
 
 public:
 	Watch(game* r_pGame, point ref);

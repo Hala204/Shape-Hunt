@@ -74,7 +74,8 @@ double* rocketSize = SizeOptions + 1;
 	////------ watch shape Configuration --------////
 	struct {
 		int radious = 100;
-
+		int RectHeight = 90; int Rectwidth = 25;
+		int sidelength = 85;
 	}watchShape;
 
 	struct {
