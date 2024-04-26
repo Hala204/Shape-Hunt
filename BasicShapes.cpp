@@ -8,8 +8,6 @@
 Rect::Rect(game* r_pGame, point ref, int r_hght, int r_wdth):shape(r_pGame,ref)
 {
   pGame = r_pGame;
-  ihght = r_hght;
-  iwdth = r_wdth;
   hght = r_hght;
   wdth = r_wdth;
 }
@@ -40,8 +38,8 @@ void Rect::Rotate()
 
 void Rect::resize(double factor)
 {
-  wdth = iwdth*factor;
-  hght = ihght*factor;
+  wdth = wdth *factor;
+  hght = hght *factor;
 }
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
@@ -50,7 +48,6 @@ circle::circle(game* r_pGame, point ref, int r):shape(r_pGame,ref)
 {
   pGame = r_pGame;
   rad = r;
-  irad = r;
 }
 
 void circle::draw() const
@@ -68,7 +65,7 @@ void circle::Rotate() //circle can't be rotated
 
 void circle::resize(double factor)
 {
-  rad = irad * factor;
+  rad = rad * factor;
 }
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here

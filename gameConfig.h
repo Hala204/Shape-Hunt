@@ -107,7 +107,7 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 
 	
 	
-	//ITM_SIGN,
+	ITM_SIGN,
 	//ITM_RECT,
 	//ITM_CIRC,
 	//ITM_TRI,

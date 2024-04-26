@@ -86,9 +86,10 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	operation* op=nullptr;
 	switch (clickedItem)
 	{
-	//case ITM_SIGN:
-	//	op = new operAddSign(this);
-	//	printMessage("sign is pressed ");
+	case ITM_SIGN:
+		op = new operAddSign(this);
+		printMessage("sign is pressed ");
+		break;
 
 	//	break;
 	//case ITM_RECT:

@@ -16,7 +16,6 @@
 class Rect:public shape
 {
   int hght, wdth;  //height and width of the recangle
-  int ihght, iwdth;
 public:
   Rect(game* r_pGame, point ref, int r_hght, int r_wdth);
   virtual void draw() const;
@@ -30,7 +29,7 @@ public:
 //Reference point of the circle is its center
 class circle :public shape
 {
-  int rad, irad;
+  int rad;
 public:  
   circle(game* r_pGame, point ref, int r);  
   virtual void draw() const;
