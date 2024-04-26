@@ -38,8 +38,8 @@ struct
      double SizeOptions[3] = {0.5,1.0,2.0};
      double* sighSize = SizeOptions + 1;
      double* fishSize = SizeOptions + 1;
-double* carSize = SizeOptions + 1;
-double* rocketSize = SizeOptions + 1;
+     double* carsize = SizeOptions + 1;
+     double* rocketSize = SizeOptions + 1;
 
 	////-----  Sign Shape Confoguration ---------////
 	// For the Sign shape, define width and height of both rectangles
@@ -83,6 +83,14 @@ double* rocketSize = SizeOptions + 1;
 		int width = 160;
 	}homeshape;
 	 
+	////------ car shape Configuration --------////
+	struct {
+		int bodyWidth = 100, bodyHeight = 60;
+		int windowSide = 30; double rotation = 90;
+		int wheelRadius = 25;
+		int roofWidth = 75, roofHeight = 30;
+	}carShape;
+
 	int lives = 5;
 	int level = 1;
 	int Score = 0;
@@ -106,6 +114,7 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_FISH,       
 	ITM_ROCKET,        
 	ITM_CONE,
+	//ITM_CAR,
 
 
 
