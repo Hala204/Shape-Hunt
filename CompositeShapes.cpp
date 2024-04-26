@@ -328,3 +328,7 @@ void Watch::Rotate()
 void Watch::resize(double factor)
 {
 }
+
+
+
+

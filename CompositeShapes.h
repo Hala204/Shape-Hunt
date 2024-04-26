@@ -117,3 +117,4 @@ public:
 	virtual void Rotate();
 	virtual void resize(double factor);
 };
+
