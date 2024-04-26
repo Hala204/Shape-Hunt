@@ -34,8 +34,15 @@ void Sign::Rotate()
 
 void Sign::resize(double factor)
 {
-	base->resize(factor);
-	top->resize(factor);
+  point NewbaseRef;
+  NewbaseRef.x = RefPoint.x;
+  NewbaseRef.y = RefPoint.y + (+config.sighShape.topHeight / 2 + config.sighShape.baseHeight / 2) * *config.sighSize;
+
+  base->setRefPoint(NewbaseRef);
+
+  base->resize(*config.sighSize);
+  top->resize(*config.sighSize);
+
 }
 
 
