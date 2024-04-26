@@ -25,6 +25,7 @@ class Sign :public shape
 {
 	Rect* base;
 	Rect* top;
+	double rotation_angle_sign;
 public:
 	Sign(game* r_pGame, point ref);
 	virtual void draw() const;

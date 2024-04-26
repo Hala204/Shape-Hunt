@@ -3,7 +3,7 @@
 #define PII 3.14159265358979323846 
 
 ////////////////////////////////////////////////////  class Sign  ///////////////////////////////////////
-Sign::Sign(game* r_pGame, point ref):shape(r_pGame, ref)
+Sign::Sign(game* r_pGame, point ref):shape(r_pGame, ref),rotation_angle_sign(0)
 {
 	//calc the ref point of the Sign base and top rectangles relative to the Sign shape
 	point topRef = ref;	//top rect ref is the same as the sign
@@ -25,8 +25,33 @@ void Sign::Rotate()
 	top->Rotate();
 	
 	point NewtopRef = RefPoint;
-	point NewbaseRef = { RefPoint.x , RefPoint.y + config.sighShape.topHeight / 2 + config.sighShape.baseWdth / 2 +25.9};
+	point NewbaseRef;
 
+	rotation_angle_sign += 90;
+	double s = rotation_angle_sign;
+	if (s >= 90 && s < 180)
+	{
+		NewbaseRef = { RefPoint.x - config.sighShape.topWdth / 2 - config.sighShape.baseHeight / 2 + 25 , RefPoint.y};
+	}
+
+	else if (s >= 180 && s < 270)
+	{
+		NewbaseRef = { RefPoint.x  , RefPoint.y - config.sighShape.topWdth / 2 - config.sighShape.baseHeight / 2 + 25 };
+
+	}
+	else if (s >= 270 && s < 360)
+	{
+		NewbaseRef = { RefPoint.x + config.sighShape.topWdth / 2 + config.sighShape.baseHeight / 2 - 25 , RefPoint.y };
+
+	}
+	else
+	{
+		NewbaseRef = { RefPoint.x  , RefPoint.y + config.sighShape.topWdth / 2 + config.sighShape.baseHeight / 2 - 25 };
+
+		rotation_angle_sign = 0;
+
+
+	}
 	base->setRefPoint(NewbaseRef);
 	top->setRefPoint(NewtopRef);
 
