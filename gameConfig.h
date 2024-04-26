@@ -39,7 +39,7 @@ struct
      double* sighSize = SizeOptions + 1;
      double* fishSize = SizeOptions + 1;
 double* carSize = SizeOptions + 1;
-double* carSize = SizeOptions + 1;
+double* rocketSize = SizeOptions + 1;
 
 	////-----  Sign Shape Confoguration ---------////
 	// For the Sign shape, define width and height of both rectangles
