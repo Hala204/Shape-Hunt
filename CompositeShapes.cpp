@@ -400,9 +400,16 @@ Home::Home(game* r_pGame, point ref):shape(r_pGame, ref)
 	point TriRef = { ref.x , ref.y-config.homeshape.hight*1.2 };
 	point leftRectRef={ ref.x - (ref.x * .08), ref.y- ref.y*.3 };
 
+	point circRef = { ref.x - (ref.x * .085) , ref.y - ref.y * .6 };
+	point circRef1 = { ref.x - (ref.x * .098) , ref.y - ref.y * .68 };
+
+
 	HomeBody = new Rect(pGame, bodyRef, config.homeshape.hight, config.homeshape.width );
 	upperTri = new Triangle(pGame, TriRef, config.homeshape.hight*1.9, 0);
 	leftRect = new Rect(pGame, leftRectRef, config.homeshape.hight*1.5, config.homeshape.width*.08);
+	circleup = new circle(pGame, circRef, config.homeshape.radius);
+	circleup1 = new circle(pGame, circRef1, config.homeshape.radius);
+
 }
 
 void Home::draw() const
@@ -410,6 +417,8 @@ void Home::draw() const
 	HomeBody-> draw();
 	upperTri-> draw();
 	leftRect-> draw();
+	circleup-> draw();
+	circleup1->draw();
 }
 
 void Home::Rotate()

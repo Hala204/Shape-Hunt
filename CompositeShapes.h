@@ -139,6 +139,8 @@ class Home :public shape
 	Rect* HomeBody;
 	Triangle* upperTri;
 	Rect* leftRect;
+	circle* circleup;
+	circle* circleup1;
 
 public:
 	Home(game* r_pGame, point ref);

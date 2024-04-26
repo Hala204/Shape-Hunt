@@ -81,6 +81,7 @@ struct
 	struct {
 		int hight = 100;
 		int width = 160;
+		int radius = 10;
 	}homeshape;
 	 
 	////------ car shape Configuration --------////
