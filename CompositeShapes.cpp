@@ -45,6 +45,71 @@ void Sign::resize(double factor)
 
 }
 
+Car::Car(game* c_pGame, point ref) : shape(c_pGame, ref)
+{
+	point BodyRef = ref;
+	point windowRef = { ref.x - config.carShape.bodyWidth / 4, ref.y - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 };
+	point roofRef = { ref.x + config.carShape.bodyWidth / 8, ref.y - config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2 };
+	point LeftWheelRef = { ref.x - config.carShape.bodyWidth / 4, ref.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
+	point RightWheelRef = { ref.x + config.carShape.bodyWidth / 4, ref.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
+	// Create the components of the car
+	Body = new Rect(pGame, BodyRef, config.carShape.bodyHeight, config.carShape.bodyWidth);
+	Roof = new Rect(pGame, roofRef, config.carShape.roofHeight, config.carShape.roofWidth);
+	Window = new Triangle(pGame, windowRef, config.carShape.windowSide, config.carShape.rotation);
+	LeftWheel = new circle(pGame, LeftWheelRef, config.carShape.wheelRadius);
+	RightWheel = new circle(pGame, RightWheelRef, config.carShape.wheelRadius);
+}
+
+void Car::draw() const
+{
+	Body->draw();
+	Roof->draw();
+	Window->draw();
+	LeftWheel->draw();
+	RightWheel->draw();
+}
+
+void Car::Rotate()
+{
+	Body->Rotate();
+	Roof->Rotate();
+	Window->Rotate();
+	LeftWheel->Rotate();
+	RightWheel->Rotate();
+	//The Adjustments of the shape after rotation (NOT YET)
+	//TO BE IMPLEMENTED 
+}
+
+void Car::resize(double factor)
+{
+	point newWindowRef;
+	newWindowRef.x = RefPoint.x + (-config.carShape.bodyWidth / 4)  ** config.carsize;
+	newWindowRef.y = RefPoint.y + (-config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2) * *config.carsize;
+	Window->setRefPoint(newWindowRef);
+	Window->resize(*config.carsize);
+	
+
+
+	point newRoofRef;
+	newRoofRef.x = RefPoint.x + (config.carShape.bodyWidth / 8)  **config.carsize;
+	newRoofRef.y = RefPoint.y + (-config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2)  **config.carsize;
+	Roof->setRefPoint(newRoofRef);
+	Roof->resize(*config.carsize);
+
+
+	point newLeftWheelRef;
+	newLeftWheelRef.x = RefPoint.x + (-config.carShape.bodyWidth / 4)  **config.carsize;
+	newLeftWheelRef.y = RefPoint.y + (config.carShape.bodyHeight / 2 + config.carShape.wheelRadius)  **config.carsize;
+	LeftWheel->setRefPoint(newLeftWheelRef);
+	LeftWheel->resize(*config.carsize);
+
+	point newrightWheelRef;
+	newrightWheelRef.x = RefPoint.x + (config.carShape.bodyWidth / 4)  **config.carsize;
+	newrightWheelRef.y = RefPoint.y + (config.carShape.bodyHeight / 2 + config.carShape.wheelRadius) **config.carsize;
+
+	RightWheel->setRefPoint(newrightWheelRef);
+	RightWheel->resize(*config.carsize);
+}
 
 ////////////////////////////////////////////////////  class Ice Cream  ///////////////////////////////////////
 IceCream::IceCream(game* r_pGame, point ref) :shape(r_pGame, ref), current_rotation_ang(180)
