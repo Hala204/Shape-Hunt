@@ -332,12 +332,12 @@ void Watch::resize(double factor)
 Home::Home(game* r_pGame, point ref):shape(r_pGame, ref)
 {
 	point bodyRef = { ref.x, ref.y };
-	point TriRef = { ref.x - ref.x * .15, ref.y };
-	point leftRectRef{ ref.x + ref.x * .75, ref.y };
+	point TriRef = { ref.x , ref.y-config.homeshape.hight*1.2 };
+	point leftRectRef={ ref.x - (ref.x * .08), ref.y- ref.y*.3 };
 
 	HomeBody = new Rect(pGame, bodyRef, config.homeshape.hight, config.homeshape.width );
-	upperTri = new Triangle(pGame, TriRef, config.homeshape.hight*.4, 90);
-	leftRect = new Rect(pGame, leftRectRef, config.homeshape.hight*.3, config.homeshape.width*.8);
+	upperTri = new Triangle(pGame, TriRef, config.homeshape.hight*1.9, 0);
+	leftRect = new Rect(pGame, leftRectRef, config.homeshape.hight*1.5, config.homeshape.width*.08);
 }
 
 void Home::draw() const
