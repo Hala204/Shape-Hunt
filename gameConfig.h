@@ -79,9 +79,11 @@ struct
 	}watchShape;
 
 	struct {
-		int hight = 100;
-		int width = 160;
+		int hight = 90;
+		int width = 150;
 		int radius = 10;
+		int sidelength = 170;
+		int smallrectheight = 120, smallrectwidth = 14;
 	}homeshape;
 	 
 	////------ car shape Configuration --------////

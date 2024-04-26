@@ -394,19 +394,18 @@ void Watch::resize(double factor)
 {
 }
 
-Home::Home(game* r_pGame, point ref):shape(r_pGame, ref)
+Home::Home(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_angg(0)
 {
-	point bodyRef = { ref.x, ref.y };
-	point TriRef = { ref.x , ref.y-config.homeshape.hight*1.2 };
-	point leftRectRef={ ref.x - (ref.x * .08), ref.y- ref.y*.3 };
-
-	point circRef = { ref.x - (ref.x * .085) , ref.y - ref.y * .6 };
-	point circRef1 = { ref.x - (ref.x * .098) , ref.y - ref.y * .68 };
+	point bodyRef = { ref.x,ref.y };
+	point TriRef = { ref.x , ref.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
+	point leftRectRef = { ref.x - config.homeshape.width / 2 + 11, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
+	point circRef = { ref.x - config.homeshape.width / 2 - config.homeshape.radius + 15, ref.y - config.homeshape.hight/2 - config.homeshape.smallrectheight - 17 };
+	point circRef1 = { ref.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };
 
 
 	HomeBody = new Rect(pGame, bodyRef, config.homeshape.hight, config.homeshape.width );
-	upperTri = new Triangle(pGame, TriRef, config.homeshape.hight*1.9, 0);
-	leftRect = new Rect(pGame, leftRectRef, config.homeshape.hight*1.5, config.homeshape.width*.08);
+	upperTri = new Triangle(pGame, TriRef, config.homeshape.sidelength, 0);
+	leftRect = new Rect(pGame, leftRectRef, config.homeshape.smallrectheight, config.homeshape.smallrectwidth);
 	circleup = new circle(pGame, circRef, config.homeshape.radius);
 	circleup1 = new circle(pGame, circRef1, config.homeshape.radius);
 
@@ -423,6 +422,66 @@ void Home::draw() const
 
 void Home::Rotate()
 {
+	HomeBody->Rotate();
+	upperTri->Rotate();
+	leftRect->Rotate();
+	circleup->Rotate();
+	circleup1->Rotate();
+
+	point HomeBodyRef = RefPoint;
+	point upperTriRef;
+	point leftRectRef;
+	point circleupRef;
+	point circleup1Ref;
+
+	/*point TriRef = { ref.x , ref.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
+	point leftRectRef = { ref.x - config.homeshape.width / 2 + 11, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
+	point circRef = { ref.x - config.homeshape.width / 2 - config.homeshape.radius + 15, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 };
+	point circRef1 = { ref.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };*/
+
+
+	current_rotation_angg += 90;
+	double s = current_rotation_angg;
+	if (s >= 90 && s < 180)
+	{
+		upperTriRef = { RefPoint.x + config.homeshape.hight / 2 + config.homeshape.sidelength / 2 , RefPoint.y };
+		leftRectRef = { RefPoint.x + config.homeshape.hight / 2 + config.homeshape.smallrectheight / 2  , RefPoint.y - config.homeshape.width / 2 + 11 };
+		circleupRef = { RefPoint.x + config.homeshape.hight / 2 + config.homeshape.smallrectheight + 17 , RefPoint.y - config.homeshape.width / 2 - config.homeshape.radius + 15 };
+		circleup1Ref = { RefPoint.x + config.homeshape.hight / 2 + config.homeshape.smallrectheight + 35 , RefPoint.y - config.homeshape.width / 2 - config.homeshape.radius - 5 };
+
+
+	}
+	else if (s >= 180 && s < 270)
+	{
+		upperTriRef = { RefPoint.x , RefPoint.y + config.homeshape.hight / 2 + config.homeshape.sidelength / 2 };
+		leftRectRef = { RefPoint.x + config.homeshape.width / 2 - 11,RefPoint.y + config.homeshape.hight / 2 + config.homeshape.smallrectheight / 2 };
+		circleupRef = { RefPoint.x + config.homeshape.width / 2 + config.homeshape.radius - 15 , RefPoint.y + config.homeshape.hight / 2 + config.homeshape.smallrectheight + 17 };
+		circleup1Ref = { RefPoint.x + config.homeshape.width / 2 + config.homeshape.radius + 5 , RefPoint.y + config.homeshape.hight / 2 + config.homeshape.smallrectheight + 35 };
+
+
+	}
+	else if (s >= 270 && s < 360)
+	{
+		upperTriRef = { RefPoint.x - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 , RefPoint.y };
+		leftRectRef = { RefPoint.x - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2  , RefPoint.y + config.homeshape.width / 2 - 11 };
+		circleupRef = { RefPoint.x - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 , RefPoint.y + config.homeshape.width / 2 + config.homeshape.radius - 15 };
+		circleup1Ref = { RefPoint.x - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 , RefPoint.y + config.homeshape.width / 2 + config.homeshape.radius + 5 };
+
+	}
+	else
+	{
+		upperTriRef = { RefPoint.x , RefPoint.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
+        leftRectRef = { RefPoint.x - config.homeshape.width / 2 + 11, RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
+		circleupRef = { RefPoint.x - config.homeshape.width / 2 - config.homeshape.radius + 15, RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 };
+        circleup1Ref = { RefPoint.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };
+		current_rotation_angg = 0;
+	}
+
+	HomeBody->setRefPoint(HomeBodyRef);
+	upperTri->setRefPoint(upperTriRef);
+	leftRect->setRefPoint(leftRectRef);
+	circleup->setRefPoint(circleupRef);
+	circleup1->setRefPoint(circleup1Ref);
 }
 
 void Home::resize(double factor)

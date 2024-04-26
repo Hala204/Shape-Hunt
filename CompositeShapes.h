@@ -141,6 +141,8 @@ class Home :public shape
 	Rect* leftRect;
 	circle* circleup;
 	circle* circleup1;
+	double current_rotation_angg;
+
 
 public:
 	Home(game* r_pGame, point ref);
