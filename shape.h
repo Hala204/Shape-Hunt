@@ -36,6 +36,9 @@ public:
     virtual void draw() const=0;//for a shape to draw itself on the screen
 	virtual void Rotate() = 0;//for a shape to rotate itself on the screen
 	void setRefPoint(point p);
+	virtual void resizeUp(double factor) = 0;
+	virtual void resizeDown(double factor) = 0;
+	point getRefPoint() const;
 								  
 							  
 	//-- The following functions should be supported by the shape class

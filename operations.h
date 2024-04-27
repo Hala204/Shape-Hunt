@@ -26,6 +26,48 @@ public:
 	virtual void Act();
 };
 
+class operAddIceCream :public operation
+{
+public:
+	operAddIceCream(game* r_pGame);
+	virtual void Act();
+};
+
+class operAddRocket :public operation
+{
+public:
+	operAddRocket(game* r_pGame);
+	virtual void Act();
+};
+
+class operAddFish :public operation
+{
+public:
+	operAddFish(game* r_pGame);
+	virtual void Act();
+};
+
+class operAddWatch :public operation
+{
+public:
+	operAddWatch(game* r_pGame);
+	virtual void Act();
+};
+
+class operAddHome :public operation
+{
+public:
+	operAddHome(game* r_pGame);
+	virtual void Act();
+};
+
+class operAddCar :public operation
+{
+public:
+	operAddCar(game* r_pGame);
+	virtual void Act();
+};
+
 class operAddRect :public operation
 {
 public:

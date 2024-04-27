@@ -16,16 +16,18 @@ toolbar::toolbar(game* pG)
 	//First prepare List of images for each toolbar item
 	//basic shapes
 	toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_Sign.jpg";
-	toolbarItemImages[ITM_RECT] = "images\\toolbarItems\\toolbar_Rect.jpg";
-	toolbarItemImages[ITM_CIRC] = "images\\toolbarItems\\toolbar_Circ.jpg";
-	toolbarItemImages[ITM_TRI] = "images\\toolbarItems\\toolbar_Tri.jpg";
+	//toolbarItemImages[ITM_RECT] = "images\\toolbarItems\\toolbar_Rect.jpg";
+	//toolbarItemImages[ITM_CIRC] = "images\\toolbarItems\\toolbar_Circ.jpg";
+	//toolbarItemImages[ITM_TRI] = "images\\toolbarItems\\toolbar_Tri.jpg";
 
 	//composite shapes
+	toolbarItemImages[ITM_Home] = "images\\toolbarItems\\home.jpg";
 	toolbarItemImages[ITM_WATCH] = "images\\toolbarItems\\watch.jpg";
-	toolbarItemImages[ITM_HOME] = "images\\toolbarItems\\home.jpg";
+	toolbarItemImages[ITM_FISH] = "images\\toolbarItems\\Fish.jpg";
 	toolbarItemImages[ITM_ROCKET] = "images\\toolbarItems\\ROCKET.jpg";
 	toolbarItemImages[ITM_CONE] = "images\\toolbarItems\\cone.jpg";
-	
+	toolbarItemImages[ITM_CAR] = "images\\toolbarItems\\car.jpg";
+
 	//icons
 	toolbarItemImages[ITM_MINI] = "images\\toolbarItems\\Mini.jpg";
 

@@ -89,38 +89,55 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_SIGN:
 		op = new operAddSign(this);
 		printMessage("sign is pressed ");
-
 		break;
-	case ITM_RECT:
-		op = new operAddRect(this);
-		printMessage("rectangle is pressed ");
 
-		break;
-	case ITM_CIRC:
-		op = new operAddCirc(this);
-		printMessage("circle is pressed ");
+	//	break;
+	//case ITM_RECT:
+	//	op = new operAddRect(this);
+	//	printMessage("rectangle is pressed ");
 
-		break;
-	case ITM_TRI:
-		op = new operAddTri(this);
-		printMessage("triangle is pressed ");
+	//	break;
+	//case ITM_CIRC:
+	//	op = new operAddCirc(this);
+	//	printMessage("circle is pressed ");
 
+	//	break;
+	//case ITM_TRI:
+	//	op = new operAddTri(this);
+	//	printMessage("triangle is pressed ");
+
+	//	break;
+	case ITM_CAR:
+		op = new operAddCar(this);
+		printMessage("car is pressed ");
 		break;
+
+	case ITM_Home:
+		op = new operAddHome(this);
+		printMessage("Home is pressed ");
+		break;
+
 
 	case ITM_WATCH:
+		op = new operAddWatch(this);
 		printMessage("watch is pressed ");
 		break;
-	case ITM_HOME:
-		printMessage("home is pressed ");
-		//drawHome(pWind , config.fillColor, config.RefX, config.RefY, 50);
-		break;
-	case ITM_CONE:
-		printMessage("cone is pressed ");
 
+	case ITM_FISH:
+		op = new operAddFish(this);
+		printMessage("Fish is pressed ");
 		break;
+
+	case ITM_CONE:
+		op = new operAddIceCream(this);
+		printMessage("cone is pressed ");
+		break;
+
 	case ITM_ROCKET:
+		op = new operAddRocket(this);
 		printMessage("Rocket is pressed ");
 		break;
+
 	case ITM_REFRESH:
 		printMessage("ITM_REFRESH is pressed ");
 		break;
@@ -247,4 +264,7 @@ void game::run()
 
 	} while (clickedItem!=ITM_EXIT);
 }
+
+
+
 
