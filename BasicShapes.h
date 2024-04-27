@@ -20,7 +20,6 @@ public:
   Rect(game* r_pGame, point ref, int r_hght, int r_wdth);
   virtual void draw() const;
   virtual void Rotate();
-<<<<<<< HEAD
   void setHeight(double height);
   void setWidth(double width);
   double getHeight() const;
@@ -28,10 +27,6 @@ public:
   virtual void resizeUp(double factor);
   virtual void resizeDown(double factor);
   virtual void resize(double factor);
-=======
-  virtual void resize(double factor);
-
->>>>>>> 10b47e642853e36a8a256656f8a520e25ec454d6
 
   
 };
@@ -45,8 +40,6 @@ public:
   circle(game* r_pGame, point ref, int r);  
   virtual void draw() const;
   virtual void Rotate();
-<<<<<<< HEAD
-
 
   void setRadius(double radius);
   double getRadius() const;
@@ -55,9 +48,6 @@ public:
   virtual void resize(double factor);
   virtual void resizeUp(double factor);
   virtual void resizeDown(double factor);
-=======
-  virtual void resize(double factor);
->>>>>>> 10b47e642853e36a8a256656f8a520e25ec454d6
 
 
 };

@@ -1,211 +1,203 @@
 ﻿cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
   toolbar.cpp
-  main.cpp
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'toolbar.cpp')
   
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'toolbar.cpp')
   
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  (compiling source file 'main.cpp')
-  
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  (compiling source file 'main.cpp')
-  
-  grid.cpp
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  (compiling source file 'grid.cpp')
-  
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  (compiling source file 'grid.cpp')
-  
-  game.cpp
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  (compiling source file 'game.cpp')
-  
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  (compiling source file 'game.cpp')
-  
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(70,30): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(72,14): warning C4244: 'argument': conversion from 'double' to 'unsigned char', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(73,50): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(73,37): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(76,85): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(76,61): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(76,41): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(76,22): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(79,60): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(79,40): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(79,22): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(81,74): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(81,55): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(81,36): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\game.cpp(81,17): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
   shape.cpp
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'shape.cpp')
   
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'shape.cpp')
   
   operations.cpp
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'operations.cpp')
   
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'operations.cpp')
   
+  main.cpp
+D:\Projects\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+D:\Projects\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+  grid.cpp
+D:\Projects\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'grid.cpp')
+  
+D:\Projects\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'grid.cpp')
+  
+  game.cpp
+D:\Projects\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'game.cpp')
+  
+D:\Projects\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'game.cpp')
+  
+D:\Projects\Shape-Hunt\game.cpp(70,30): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(72,14): warning C4244: 'argument': conversion from 'double' to 'unsigned char', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(73,50): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(73,37): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(76,85): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(76,61): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(76,41): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(76,22): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(79,60): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(79,40): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(79,22): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(81,74): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(81,55): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(81,36): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+D:\Projects\Shape-Hunt\game.cpp(81,17): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
   CompositeShapes.cpp
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'CompositeShapes.cpp')
   
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'CompositeShapes.cpp')
   
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(28,112): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(28,112): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(48,50): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(65,50): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(194,40): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(194,40): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(194,94): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(194,94): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(195,38): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(195,38): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(195,92): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(195,92): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(196,43): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(196,43): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(196,97): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(196,97): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(197,44): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(197,44): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(197,98): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(197,98): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(228,39): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(228,39): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(228,93): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(228,93): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(229,37): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(229,37): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(229,91): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(229,91): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(230,42): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(230,42): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(230,96): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(230,96): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(231,43): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(231,43): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(231,97): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(231,97): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(271,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(291,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(381,76): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(381,76): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(382,68): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(382,68): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(382,125): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(382,125): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(383,67): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(383,67): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(383,123): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(383,123): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(409,76): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(409,76): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(410,68): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(410,68): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(410,125): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(410,125): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(411,67): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(411,67): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(411,123): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(411,123): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(555,86): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(555,86): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(556,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(556,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(557,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(557,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(558,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(558,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(584,86): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(584,86): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(585,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(585,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(586,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(586,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(587,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(587,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(723,99): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(723,99): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(724,102): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(724,102): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(747,99): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(747,99): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(748,102): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(748,102): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(927,80): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(927,80): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(928,69): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(928,69): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(928,114): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(928,114): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(929,91): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(929,91): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(929,150): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(929,150): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(930,92): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(930,92): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(930,150): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(930,150): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(960,80): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(960,80): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(961,69): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(961,69): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(961,114): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(961,114): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(962,91): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(962,91): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(962,150): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(962,150): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(963,92): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(963,92): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(963,150): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\hp\source\repos\Shape-Hunt\CompositeShapes.cpp(963,150): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  windowinput.cpp
-  mousequeue.cpp
-  keyqueue.cpp
-  image.cpp
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\image.cpp(115,29): warning C4018: '<': signed/unsigned mismatch
-  CMUgraphics.cpp
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\CMUgraphics.cpp(257,9): warning C4101: 'iX': unreferenced local variable
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\CMUgraphics.cpp(257,13): warning C4101: 'iY': unreferenced local variable
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\CMUgraphics.cpp(751,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\CMUgraphics.cpp(1164,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\CMUgraphics.cpp(1171,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\CMUgraphics.cpp(1202,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\CMUgraphics.cpp(1210,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\CMUgraphics.cpp(1357,23): warning C4018: '>': signed/unsigned mismatch
-  auxil.cpp
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(74,50): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(80,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(177,30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(178,30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(185,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(186,28): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(192,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(193,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(198,34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(199,34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(543,50): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(583,40): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(583,40): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(583,94): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(583,94): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(584,38): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(584,38): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(584,92): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(584,92): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(585,43): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(585,43): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(585,97): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(585,97): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(586,44): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(586,44): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(586,98): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(586,98): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(617,39): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(617,39): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(617,93): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(617,93): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(618,37): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(618,37): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(618,91): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(618,91): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(619,42): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(619,42): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(619,96): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(619,96): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(620,43): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(620,43): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(620,97): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(620,97): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(651,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(671,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(714,76): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(714,76): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(715,68): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(715,68): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(715,125): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(715,125): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(716,67): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(716,67): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(716,123): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(716,123): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(742,76): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(742,76): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(743,68): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(743,68): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(743,125): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(743,125): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(744,67): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(744,67): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(744,123): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(744,123): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(819,86): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(819,86): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(820,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(820,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(821,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(821,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(822,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(822,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(848,86): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(848,86): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(849,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(849,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(850,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(850,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(851,62): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(851,62): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(902,99): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(902,99): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(903,102): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(903,102): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(926,99): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(926,99): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(927,102): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(927,102): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1008,80): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1008,80): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1009,69): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1009,69): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1009,114): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1009,114): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1010,91): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1010,91): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1010,150): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1010,150): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1011,92): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1011,92): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1011,150): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1011,150): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1041,80): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1041,80): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1042,69): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1042,69): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1042,114): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1042,114): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1043,91): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1043,91): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1043,150): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1043,150): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1044,92): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1044,92): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1044,150): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+D:\Projects\Shape-Hunt\CompositeShapes.cpp(1044,150): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   BasicShapes.cpp
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(38,23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'BasicShapes.cpp')
   
-C:\Users\hp\source\repos\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\gameConfig.h(39,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   (compiling source file 'BasicShapes.cpp')
   
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(31,9): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(34,9): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(96,9): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(151,64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(152,63): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(153,58): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(154,58): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(155,64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(156,64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(165,15): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\hp\source\repos\Shape-Hunt\BasicShapes.cpp(199,16): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(31,9): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(34,9): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(96,9): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(150,64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(151,63): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(152,58): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(153,58): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(154,64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(155,64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(164,15): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Projects\Shape-Hunt\BasicShapes.cpp(198,16): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
   Generating Code...
 cl : command line  warning D9035: option 'Gm' has been deprecated and will be removed in a future release
   jutils.c
@@ -213,15 +205,15 @@ cl : command line  warning D9035: option 'Gm' has been deprecated and will be re
   jquant1.c
   jmemnobs.c
   jmemmgr.c
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\jpeg\jmemmgr.c(1103,19): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\jpeg\jmemmgr.c(1106,11): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Projects\Shape-Hunt\CMUgraphicsLib\jpeg\jmemmgr.c(1103,19): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Projects\Shape-Hunt\CMUgraphicsLib\jpeg\jmemmgr.c(1106,11): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   jidctred.c
   jidctint.c
   jidctfst.c
   jidctflt.c
   jerror.c
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\jpeg\jerror.c(169,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\jpeg\jerror.c(171,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Projects\Shape-Hunt\CMUgraphicsLib\jpeg\jerror.c(169,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Projects\Shape-Hunt\CMUgraphicsLib\jpeg\jerror.c(171,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   jdtrans.c
   jdsample.c
   jdpostct.c
@@ -243,7 +235,7 @@ C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\jpeg\jerror.c(171,5): warning
   jcparam.c
   jcomapi.c
   jpegload.c
-C:\Users\hp\source\repos\Shape-Hunt\CMUgraphicsLib\jpegload.c(23,12): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Projects\Shape-Hunt\CMUgraphicsLib\jpegload.c(23,12): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   Generating Code...
 BasicShapes.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  CIE202-project.vcxproj -> C:\Users\hp\source\repos\Shape-Hunt\Debug\CIE202-project.exe
+  CIE202-project.vcxproj -> D:\Projects\Shape-Hunt\Debug\CIE202-project.exe

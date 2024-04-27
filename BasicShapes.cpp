@@ -74,15 +74,7 @@ void Rect::Rotate()
 
 }
 
-<<<<<<< HEAD
 
-=======
-void Rect::resize(double factor)
-{
-  wdth = wdth *factor;
-  hght = hght *factor;
-}
->>>>>>> 10b47e642853e36a8a256656f8a520e25ec454d6
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //TODO: Add implementation for class circle here
@@ -130,14 +122,6 @@ void circle::Rotate() //circle can't be rotated
 
 
 
-<<<<<<< HEAD
-
-=======
-void circle::resize(double factor)
-{
-  rad = rad * factor;
-}
->>>>>>> 10b47e642853e36a8a256656f8a520e25ec454d6
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here
 Triangle::Triangle(game* r_pGame, point ref, int sl,double ra) :shape(r_pGame, ref)
@@ -174,13 +158,10 @@ void Triangle::draw() const
 
 
 	//pW->DrawTriangle(LeftBottomPoint.x, LeftBottomPoint.y, UpperPoint.x, UpperPoint.y, RightBottomPoint.x, RightBottomPoint.y, FILLED);
-<<<<<<< HEAD
 }
 void Triangle::setbase(double BASE)
 {
 	sidelength = BASE;
-=======
->>>>>>> 10b47e642853e36a8a256656f8a520e25ec454d6
 }
 
 double Triangle::getbase() const
