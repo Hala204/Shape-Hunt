@@ -110,6 +110,9 @@ class Car : public shape
 	circle* RightWheel;
 	Rect* Body;
 	Rect* Roof;
+	Rect* top;
+	circle* C1;
+	circle* C2;
 
 public:
 	Car(game* r_pGame, point ref);

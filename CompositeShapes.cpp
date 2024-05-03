@@ -80,7 +80,7 @@ void Car::Rotate()
 	//TO BE IMPLEMENTED 
 }
 
-void Car::resize(double factor)
+void Car::resize(double)
 {
 	point newWindowRef;
 	newWindowRef.x = RefPoint.x + (-config.carShape.bodyWidth / 4)  ** config.carsize;
@@ -392,6 +392,8 @@ void Watch::Rotate()
 
 void Watch::resize(double factor)
 {
+
+
 }
 
 Home::Home(game* r_pGame, point ref):shape(r_pGame, ref)
@@ -427,4 +429,11 @@ void Home::Rotate()
 
 void Home::resize(double factor)
 {
+
+	HomeBody->resize(factor);
+	upperTri->resize(factor);
+	leftRect->resize(factor);
+	circleup->resize(factor);
+	circleup1->resize(factor);
+
 }
