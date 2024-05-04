@@ -85,9 +85,12 @@ shape* grid::getActiveShape()
 
 void grid::clearGrid()
 {
-	delete activeShape;
-	activeShape = nullptr;
-	this->draw();
+	if (activeShape != nullptr)
+	{
+		delete activeShape;
+		activeShape = nullptr;
+		this->draw();
+	}
 }
 
 
