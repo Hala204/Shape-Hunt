@@ -33,6 +33,7 @@ public:
 
 	window* getWind() const;		//returns a pointer to the graphics window
 	grid* getGrid() const;		//returns a pointer to the shapes grid
+	toolbar* getToolbar() const;
 
 	void drawHome(window* &w, color c, int rx, int ry, int size);
 

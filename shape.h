@@ -19,7 +19,12 @@ enum ShapeType
 
 	//Composite shapes
 	SIGN,	//a street sign
-
+	CAR,
+	ICECREAM,
+	ROCKET,
+	FISH,
+	HOME,
+	WATCH,
 	//TODO: Add more types
 };
 

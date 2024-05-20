@@ -320,3 +320,19 @@ operAddCar::operAddCar(game* r_pGame):operation(r_pGame)
 void operAddCar::Act()
 {
 }
+
+//////////////////////////// OperSave //////////////////////////
+operSave::operSave(game* r_pGame) : operation(r_pGame)
+{
+}
+void operSave::Act()
+{
+    int CurrentScore = pGame->getToolbar()->getScore();
+    int CurrentLevel = pGame->getToolbar()->getLevel();
+    int RemainingLives = pGame->getToolbar()->getRemainingLives();
+    ofstream outfile;
+    outfile.open("test.txt");
+    outfile << CurrentScore << "\n" << CurrentLevel << "\n" << RemainingLives << "\n";
+    pGame->getGrid()->SaveShapes(outfile);
+    outfile.close();
+}
