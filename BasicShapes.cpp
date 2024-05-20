@@ -5,11 +5,11 @@
 
 ////////////////////////////////////////////////////  class Rect  ///////////////////////////////////////
 
-Rect::Rect(game* r_pGame, point ref, int r_hght, int r_wdth):shape(r_pGame,ref)
+Rect::Rect(game* r_pGame, point ref, int r_hght, int r_wdth) :shape(r_pGame, ref)
 {
-  pGame = r_pGame;
-  hght = r_hght;
-  wdth = r_wdth;
+	pGame = r_pGame;
+	hght = r_hght;
+	wdth = r_wdth;
 }
 
 void Rect::draw() const
@@ -42,7 +42,7 @@ double Rect::getWidth() const {
 void Rect::resizeUp(double factor) {
 	setHeight(hght * factor);
 	setWidth(wdth * factor);
-	
+
 	/*if (hght < config.windHeight&& wdth< config.windWidth)
 	 {
 		resizeUp(factor);
@@ -52,7 +52,7 @@ void Rect::resizeUp(double factor) {
 }
 void Rect::resizeDown(double factor) {
 	setHeight(hght * factor);
-	setWidth(wdth *factor);
+	setWidth(wdth * factor);
 
 	/*if (hght > 0 && wdth > 0)
 	{
@@ -60,7 +60,7 @@ void Rect::resizeDown(double factor) {
 	}*/
 }
 
-void Rect::resize(double factor){}
+void Rect::resize(double factor) {}
 
 
 
@@ -79,13 +79,18 @@ void Rect::Save(ofstream& OutFile)
 	OutFile << RCT << "\n" << hght << "\n" << wdth;
 }
 
+void Rect::Load(ifstream& InFile)
+{
+	InFile >> hght >> wdth;
+}
+
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //TODO: Add implementation for class circle here
-circle::circle(game* r_pGame, point ref, int r):shape(r_pGame,ref)
+circle::circle(game* r_pGame, point ref, int r) :shape(r_pGame, ref)
 {
-  pGame = r_pGame;
-  rad = r;
+	pGame = r_pGame;
+	rad = r;
 }
 
 void circle::draw() const
@@ -96,29 +101,29 @@ void circle::draw() const
 	pW->DrawCircle(RefPoint.x, RefPoint.y, rad, FILLED);
 }
 
-	void circle::setRadius(double radius) {
-		rad = radius;
-	}
-	double circle::getRadius() const {
-		return rad;
-	}
-	void circle::resizeUp(double factor) {
-		setRadius(rad * factor);
+void circle::setRadius(double radius) {
+	rad = radius;
+}
+double circle::getRadius() const {
+	return rad;
+}
+void circle::resizeUp(double factor) {
+	setRadius(rad * factor);
 
-		//if (2*rad < config.windHeight && 2*rad < config.windWidth)
-		//{
-		//	resizeUp(factor);
-		//}
-	}
-	void circle::resizeDown(double factor) {
-		setRadius(rad * factor);
-		/*if ( rad >0)
-		{
-			resizeDown(factor);
-		}*/
-	}
+	//if (2*rad < config.windHeight && 2*rad < config.windWidth)
+	//{
+	//	resizeUp(factor);
+	//}
+}
+void circle::resizeDown(double factor) {
+	setRadius(rad * factor);
+	/*if ( rad >0)
+	{
+		resizeDown(factor);
+	}*/
+}
 
-	void circle::resize(double factor){}
+void circle::resize(double factor) {}
 
 
 void circle::Rotate() //circle can't be rotated 
@@ -129,10 +134,15 @@ void circle::Save(ofstream& OutFile)
 	OutFile << CRC << "\n" << rad << "\n";
 }
 
+void circle::Load(ifstream& InFile)
+{
+	InFile >> rad;
+}
+
 
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here
-Triangle::Triangle(game* r_pGame, point ref, int sl,double ra) :shape(r_pGame, ref)
+Triangle::Triangle(game* r_pGame, point ref, int sl, double ra) :shape(r_pGame, ref)
 {
 	pGame = r_pGame;
 	sidelength = sl;
@@ -155,7 +165,7 @@ void Triangle::draw() const
 
 	double s = (rotation_angle * PII) / 180;
 	point l, m, n;
-	l.x = RefPoint.x + (LeftBottomPoint.x - RefPoint.x ) * cos(s) - (LeftBottomPoint.y - RefPoint.y) * sin(s);
+	l.x = RefPoint.x + (LeftBottomPoint.x - RefPoint.x) * cos(s) - (LeftBottomPoint.y - RefPoint.y) * sin(s);
 	l.y = RefPoint.y + (LeftBottomPoint.x - RefPoint.x) * sin(s) + (LeftBottomPoint.y - RefPoint.y) * cos(s);
 	m.x = RefPoint.x + (UpperPoint.x - RefPoint.x) * cos(s) - (UpperPoint.y - RefPoint.y) * sin(s);
 	m.y = RefPoint.y + (UpperPoint.x - RefPoint.x) * sin(s) + (UpperPoint.y - RefPoint.y) * cos(s);
@@ -179,7 +189,7 @@ double Triangle::getbase() const
 
 void Triangle::resizeDown(double factor)
 {
-	setbase(sidelength *factor);
+	setbase(sidelength * factor);
 	/*if (sidelength > 0)
 	resizeDown(factor);*/
 }
@@ -209,4 +219,9 @@ void Triangle::resize(double factor)
 void Triangle::Save(ofstream& OutFile)
 {
 	OutFile << TRI << "\n" << sidelength << "\n" << rotation_angle;
+}
+
+void Triangle::Load(ifstream& InFile)
+{
+	InFile >> sidelength >> rotation_angle;
 }

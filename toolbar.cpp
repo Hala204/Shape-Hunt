@@ -153,3 +153,19 @@ int toolbar::getRemainingLives() const
 {
 	return Lives;
 }
+
+void toolbar::setScore(int s)
+{
+	Score = s;
+}
+
+void toolbar::setRemainingLives(int liv)
+{
+	Lives = liv;
+}
+
+void toolbar::setLevel(int lev)
+{
+	Level = lev;
+}
+
