@@ -5,36 +5,36 @@
 /////////////////////////////////// class operation  //////////////////
 operation::operation(game* r_pGame)
 {
-	pGame = r_pGame;
+    pGame = r_pGame;
 }
 
 
 /////////////////////////////////// class operAddSign  //////////////////
 
-operAddSign::operAddSign(game* r_pGame):operation(r_pGame)
+operAddSign::operAddSign(game* r_pGame) :operation(r_pGame)
 {
 }
 
 void operAddSign::Act()
 {
-	window* pw = pGame->getWind();
+    window* pw = pGame->getWind();
 
-	//TODO:
-	// Don't allow adding new shape if there is alreday an active shape
+    //TODO:
+    // Don't allow adding new shape if there is alreday an active shape
 
-	//align reference point to the nearest grid point
-	int xGrid = config.RefX - config.RefX % config.gridSpacing;
-	int yGrid = config.RefY - config.RefX % config.gridSpacing;
+    //align reference point to the nearest grid point
+    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
 
-	//take the aligned point as the sign shape ref point
-	point signShapeRef = { xGrid,yGrid };
+    //take the aligned point as the sign shape ref point
+    point signShapeRef = { xGrid,yGrid };
 
-	//create a sign shape
-	shape* psh = new Sign(pGame, signShapeRef);
+    //create a sign shape
+    shape* psh = new Sign(pGame, signShapeRef, RED);
 
-	//Add the shape to the grid
-	grid* pGrid = pGame->getGrid();
-	pGrid->setActiveShape(psh);
+    //Add the shape to the grid
+    grid* pGrid = pGame->getGrid();
+    pGrid->setActiveShape(psh);
 
 }
 
@@ -58,7 +58,7 @@ void operAddIceCream::Act()
     point IceCreamShapeRef = { xGrid,yGrid };
 
     //create an Ice Cream shape
-    shape* psh = new IceCream(pGame, IceCreamShapeRef);
+    shape* psh = new IceCream(pGame, IceCreamShapeRef, RED);
 
     //Add the shape to the grid
     grid* pGrid = pGame->getGrid();
@@ -85,7 +85,7 @@ void operAddRocket::Act()
     point RocketShapeRef = { xGrid,yGrid };
 
     //create a Rocket shape
-    shape* psh = new Rocket(pGame, RocketShapeRef);
+    shape* psh = new Rocket(pGame, RocketShapeRef, RED);
 
     //Add the shape to the grid
     grid* pGrid = pGame->getGrid();
@@ -113,7 +113,7 @@ void operAddFish::Act()
     point FishShapeRef = { xGrid,yGrid };
 
     //create a Fish shape
-    shape* psh = new Fish(pGame, FishShapeRef);
+    shape* psh = new Fish(pGame, FishShapeRef, RED);
 
     //Add the shape to the grid
     grid* pGrid = pGame->getGrid();
@@ -137,8 +137,8 @@ void operAddRect::Act()
 
     point rectShapeRef = { xGrid, yGrid };
 
-    int rectHeight = 120; 
-    int rectWidth = 200; 
+    int rectHeight = 120;
+    int rectWidth = 200;
 
     shape* psh = new Rect(pGame, rectShapeRef, rectHeight, rectWidth);
 
@@ -194,7 +194,7 @@ void operAddTri::Act()
     int rotation_angle = 0;
 
 
-    shape* psh = new Triangle(pGame, TriShapeRef, _sidelength,rotation_angle);
+    shape* psh = new Triangle(pGame, TriShapeRef, _sidelength, rotation_angle);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
@@ -267,7 +267,7 @@ void operAddWatch::Act()
 
 
 
-    shape* psh = new Watch(pGame,watchRefPoint);
+    shape* psh = new Watch(pGame, watchRefPoint, RED);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
@@ -292,14 +292,14 @@ void operAddHome::Act()
 
 
 
-    shape* psh = new Home(pGame, homeRefPoint);
+    shape* psh = new Home(pGame, homeRefPoint, RED);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
 
 }
 
-operAddCar::operAddCar(game* r_pGame):operation(r_pGame)
+operAddCar::operAddCar(game* r_pGame) :operation(r_pGame)
 {
     window* pw = pGame->getWind();
 
@@ -312,7 +312,7 @@ operAddCar::operAddCar(game* r_pGame):operation(r_pGame)
 
 
 
-    shape* psh = new Car(pGame, homeRefPoint);
+    shape* psh = new Car(pGame, homeRefPoint, RED);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
@@ -322,7 +322,7 @@ void operAddCar::Act()
 {
 }
 
-//////////////////////////// OperSave //////////////////////////
+//////////////////////////// OperSave and OperLoad //////////////////////////
 operSave::operSave(game* r_pGame) : operation(r_pGame)
 {
 }
@@ -336,4 +336,25 @@ void operSave::Act()
     outfile << CurrentScore << "\n" << CurrentLevel << "\n" << RemainingLives << "\n";
     pGame->getGrid()->SaveShapes(outfile);
     outfile.close();
+}
+
+
+operLoad::operLoad(game* r_pGame) : operation(r_pGame)
+{
+}
+void operLoad::Act()
+{
+    ifstream infile;
+    infile.open("text.txt");
+    if (infile) {
+        int CurrentLevel, RemainingLives, CurrentScore;
+        infile >> CurrentScore >> CurrentLevel >> RemainingLives;
+        pGame->getToolbar()->setScore(CurrentScore);
+        pGame->getToolbar()->setLevel(CurrentLevel);
+        pGame->getToolbar()->setRemainingLives(RemainingLives);
+        pGame->getGrid()->LoadShapes(infile);
+        infile.close();
+    }
+    else
+        pGame->printMessage("No such file exists in the directory");
 }

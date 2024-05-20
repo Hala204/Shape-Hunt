@@ -7,8 +7,8 @@ class game;
 
 class grid
 {
-	enum { MaxShapeCount = 1000  };	//assuming max shape count = 1000
-	
+	enum { MaxShapeCount = 1000 };	//assuming max shape count = 1000
+
 	int rows, cols;	//numner of rows and columns in the grid to draw grid points
 	int height, width;
 	point uprLeft;	//upper left point of the grid
@@ -21,7 +21,7 @@ class grid
 	int shapeCount;		//current number of shapes in the list
 	game* pGame;
 
-	
+
 
 public:
 	grid(point r_uprleft, int r_width, int r_height, game* r_pGame);
@@ -30,9 +30,9 @@ public:
 	void clearGridArea() const;
 	bool addShape(shape* newShape);
 	void SaveShapes(ofstream& OutFile);
+	void LoadShapes(ifstream& InFile);
 	void setActiveShape(shape* actShape);
 	shape* getActiveShape();
 	void clearGrid();
 
 };
-

@@ -31,22 +31,22 @@ void grid::draw() const
 	clearGridArea();
 	window* pWind = pGame->getWind();
 
-	pWind->SetPen(config.gridDotsColor,1);
+	pWind->SetPen(config.gridDotsColor, 1);
 	pWind->SetBrush(config.gridDotsColor);
 
 	//draw dots showing the grid reference points
 	for (int r = 1; r < rows; r++)
 		for (int c = 0; c < cols; c++)
 			pWind->DrawCircle(c * config.gridSpacing, r * config.gridSpacing + uprLeft.y, 1);
-			//pWind->DrawPixel(c * config.gridSpacing, r * config.gridSpacing + uprLeft.y);
+	//pWind->DrawPixel(c * config.gridSpacing, r * config.gridSpacing + uprLeft.y);
 
-	//Draw ALL shapes
+//Draw ALL shapes
 	for (int i = 0; i < shapeCount; i++)
-			if (shapeList[i])
-				shapeList[i]->draw();	//draw each shape
+		if (shapeList[i])
+			shapeList[i]->draw();	//draw each shape
 
 	//Draw the active shape
-	if(activeShape)
+	if (activeShape)
 		activeShape->draw();
 	//this->p_toolbar->drawStart(pWind);
 
@@ -54,7 +54,7 @@ void grid::draw() const
 
 void grid::clearGridArea() const
 {
-	window* pWind = pGame->getWind();	
+	window* pWind = pGame->getWind();
 	pWind->SetPen(config.bkGrndColor, 1);
 	pWind->SetBrush(config.bkGrndColor);
 	pWind->DrawRectangle(uprLeft.x, uprLeft.y, uprLeft.x + width, uprLeft.y + height);
@@ -67,7 +67,7 @@ bool grid::addShape(shape* newShape)
 	// 1- Check that the shape can be drawn witout being clipped by grid boundaries
 	// 2- check shape count doesn't exceed maximum count
 	// return false if any of the checks fail
-	
+
 	//Here we assume that the above checks are passed
 	shapeList[shapeCount++] = newShape;
 	return true;
@@ -101,5 +101,49 @@ void grid::SaveShapes(ofstream& OutFile)
 	for (int i = 0; i < shapeCount; i++)
 	{
 		shapeList[i]->Save(OutFile);
+	}
+}
+
+
+void grid::LoadShapes(ifstream& InFile)
+{
+	int shapecount;
+	InFile >> shapecount;
+	for (int i = 0; i < shapecount; i++)
+	{
+		int shapetype, x, y;
+		unsigned char red, green, blue;
+		InFile >> shapetype >> x >> y >> red >> green >> blue;
+		point pnt;
+		pnt.x = x;
+		pnt.y = y;
+		color clr(red, green, blue);
+		shape* sh = nullptr;
+
+		switch (shapetype)
+		{
+		case SIGN:
+			sh = new Sign(pGame, pnt, clr);
+			break;
+		case CAR:
+			sh = new Car(pGame, pnt, clr);
+			break;
+		case HOME:
+			sh = new Home(pGame, pnt, clr);
+			break;
+		case ICECREAM:
+			sh = new IceCream(pGame, pnt, clr);
+			break;
+		case ROCKET:
+			sh = new Rocket(pGame, pnt, clr);
+			break;
+		case FISH:
+			sh = new Fish(pGame, pnt, clr);
+			break;
+		case WATCH:
+			sh = new Watch(pGame, pnt, clr);
+		}
+		sh->Load(InFile);
+		addShape(sh);
 	}
 }

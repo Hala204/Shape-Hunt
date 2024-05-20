@@ -19,7 +19,7 @@ public:
 //Responsible for 
 //1- collectign data about a new Sign shape to add
 //2- Adding the new shape to the list of shapes (throgh the grid class)
-class operAddSign:public operation
+class operAddSign :public operation
 {
 public:
 	operAddSign(game* r_pGame);
@@ -113,12 +113,20 @@ class operINC : public operation {
 public:
 	operINC(game* e_pGame);
 	virtual void Act();
-	
+
 };
 
 class operSave :public operation
 {
 public:
 	operSave(game* r_pGame);
+	virtual void Act();
+};
+
+
+class operLoad :public operation
+{
+public:
+	operLoad(game* r_pGame);
 	virtual void Act();
 };

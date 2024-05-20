@@ -13,44 +13,45 @@
 */
 
 
-class Rect:public shape
+class Rect :public shape
 {
-  int hght, wdth;  //height and width of the recangle
+	int hght, wdth;  //height and width of the recangle
 public:
-  Rect(game* r_pGame, point ref, int r_hght, int r_wdth);
-  virtual void draw() const;
-  virtual void Rotate();
-  void setHeight(double height);
-  void setWidth(double width);
-  double getHeight() const;
-  double getWidth() const;
-  virtual void resizeUp(double factor);
-  virtual void resizeDown(double factor);
-  virtual void resize(double factor);
-  virtual void Save(ofstream& OutFile) override;
+	Rect(game* r_pGame, point ref, int r_hght, int r_wdth);
+	virtual void draw() const;
+	virtual void Rotate();
+	void setHeight(double height);
+	void setWidth(double width);
+	double getHeight() const;
+	double getWidth() const;
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
+	virtual void resize(double factor);
+	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& Infile) override;
 
-  
+
 };
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //Reference point of the circle is its center
 class circle :public shape
 {
-  int rad;
-public:  
-  circle(game* r_pGame, point ref, int r);  
-  virtual void draw() const;
-  virtual void Rotate();
+	int rad;
+public:
+	circle(game* r_pGame, point ref, int r);
+	virtual void draw() const;
+	virtual void Rotate();
 
-  void setRadius(double radius);
-  double getRadius() const;
- 
+	void setRadius(double radius);
+	double getRadius() const;
 
-  virtual void resize(double factor);
-  virtual void resizeUp(double factor);
-  virtual void resizeDown(double factor);
-  virtual void Save(ofstream& OutFile) override;
 
+	virtual void resize(double factor);
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
+	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& Infile) override;
 
 
 };
@@ -62,7 +63,7 @@ class Triangle :public shape
 	int sidelength;
 	double rotation_angle;
 public:
-	Triangle(game* r_pGame, point ref, int sl, double ra) ;
+	Triangle(game* r_pGame, point ref, int sl, double ra);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
@@ -71,6 +72,6 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-	
-	
+	virtual void Load(ifstream& Infile) override;
+
 };
