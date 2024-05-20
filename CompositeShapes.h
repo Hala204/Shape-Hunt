@@ -1,11 +1,11 @@
 #pragma once
 #include "Basicshapes.h"
-#include <fstream>
+
 
 ////////////////////////////////////////////////////  class Sign  ///////////////////////////////////////
 //This class reprsents the composite shape "sign"
 //The sign is composed of 2 Recatngles
-/*
+/*				
 
 					 ------------------
 					|				   |
@@ -27,14 +27,13 @@ class Sign :public shape
 	Rect* top;
 	double rotation_angle_sign;
 public:
-	Sign(game* r_pGame, point ref, color fillcolor);
+	Sign(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
-	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
+	virtual bool Match(shape* sh);
 
 };
 
@@ -50,17 +49,15 @@ class IceCream :public shape
 	circle* Scoop;
 	double current_rotation_ang;
 public:
-	IceCream(game* r_pGame, point ref, color fillcolor);
+	IceCream(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
-	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
 
-
+	virtual bool Match(shape* sh);
 };
 
 
@@ -78,14 +75,13 @@ class Rocket :public shape
 	double current_rotation_ang_;
 
 public:
-	Rocket(game* r_pGame, point ref, color fillcolor);
+	Rocket(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
-	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
+	virtual bool Match(shape* sh);
 
 };
 
@@ -106,14 +102,13 @@ class Fish :public shape
 	double current_rotation_ang__;
 
 public:
-	Fish(game* r_pGame, point ref, color fillcolor);
+	Fish(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
-	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
+	virtual bool Match(shape* sh);
 
 };
 
@@ -125,22 +120,16 @@ class Car : public shape
 	circle* RightWheel;
 	Rect* Body;
 	Rect* Roof;
-	Rect* top;
-	circle* C1;
-	circle* C2;
 	double current_rotation_anggg;
 
 public:
-	Car(game* r_pGame, point ref, color fillcolor);
+	Car(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resizeDown(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resize(double factor);
-	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
-
-
+	virtual bool Match(shape* sh);
 
 };
 
@@ -154,14 +143,13 @@ class Watch :public shape
 	double current_rotation_ang___;
 
 public:
-	Watch(game* r_pGame, point ref, color fillcolor);
+	Watch(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
-	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
+	virtual bool Match(shape* sh);
 
 };
 
@@ -176,12 +164,11 @@ class Home :public shape
 
 
 public:
-	Home(game* r_pGame, point ref, color fillcolor);
+	Home(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
-	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
+	virtual bool Match(shape* sh);
 };

@@ -17,6 +17,9 @@ class game
 	
 	window* pWind;	//Pointer to the CMU graphics window
 	grid* shapesGrid;
+	int level;
+	int score;
+	int lives;
 
 public:
 	game();
@@ -28,17 +31,34 @@ public:
 	void printMessage(string msg) const;	//Print a message on Status bar
 	void createToolBar();		//creates the toolbar
 	void createGrid();		//creates the shapes grid
-	void randomGenerator();
+
 
 
 	window* getWind() const;		//returns a pointer to the graphics window
-	grid* getGrid() const;		//returns a pointer to the shapes grid
-	toolbar* getToolbar() const;
+	grid* getGrid() const;	
+
+	operation* createRequiredOperation(toolbarItem clickedItem);
+
+	int getLevel() const { return level; }
+	int getScore() const { return score; }
+	int getLives() const { return lives; }
+
+	
+	void setLevel(int newLevel);
+
+	void setScore(int newScore);
+
+	void setLives(int newLives);
+	void incrementScore(int num);
+	void decrementScore(int num);
+	
+	
+	//returns a pointer to the shapes grid
 
 	void drawHome(window* &w, color c, int rx, int ry, int size);
 
 	//creates an operation according to the toolbar item clicked
-	operation* createRequiredOperation(toolbarItem clickedItem);
+	//operation* createRequiredOperation(toolbarItem clickedItem);
 
 
 

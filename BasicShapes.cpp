@@ -5,11 +5,11 @@
 
 ////////////////////////////////////////////////////  class Rect  ///////////////////////////////////////
 
-Rect::Rect(game* r_pGame, point ref, int r_hght, int r_wdth) :shape(r_pGame, ref)
+Rect::Rect(game* r_pGame, point ref, int r_hght, int r_wdth):shape(r_pGame,ref)
 {
-	pGame = r_pGame;
-	hght = r_hght;
-	wdth = r_wdth;
+  pGame = r_pGame;
+  hght = r_hght;
+  wdth = r_wdth;
 }
 
 void Rect::draw() const
@@ -42,7 +42,7 @@ double Rect::getWidth() const {
 void Rect::resizeUp(double factor) {
 	setHeight(hght * factor);
 	setWidth(wdth * factor);
-
+	
 	/*if (hght < config.windHeight&& wdth< config.windWidth)
 	 {
 		resizeUp(factor);
@@ -52,7 +52,7 @@ void Rect::resizeUp(double factor) {
 }
 void Rect::resizeDown(double factor) {
 	setHeight(hght * factor);
-	setWidth(wdth * factor);
+	setWidth(wdth *factor);
 
 	/*if (hght > 0 && wdth > 0)
 	{
@@ -60,7 +60,7 @@ void Rect::resizeDown(double factor) {
 	}*/
 }
 
-void Rect::resize(double factor) {}
+void Rect::resize(double factor){}
 
 
 
@@ -74,23 +74,34 @@ void Rect::Rotate()
 
 }
 
-void Rect::Save(ofstream& OutFile)
+bool Rect::Match(shape* sh)
 {
-	OutFile << RCT << "\n" << hght << "\n" << wdth;
+	Rect* rec = dynamic_cast<Rect*> (sh);
+	if (rec) {
+		return RefPoint.x == rec->getRefPoint().x && RefPoint.y == rec->getRefPoint().y && hght == rec->hght && wdth == rec->wdth;
+	}
+	return false;
 }
 
-void Rect::Load(ifstream& InFile)
-{
-	InFile >> hght >> wdth;
-}
+//bool Rect::match(const shape& target_shape) const
+//{
+//	const Rect* rectangle = dynamic_cast<const Rect*>(&target_shape);
+//	// Matching logic for Square shapes
+//	if (rectangle && this->fillColor == rectangle->fillColor && this->borderColor == rectangle->borderColor && this->RefPoint.x == rectangle->RefPoint.x && this->RefPoint.y == rectangle->RefPoint.y)
+//	{
+//		return true;
+//	}
+//	return false;
+//}
+
 
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //TODO: Add implementation for class circle here
-circle::circle(game* r_pGame, point ref, int r) :shape(r_pGame, ref)
+circle::circle(game* r_pGame, point ref, int r):shape(r_pGame,ref)
 {
-	pGame = r_pGame;
-	rad = r;
+  pGame = r_pGame;
+  rad = r;
 }
 
 void circle::draw() const
@@ -101,48 +112,61 @@ void circle::draw() const
 	pW->DrawCircle(RefPoint.x, RefPoint.y, rad, FILLED);
 }
 
-void circle::setRadius(double radius) {
-	rad = radius;
-}
-double circle::getRadius() const {
-	return rad;
-}
-void circle::resizeUp(double factor) {
-	setRadius(rad * factor);
+	void circle::setRadius(double radius) {
+		rad = radius;
+	}
+	double circle::getRadius() const {
+		return rad;
+	}
+	void circle::resizeUp(double factor) {
+		setRadius(rad * factor);
 
-	//if (2*rad < config.windHeight && 2*rad < config.windWidth)
-	//{
-	//	resizeUp(factor);
-	//}
-}
-void circle::resizeDown(double factor) {
-	setRadius(rad * factor);
-	/*if ( rad >0)
-	{
-		resizeDown(factor);
-	}*/
-}
+		//if (2*rad < config.windHeight && 2*rad < config.windWidth)
+		//{
+		//	resizeUp(factor);
+		//}
+	}
+	void circle::resizeDown(double factor) {
+		setRadius(rad * factor);
+		/*if ( rad >0)
+		{
+			resizeDown(factor);
+		}*/
+	}
 
-void circle::resize(double factor) {}
+	void circle::resize(double factor){}
 
 
 void circle::Rotate() //circle can't be rotated 
 {}
-
-void circle::Save(ofstream& OutFile)
+bool circle::Match(shape* sh)
 {
-	OutFile << CRC << "\n" << rad << "\n";
+	circle* cir = dynamic_cast<circle*> (sh);
+	if (cir) {
+		return RefPoint.x == cir->getRefPoint().x && RefPoint.y == cir->getRefPoint().y && rad == cir->rad;
+	}
+	return false;
 }
 
-void circle::Load(ifstream& InFile)
-{
-	InFile >> rad;
-}
+
+
+
+
+
+
+ //bool circle::match(const shape& target_shape) const
+////{
+////	const circle* circle1 = dynamic_cast<const circle*>(&target_shape);		// Matching logic for Circle shapes
+////	if (circle1 && this->fillColor == circle1->fillColor && this->borderColor == circle1->borderColor && this->RefPoint.x == circle1->RefPoint.x && this->RefPoint.y == circle1->RefPoint.y) {
+////		return true;
+////	}
+////	return false;
+////} 
 
 
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here
-Triangle::Triangle(game* r_pGame, point ref, int sl, double ra) :shape(r_pGame, ref)
+Triangle::Triangle(game* r_pGame, point ref, int sl,double ra) :shape(r_pGame, ref)
 {
 	pGame = r_pGame;
 	sidelength = sl;
@@ -165,7 +189,7 @@ void Triangle::draw() const
 
 	double s = (rotation_angle * PII) / 180;
 	point l, m, n;
-	l.x = RefPoint.x + (LeftBottomPoint.x - RefPoint.x) * cos(s) - (LeftBottomPoint.y - RefPoint.y) * sin(s);
+	l.x = RefPoint.x + (LeftBottomPoint.x - RefPoint.x ) * cos(s) - (LeftBottomPoint.y - RefPoint.y) * sin(s);
 	l.y = RefPoint.y + (LeftBottomPoint.x - RefPoint.x) * sin(s) + (LeftBottomPoint.y - RefPoint.y) * cos(s);
 	m.x = RefPoint.x + (UpperPoint.x - RefPoint.x) * cos(s) - (UpperPoint.y - RefPoint.y) * sin(s);
 	m.y = RefPoint.y + (UpperPoint.x - RefPoint.x) * sin(s) + (UpperPoint.y - RefPoint.y) * cos(s);
@@ -189,7 +213,7 @@ double Triangle::getbase() const
 
 void Triangle::resizeDown(double factor)
 {
-	setbase(sidelength * factor);
+	setbase(sidelength *factor);
 	/*if (sidelength > 0)
 	resizeDown(factor);*/
 }
@@ -216,12 +240,11 @@ void Triangle::resize(double factor)
 	sidelength *= factor;
 }
 
-void Triangle::Save(ofstream& OutFile)
+bool Triangle::Match(shape* sh)
 {
-	OutFile << TRI << "\n" << sidelength << "\n" << rotation_angle;
-}
-
-void Triangle::Load(ifstream& InFile)
-{
-	InFile >> sidelength >> rotation_angle;
+	Triangle* tri = dynamic_cast<Triangle*> (sh);
+	if (tri) {
+		return RefPoint.x == tri->getRefPoint().x && RefPoint.y == tri->getRefPoint().y && sidelength == tri-> sidelength ;
+	}
+	return false;
 }

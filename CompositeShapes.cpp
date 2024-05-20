@@ -3,7 +3,7 @@
 #define PII 3.14159265358979323846 
 
 ////////////////////////////////////////////////////  class Sign  ///////////////////////////////////////
-Sign::Sign(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), rotation_angle_sign(0)
+Sign::Sign(game* r_pGame, point ref):shape(r_pGame, ref),rotation_angle_sign(0)
 {
 	//calc the ref point of the Sign base and top rectangles relative to the Sign shape
 	point topRef = ref;	//top rect ref is the same as the sign
@@ -18,12 +18,22 @@ void Sign::draw() const
 	top->draw();
 }
 
+bool Sign::Match(shape* sh)
+{
+	Sign* sign = dynamic_cast<Sign*> (sh);
+	if (sign) {
+		return base->Match(sign->base) && top->Match(sign->top);
+	}
+	return false;
+
+}
+
 
 void Sign::Rotate()
 {
 	base->Rotate();
 	top->Rotate();
-
+	
 	point NewtopRef = RefPoint;
 
 	point NewbaseRef;
@@ -32,7 +42,7 @@ void Sign::Rotate()
 	double s = rotation_angle_sign;
 	if (s >= 90 && s < 180)
 	{
-		NewbaseRef = { RefPoint.x - config.sighShape.topWdth / 2 - config.sighShape.baseHeight / 2 + 25 , RefPoint.y };
+		NewbaseRef = { RefPoint.x - config.sighShape.topWdth / 2 - config.sighShape.baseHeight / 2 + 25 , RefPoint.y};
 	}
 
 	else if (s >= 180 && s < 270)
@@ -75,49 +85,18 @@ void Sign::resizeUp(double factor)
 	base->setRefPoint(newRefBase);
 
 
-	point NewbaseRef;
-	NewbaseRef.x = RefPoint.x;
-	NewbaseRef.y = RefPoint.y + (+config.sighShape.topHeight / 2 + config.sighShape.baseHeight / 2) * *config.sighSize;
+  point NewbaseRef;
+  NewbaseRef.x = RefPoint.x;
+  NewbaseRef.y = RefPoint.y + (+config.sighShape.topHeight / 2 + config.sighShape.baseHeight / 2) * *config.sighSize;
 
-	base->setRefPoint(NewbaseRef);
+  base->setRefPoint(NewbaseRef);
 
-	base->resize(*config.sighSize);
-	top->resize(*config.sighSize);
+  base->resize(*config.sighSize);
+  top->resize(*config.sighSize);
 
 }
 
-void Sign::Save(ofstream& OutFile)
-{
-	OutFile << SIGN << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
-}
-
-
-void Sign::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
-
-
-
-Car::Car(game* c_pGame, point ref, color fillcolor) : shape(c_pGame, ref), current_rotation_anggg(90)
+Car::Car(game* c_pGame, point ref) : shape(c_pGame, ref),current_rotation_anggg(90)
 {
 	point BodyRef = ref;
 	point windowRef = { ref.x - config.carShape.bodyWidth / 4, ref.y - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 };
@@ -131,7 +110,14 @@ Car::Car(game* c_pGame, point ref, color fillcolor) : shape(c_pGame, ref), curre
 	LeftWheel = new circle(pGame, LeftWheelRef, config.carShape.wheelRadius);
 	RightWheel = new circle(pGame, RightWheelRef, config.carShape.wheelRadius);
 }
-
+bool Car::Match(shape* sh)
+{
+	Car* car = dynamic_cast<Car*> (sh);
+	if (car) {
+		return Body->Match(car->Body) && Roof->Match(car->Roof) && Window->Match(car->Window) && LeftWheel->Match(car->LeftWheel) && RightWheel->Match(car->RightWheel);
+	}
+	return false;
+}
 void Car::draw() const
 {
 	Body->draw();
@@ -164,7 +150,7 @@ void Car::Rotate()
 		WindowRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.windowSide / 2 , RefPoint.y - config.carShape.bodyWidth / 4 };
 		LeftWheelRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius, RefPoint.y - config.carShape.bodyWidth / 4 };
 		RightWheelRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius, RefPoint.y + config.carShape.bodyWidth / 4 };
-
+		
 	}
 
 	else if (s >= 270 && s < 360)
@@ -190,7 +176,7 @@ void Car::Rotate()
 		WindowRef = { RefPoint.x - config.carShape.bodyWidth / 4, RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 };
 		LeftWheelRef = { RefPoint.x - config.carShape.bodyWidth / 4, RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
 		RightWheelRef = { RefPoint.x + config.carShape.bodyWidth / 4, RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
-
+		
 
 	}
 	Body->setRefPoint(BodyRef);
@@ -202,68 +188,39 @@ void Car::Rotate()
 
 }
 
-void Car::resize(double)
+void Car::resize(double factor)
 {
 	point newWindowRef;
-	newWindowRef.x = RefPoint.x + (-config.carShape.bodyWidth / 4) * *config.carsize;
+	newWindowRef.x = RefPoint.x + (-config.carShape.bodyWidth / 4)  ** config.carsize;
 	newWindowRef.y = RefPoint.y + (-config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2) * *config.carsize;
 	Window->setRefPoint(newWindowRef);
 	Window->resize(*config.carsize);
-
+	
 
 
 	point newRoofRef;
-	newRoofRef.x = RefPoint.x + (config.carShape.bodyWidth / 8) * *config.carsize;
-	newRoofRef.y = RefPoint.y + (-config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2) * *config.carsize;
+	newRoofRef.x = RefPoint.x + (config.carShape.bodyWidth / 8)  **config.carsize;
+	newRoofRef.y = RefPoint.y + (-config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2)  **config.carsize;
 	Roof->setRefPoint(newRoofRef);
 	Roof->resize(*config.carsize);
 
 
 	point newLeftWheelRef;
-	newLeftWheelRef.x = RefPoint.x + (-config.carShape.bodyWidth / 4) * *config.carsize;
-	newLeftWheelRef.y = RefPoint.y + (config.carShape.bodyHeight / 2 + config.carShape.wheelRadius) * *config.carsize;
+	newLeftWheelRef.x = RefPoint.x + (-config.carShape.bodyWidth / 4)  **config.carsize;
+	newLeftWheelRef.y = RefPoint.y + (config.carShape.bodyHeight / 2 + config.carShape.wheelRadius)  **config.carsize;
 	LeftWheel->setRefPoint(newLeftWheelRef);
 	LeftWheel->resize(*config.carsize);
 
 	point newrightWheelRef;
-	newrightWheelRef.x = RefPoint.x + (config.carShape.bodyWidth / 4) * *config.carsize;
-	newrightWheelRef.y = RefPoint.y + (config.carShape.bodyHeight / 2 + config.carShape.wheelRadius) * *config.carsize;
+	newrightWheelRef.x = RefPoint.x + (config.carShape.bodyWidth / 4)  **config.carsize;
+	newrightWheelRef.y = RefPoint.y + (config.carShape.bodyHeight / 2 + config.carShape.wheelRadius) **config.carsize;
 
 	RightWheel->setRefPoint(newrightWheelRef);
 	RightWheel->resize(*config.carsize);
 }
 
-void Car::Save(ofstream& OutFile)
-{
-	OutFile << CAR << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
-}
-
-void Car::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
-
-
 ////////////////////////////////////////////////////  class Ice Cream  ///////////////////////////////////////
-IceCream::IceCream(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), current_rotation_ang(180)
+IceCream::IceCream(game* r_pGame, point ref) :shape(r_pGame, ref), current_rotation_ang(180)
 {
 	//calc the ref point of the Ice Cream cone and scoop relative to the Ice Cream shape
 	point ScoopRef = ref;  //scoop ref is the same as the ice cream shape ref
@@ -274,7 +231,7 @@ IceCream::IceCream(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, re
 
 void IceCream::draw() const
 {
-	Scoop->draw();
+    Scoop->draw();
 	Cone->draw();
 }
 
@@ -283,22 +240,22 @@ void IceCream::Rotate()
 {
 	Scoop->Rotate();
 	Cone->Rotate();
-
+	
 	point NewScoopRef = RefPoint;
 	point NewConeRef;
 
-	current_rotation_ang += 90;
+	current_rotation_ang += 90; 
 	double s = current_rotation_ang;
-	if (s >= 270 && s < 360)
+	if (s >= 270 && s < 360) 
 		NewConeRef = { RefPoint.x - config.IceCreamShape._sidelength / 2 ,RefPoint.y };
 	else if (s >= 360)
 	{
 		NewConeRef = { RefPoint.x ,RefPoint.y - config.IceCreamShape._sidelength / 2 };
 		current_rotation_ang = 0;
 	}
-	else if (s >= 90 && s < 180)
+	else if (s >= 90 && s < 180) 
 		NewConeRef = { RefPoint.x + config.IceCreamShape._sidelength / 2,RefPoint.y };
-	else
+	else 
 		NewConeRef = { RefPoint.x ,RefPoint.y + config.IceCreamShape._sidelength / 2 };
 
 	Scoop->setRefPoint(NewScoopRef);
@@ -309,37 +266,19 @@ void IceCream::resize(double factor)
 {
 }
 
-void IceCream::Save(ofstream& OutFile)
+bool IceCream::Match(shape* sh)
 {
-	OutFile << ICECREAM << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+	IceCream* ice = dynamic_cast<IceCream*> (sh);
+	if (ice) {
+		return Scoop->Match(ice->Scoop) && Cone->Match(ice->Cone);
+	}
+	return false;
+
 }
-
-void IceCream::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
 
 
 ////////////////////////////////////////////////////  class Rocket  ///////////////////////////////////////
-Rocket::Rocket(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), current_rotation_ang_(0)
+Rocket::Rocket(game* r_pGame, point ref) :shape(r_pGame, ref),current_rotation_ang_(0)
 {
 	point BodyRef = ref;   //body ref is the same as the rocket shape ref
 	point TopRef = { ref.x, ref.y - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2 };
@@ -361,7 +300,15 @@ void Rocket::draw() const
 	_BottomRight->draw();
 
 }
+bool Rocket::Match(shape* sh)
+{
+	Rocket* rocket = dynamic_cast<Rocket*> (sh);
+	if (rocket) {
+		return Body->Match(rocket->Body) && Top->Match(rocket->Top) && _BottomLeft->Match(rocket->_BottomLeft)&& _BottomRight->Match(rocket->_BottomRight);
+	}
+	return false;
 
+}
 
 void Rocket::Rotate()
 {
@@ -408,43 +355,14 @@ void Rocket::Rotate()
 	Top->setRefPoint(NewTopRef);
 	_BottomRight->setRefPoint(NewBottomRightRef);
 	_BottomLeft->setRefPoint(NewBottomLeftRef);
-
-}
-
-void Rocket::Save(ofstream& OutFile)
-{
-	OutFile << ROCKET << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
-}
-
-
-
-void Rocket::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
+	
 }
 
 
 
 
 ////////////////////////////////////////////////////  class Fish  ///////////////////////////////////////
-Fish::Fish(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), current_rotation_ang__(90)
+Fish::Fish(game* r_pGame, point ref) :shape(r_pGame, ref),current_rotation_ang__(90)
 {
 	point FishBodyRef = ref;  //FishBody ref is the same as the Fish shape ref
 	point HeadRef = { ref.x + config.FishShape.Headsidelength , ref.y };
@@ -492,7 +410,7 @@ void Fish::Rotate()
 	double s = current_rotation_ang__;
 	if (s >= 180 && s < 270)
 	{
-		AboveFinsRef = { RefPoint.x + config.FishShape.fradius,RefPoint.y };
+	    AboveFinsRef = { RefPoint.x + config.FishShape.fradius,RefPoint.y };
 		BelowFinsRef = { RefPoint.x - config.FishShape.fradius,RefPoint.y };
 		HeadRef = { RefPoint.x , RefPoint.y + config.FishShape.Headsidelength };
 		TailRef = { RefPoint.x , RefPoint.y - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5 };
@@ -512,11 +430,11 @@ void Fish::Rotate()
 		HeadRef = { RefPoint.x , RefPoint.y - config.FishShape.Headsidelength };
 		TailRef = { RefPoint.x , RefPoint.y + config.FishShape.fradius + config.FishShape.Tailsidelength / 2 - 5 };
 		current_rotation_ang__ = 0;
-
+		
 	}
 	else
 	{
-		AboveFinsRef = { RefPoint.x ,RefPoint.y + config.FishShape.fradius };
+	    AboveFinsRef = { RefPoint.x ,RefPoint.y + config.FishShape.fradius };
 		BelowFinsRef = { RefPoint.x ,RefPoint.y - config.FishShape.fradius };
 		HeadRef = { RefPoint.x + config.FishShape.Headsidelength , RefPoint.y };
 		TailRef = { RefPoint.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5, RefPoint.y };
@@ -535,36 +453,20 @@ void Fish::resize(double factor)
 {
 }
 
-void Fish::Save(ofstream& OutFile)
-{
-	OutFile << FISH << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
-}
 
-void Fish::Load(ifstream& Infile)
+bool Fish::Match(shape* sh)
 {
+	Fish* fish = dynamic_cast<Fish*> (sh);
+	if (fish) {
+		return Head->Match(fish->Head) && AboveFins->Match(fish->AboveFins) && BelowFins->Match(fish->BelowFins) && Tail->Match(fish->Tail)&& FishBody->Match(fish->FishBody);
+	}
+	return false;
 
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
 }
 
 
 
-Watch::Watch(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), current_rotation_ang___(180)
+Watch::Watch(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_ang___(180)
 {
 	point watchRef = ref;
 	point upperRectRef = { ref.x, ref.y - config.watchShape.radious - config.watchShape.Rectwidth + 5 };
@@ -577,53 +479,30 @@ Watch::Watch(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), cu
 
 
 
+bool Watch::Match(shape* sh)
+{
+	Watch* WATCH = dynamic_cast<Watch*> (sh);
+	if (WATCH)
+		{
+		return watchbody->Match(WATCH->watchbody) && lowerTri->Match(WATCH->lowerTri)&& upperRect->Match(WATCH->upperRect);
+	}
+	return false;
 
+}
 void Watch::resize(double factor)
 {
 }
 
-
-void Watch::Save(ofstream& OutFile)
-{
-	OutFile << WATCH << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
-}
-
-
-void Watch::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
-
-
-
-Home::Home(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), current_rotation_angg(0)
+Home::Home(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_angg(0)
 {
 	point bodyRef = { ref.x,ref.y };
 	point TriRef = { ref.x , ref.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
 	point leftRectRef = { ref.x - config.homeshape.width / 2 + 11, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
-	point circRef = { ref.x - config.homeshape.width / 2 - config.homeshape.radius + 15, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 };
+	point circRef = { ref.x - config.homeshape.width / 2 - config.homeshape.radius + 15, ref.y - config.homeshape.hight/2 - config.homeshape.smallrectheight - 17 };
 	point circRef1 = { ref.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };
 
 
-	HomeBody = new Rect(pGame, bodyRef, config.homeshape.hight, config.homeshape.width);
+	HomeBody = new Rect(pGame, bodyRef, config.homeshape.hight, config.homeshape.width );
 	upperTri = new Triangle(pGame, TriRef, config.homeshape.sidelength, 0);
 	leftRect = new Rect(pGame, leftRectRef, config.homeshape.smallrectheight, config.homeshape.smallrectwidth);
 	circleup = new circle(pGame, circRef, config.homeshape.radius);
@@ -633,13 +512,25 @@ Home::Home(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), curr
 
 void Home::draw() const
 {
-	HomeBody->draw();
-	upperTri->draw();
-	leftRect->draw();
-	circleup->draw();
+	HomeBody-> draw();
+	upperTri-> draw();
+	leftRect-> draw();
+	circleup-> draw();
 	circleup1->draw();
 }
 
+
+
+bool Home::Match(shape* sh)
+{
+	Home* home = dynamic_cast<Home*> (sh);
+	if (home)
+	{
+		return HomeBody->Match(home->HomeBody) && upperTri->Match(home->upperTri) && leftRect->Match(home->leftRect)&& circleup->Match(circleup) && circleup1->Match (home->circleup1);
+	}
+	return false;
+
+}
 void Home::Rotate()
 {
 	HomeBody->Rotate();
@@ -691,9 +582,9 @@ void Home::Rotate()
 	else
 	{
 		upperTriRef = { RefPoint.x , RefPoint.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
-		leftRectRef = { RefPoint.x - config.homeshape.width / 2 + 11, RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
+        leftRectRef = { RefPoint.x - config.homeshape.width / 2 + 11, RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
 		circleupRef = { RefPoint.x - config.homeshape.width / 2 - config.homeshape.radius + 15, RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 };
-		circleup1Ref = { RefPoint.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };
+        circleup1Ref = { RefPoint.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };
 		current_rotation_angg = 0;
 	}
 
@@ -705,33 +596,12 @@ void Home::Rotate()
 }
 
 
-void Home::Save(ofstream& OutFile)
-{
-	OutFile << HOME << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
-}
 
 
-void Home::Load(ifstream& Infile)
-{
 
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
+
+
+
 
 
 
@@ -762,45 +632,45 @@ void Sign::resize(double factor) {}
 
 
 
-//void Sign::resizeUp(double factor){}
-//void Sign::resizeDown(double factor) {}
+  //void Sign::resizeUp(double factor){}
+  //void Sign::resizeDown(double factor) {}
 
 
 
 
 
-void Car::resizeUp(double factor)
+void Car::resizeUp(double factor) 
 {
 	point oldRefPoint = Body->getRefPoint();
+	
+		Body->resizeUp(factor);
+		Roof->resizeUp(factor);
+		Window->resizeUp(factor);
+		LeftWheel->resizeUp(factor);
+		RightWheel->resizeUp(factor);
+		
+		
+		double newBodyWidth = Body->getWidth();
+		double newBodyHeight = Body->getHeight();
+		double newRoofHeight = Roof->getHeight();
+		double newRooWidth = Roof->getHeight();
+		double newWindow = Window->getbase();
+		double newLeftWheel = LeftWheel->getRadius();
+		double newRightWheel = RightWheel->getRadius();
 
-	Body->resizeUp(factor);
-	Roof->resizeUp(factor);
-	Window->resizeUp(factor);
-	LeftWheel->resizeUp(factor);
-	RightWheel->resizeUp(factor);
+		
 
+		point newWindowRef = { oldRefPoint.x - newBodyWidth / 4, oldRefPoint.y - newBodyHeight / 2 - newWindow / 2 };
+		point newRoofRef = { oldRefPoint.x + newBodyWidth / 8, oldRefPoint.y - newBodyHeight / 2 - newRoofHeight / 2 };
+		point newLeftWheelRef = { oldRefPoint.x - newBodyWidth / 4, oldRefPoint.y + newBodyHeight / 2 + newLeftWheel };
+		point newRightWheelRef = { oldRefPoint.x + newBodyWidth / 4, oldRefPoint.y + newBodyHeight / 2 + newRightWheel };
 
-	double newBodyWidth = Body->getWidth();
-	double newBodyHeight = Body->getHeight();
-	double newRoofHeight = Roof->getHeight();
-	double newRooWidth = Roof->getHeight();
-	double newWindow = Window->getbase();
-	double newLeftWheel = LeftWheel->getRadius();
-	double newRightWheel = RightWheel->getRadius();
-
-
-
-	point newWindowRef = { oldRefPoint.x - newBodyWidth / 4, oldRefPoint.y - newBodyHeight / 2 - newWindow / 2 };
-	point newRoofRef = { oldRefPoint.x + newBodyWidth / 8, oldRefPoint.y - newBodyHeight / 2 - newRoofHeight / 2 };
-	point newLeftWheelRef = { oldRefPoint.x - newBodyWidth / 4, oldRefPoint.y + newBodyHeight / 2 + newLeftWheel };
-	point newRightWheelRef = { oldRefPoint.x + newBodyWidth / 4, oldRefPoint.y + newBodyHeight / 2 + newRightWheel };
-
-
-	Window->setRefPoint(newWindowRef);
-	Roof->setRefPoint(newRoofRef);
-	LeftWheel->setRefPoint(newLeftWheelRef);
-	RightWheel->setRefPoint(newRightWheelRef);
-}
+	 
+		Window->setRefPoint(newWindowRef);
+		Roof->setRefPoint(newRoofRef);
+		LeftWheel->setRefPoint(newLeftWheelRef);
+		RightWheel->setRefPoint(newRightWheelRef);
+	}
 
 void Car::resizeDown(double factor) {
 	point oldRefPoint = Body->getRefPoint();
@@ -811,7 +681,7 @@ void Car::resizeDown(double factor) {
 	LeftWheel->resizeDown(factor);
 	RightWheel->resizeDown(factor);
 
-
+	
 	double newBodyWidth = Body->getWidth();
 	double newBodyHeight = Body->getHeight();
 	double newRoofHeight = Roof->getHeight();
@@ -838,7 +708,7 @@ void Car::resizeDown(double factor) {
 
 
 
-
+	
 
 
 ////////////////////////////////////////////////////  class Ice Cream  ///////////////////////////////////////
@@ -848,11 +718,11 @@ void IceCream::resizeUp(double factor) {
 
 	point oldScoopRefPoint = Scoop->getRefPoint();
 
-
+	
 	Scoop->resizeUp(factor);
 	Cone->resizeUp(factor);
 
-
+	
 	double newScoopRadius = Scoop->getRadius();
 	double newConeSideLength = Cone->getbase();
 
@@ -865,7 +735,7 @@ void IceCream::resizeUp(double factor) {
 }
 
 void IceCream::resizeDown(double factor) {
-
+	
 	point oldScoopRefPoint = Scoop->getRefPoint();
 
 
@@ -876,11 +746,11 @@ void IceCream::resizeDown(double factor) {
 	double newScoopRadius = Scoop->getRadius();
 	double newConeSideLength = Cone->getbase();
 
-
+	
 	point newScoopRefPoint = oldScoopRefPoint;
 	newScoopRefPoint.y = oldScoopRefPoint.y - newConeSideLength / 2;
 
-
+	
 	Scoop->setRefPoint(newScoopRefPoint);
 }
 
@@ -905,13 +775,13 @@ void IceCream::resizeDown(double factor) {
 void Rocket::resizeUp(double factor) {
 	point oldRefPoint = Body->getRefPoint();
 
-
+	
 	Body->resizeUp(factor);
 	Top->resizeUp(factor);
 	_BottomLeft->resizeUp(factor);
 	_BottomRight->resizeUp(factor);
 
-
+	
 	double newBodyHeight = Body->getHeight();
 	double newBodyWidth = Body->getWidth();
 	double newTop = Top->getbase();
@@ -920,19 +790,19 @@ void Rocket::resizeUp(double factor) {
 
 
 
-
+	
 	point newTopRefPoint = { oldRefPoint.x, oldRefPoint.y - newBodyHeight / 2 - newTop / 2 };
-	point newBottomRightRefPoint = { oldRefPoint.x + newBodyWidth / 2 + newBottomRight / 2 , oldRefPoint.y + newBodyHeight / 2 - 20 };
+	point newBottomRightRefPoint = { oldRefPoint.x + newBodyWidth / 2 + newBottomRight / 2 , oldRefPoint.y + newBodyHeight / 2 - 20  };
 	point newBottomLeftRefPoint = { oldRefPoint.x - newBodyWidth / 2 - newBottomLeft / 2 , oldRefPoint.y + newBodyHeight / 2 - 20 };
 
-
+	
 	Top->setRefPoint(newTopRefPoint);
 	_BottomLeft->setRefPoint(newBottomLeftRefPoint);
 	_BottomRight->setRefPoint(newBottomRightRefPoint);
 }
 
 void Rocket::resizeDown(double factor) {
-	point oldRefPoint = Body->getRefPoint();
+	point oldRefPoint = Body->getRefPoint(); 
 
 
 	Body->resizeDown(factor);
@@ -940,7 +810,7 @@ void Rocket::resizeDown(double factor) {
 	_BottomLeft->resizeDown(factor);
 	_BottomRight->resizeDown(factor);
 
-
+	
 	double newBodyHeight = Body->getHeight();
 	double newBodyWidth = Body->getWidth();
 	double newTop = Top->getbase();
@@ -955,7 +825,7 @@ void Rocket::resizeDown(double factor) {
 
 
 
-
+	
 	Top->setRefPoint(newTopRefPoint);
 	_BottomLeft->setRefPoint(newBottomLeftRefPoint);
 	_BottomRight->setRefPoint(newBottomRightRefPoint);
@@ -1008,7 +878,7 @@ void Rocket::resize(double factor)
 void Fish::resizeUp(double factor) {
 	point oldRefPoint = FishBody->getRefPoint();
 
-
+	
 	FishBody->resizeUp(factor);
 	Tail->resizeUp(factor);
 	Head->resizeUp(factor);
@@ -1025,11 +895,11 @@ void Fish::resizeUp(double factor) {
 	double newFinsWidthBelow = BelowFins->getWidth();
 	double newFinsHeightBelow = BelowFins->getWidth();
 
-
+	
 	point newTailRefPoint = { oldRefPoint.x - newFishBodyRadius - newTailSideLength / 2 + 5 , oldRefPoint.y };
 	point newHeadRefPoint = { oldRefPoint.x + newFishBodyRadius + newHeadSideLength , oldRefPoint.y };
-	point newAboveFinsRefPoint = { oldRefPoint.x, oldRefPoint.y + newFishBodyRadius };
-	point newBelowFinsRefPoint = { oldRefPoint.x, oldRefPoint.y - newFishBodyRadius };
+	point newAboveFinsRefPoint = { oldRefPoint.x, oldRefPoint.y + newFishBodyRadius  };
+	point newBelowFinsRefPoint = { oldRefPoint.x, oldRefPoint.y - newFishBodyRadius  };
 
 
 	Tail->setRefPoint(newTailRefPoint);
@@ -1041,26 +911,26 @@ void Fish::resizeUp(double factor) {
 void Fish::resizeDown(double factor) {
 	point oldRefPoint = FishBody->getRefPoint();
 
-
+	
 	FishBody->resizeDown(factor);
 	Tail->resizeDown(factor);
 	Head->resizeDown(factor);
 	AboveFins->resizeDown(factor);
 	BelowFins->resizeDown(factor);
 
-
+	
 	double newFishBodyRadius = FishBody->getRadius();
 	double newHeadSideLength = Head->getbase();
 	double newTailSideLength = Tail->getbase();
 	double newFinsWidth = AboveFins->getWidth();
 
-
+	
 	point newTailRefPoint = { oldRefPoint.x - newFishBodyRadius - newTailSideLength / 2 + 5 , oldRefPoint.y };
 	point newHeadRefPoint = { oldRefPoint.x + newFishBodyRadius + newHeadSideLength , oldRefPoint.y };
 	point newAboveFinsRefPoint = { oldRefPoint.x, oldRefPoint.y + newFishBodyRadius };
 	point newBelowFinsRefPoint = { oldRefPoint.x, oldRefPoint.y - newFishBodyRadius };
 
-
+	
 	Tail->setRefPoint(newTailRefPoint);
 	Head->setRefPoint(newHeadRefPoint);
 	AboveFins->setRefPoint(newAboveFinsRefPoint);
@@ -1096,23 +966,23 @@ void Watch::draw() const
 void Watch::resizeUp(double factor) {
 	point oldRefPoint = watchbody->getRefPoint();
 
-
+	
 	watchbody->resizeUp(factor);
 	upperRect->resizeUp(factor);
 	lowerTri->resizeUp(factor);
 
-
+	
 	double newWatchRadius = watchbody->getRadius();
 	double newUpperRectHeight = upperRect->getHeight();
 	double newUpperRectWidth = upperRect->getWidth();
 	double newLowerTriSideLength = lowerTri->getbase();
 
-
+	
 	point newWatchRefPoint = oldRefPoint;
 	point newUpperRectRefPoint = { oldRefPoint.x, oldRefPoint.y - newWatchRadius - newUpperRectWidth + 5 };
 	point newLowerTriRefPoint = { oldRefPoint.x, oldRefPoint.y + newWatchRadius + newLowerTriSideLength - 35 };
 
-
+	
 	watchbody->setRefPoint(newWatchRefPoint);
 	upperRect->setRefPoint(newUpperRectRefPoint);
 	lowerTri->setRefPoint(newLowerTriRefPoint);
@@ -1136,7 +1006,7 @@ void Watch::resizeDown(double factor) {
 	point newUpperRectRefPoint = { oldRefPoint.x, oldRefPoint.y - newWatchRadius - newUpperRectWidth + 5 };
 	point newLowerTriRefPoint = { oldRefPoint.x, oldRefPoint.y + newWatchRadius + newLowerTriSideLength - 35 };
 
-
+	
 	watchbody->setRefPoint(newWatchRefPoint);
 	upperRect->setRefPoint(newUpperRectRefPoint);
 	lowerTri->setRefPoint(newLowerTriRefPoint);
@@ -1148,7 +1018,7 @@ void Watch::Rotate()
 	watchbody->Rotate();
 	upperRect->Rotate();
 	lowerTri->Rotate();
-
+	
 	point watchRef = RefPoint;
 	point upperRectRef;
 	point lowerTriRef;
@@ -1195,7 +1065,7 @@ void Watch::Rotate()
 void Home::resizeUp(double factor) {
 	point oldRefPoint = HomeBody->getRefPoint();
 
-
+	
 	HomeBody->resizeUp(factor);
 	upperTri->resizeUp(factor);
 	leftRect->resizeUp(factor);
@@ -1214,13 +1084,13 @@ void Home::resizeUp(double factor) {
 
 
 
-
+	
 	point newTriRefPoint = { oldRefPoint.x, oldRefPoint.y - newHomeBodyHeight / 2 - newupperTri / 2 };
 	point newLeftRectRefPoint = { oldRefPoint.x - newHomeBodyWidth / 2 + 11 , oldRefPoint.y - newHomeBodyHeight / 2 - newLeftRectHeight / 2 };
-	point newCircRefPoint = { oldRefPoint.x - newHomeBodyWidth / 2 - config.homeshape.radius + 15 , oldRefPoint.y - newHomeBodyHeight / 2 - newupperTri - 17 };
-	point newCircRef1Point = { oldRefPoint.x - newHomeBodyWidth / 2 - config.homeshape.radius - 5 , oldRefPoint.y - newHomeBodyHeight / 2 - newupperTri - 35 };
+	point newCircRefPoint = { oldRefPoint.x - newHomeBodyWidth / 2 - config.homeshape.radius + 15 , oldRefPoint.y - newHomeBodyHeight / 2 - newupperTri - 17};
+	point newCircRef1Point = { oldRefPoint.x - newHomeBodyWidth / 2 - config.homeshape.radius - 5 , oldRefPoint.y - newHomeBodyHeight / 2 - newupperTri - 35  };
 
-
+	
 	upperTri->setRefPoint(newTriRefPoint);
 	leftRect->setRefPoint(newLeftRectRefPoint);
 	circleup->setRefPoint(newCircRefPoint);
@@ -1230,7 +1100,7 @@ void Home::resizeUp(double factor) {
 void Home::resizeDown(double factor) {
 	point oldRefPoint = HomeBody->getRefPoint();
 
-
+	
 	HomeBody->resizeDown(factor);
 	upperTri->resizeDown(factor);
 	leftRect->resizeDown(factor);
@@ -1259,16 +1129,7 @@ void Home::resizeDown(double factor) {
 	circleup->setRefPoint(newCircRefPoint);
 	circleup1->setRefPoint(newCircRef1Point);
 
+
+
+
 }
-
-
-//void Home::resize(double factor)
-//{
-//
-//	HomeBody->resize(factor);
-//	upperTri->resize(factor);
-//	leftRect->resize(factor);
-//	circleup->resize(factor);
-//	circleup1->resize(factor);
-//
-//}

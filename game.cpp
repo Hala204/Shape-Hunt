@@ -55,55 +55,10 @@ void game::createToolBar()
 void game::createGrid()
 {	
 	//calc some grid parameters
-	point gridUpperLeftPoint = { 0, config.toolBarHeight };
-	int gridHeight = config.windHeight - config.toolBarHeight  - config.statusBarHeight;
+	point gridUpperLeftPoint = { 0, config.toolBarHeight +20 };
+	int gridHeight = config.windHeight - config.toolBarHeight +20 - config.statusBarHeight;
 	//create the grid
 	shapesGrid = new grid(gridUpperLeftPoint, config.windWidth, gridHeight, this);
-}
-
-void game::randomGenerator()
-{
-	
-	std::srand(static_cast<unsigned int>(std::time(0)));
-	window* pw = pWind;
-	int gameLevel = config.level;
-	int h = config.windHeight;
-	int w = config.windWidth;
-	const int maxNumberOfRandomShapes = 5;
-	point p[maxNumberOfRandomShapes];
-	for (int i = 0; i < maxNumberOfRandomShapes; i++)
-	{
-		//int random_number = std::rand() % (end - start + 1) + start;
-		int random_x = std::rand() % (w - config.homeshape.width - config.homeshape.width + 1) + config.homeshape.width;
-		int random_y = std::rand() % (h - config.homeshape.hight - config.homeshape.hight + 1) + config.homeshape.hight;
-		p[i].x = random_x;
-		p[i].y = random_y;
-
-
-		point signShapeRef = { random_x,random_y };
-
-		//create a sign shape
-		shape* psh = new Sign(this, signShapeRef,RED);
-
-		//Add the shape to the grid
-		grid* pGrid = this->getGrid();
-
-		pGrid->addShape(psh);
-		
-
-		shapesGrid->draw();
-		gameToolbar->drawStart(pWind);
-		gameToolbar->drawtoolbar(pWind);
-
-	}
-
-
-	switch (gameLevel)
-	{
-		//case 1:
-
-	}
-
 }
 
 
@@ -131,10 +86,6 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	operation* op=nullptr;
 	switch (clickedItem)
 	{
-	case ITM_START_GAME:
-		op = new operStartGame(this);
-		printMessage("game started... GOOD LUCK !");
-		break;
 	case ITM_SIGN:
 		op = new operAddSign(this);
 		printMessage("sign is pressed ");
@@ -197,12 +148,9 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_SELECT:
 		printMessage("ITM_SELECT is pressed ");
 		break;
-
 	case ITM_SAVE:
-		op = new operSave(this);
-		printMessage("ITM_SAVE is pressed ");
+		printMessage("ITM_DELETE is pressed ");
 		break;
-
 	case ITM_EXIT:
 		printMessage("ITM_DELETE is pressed ");
 		break;
@@ -280,9 +228,49 @@ grid* game::getGrid() const
 	return shapesGrid;
 }
 
-toolbar* game::getToolbar() const
+
+
+
+
+
+void game::setScore(int newScore)
 {
-	return gameToolbar;
+	this->score = newScore;
+	pWind->SetBrush(BLACK);
+	pWind->SetPen(BLACK);
+	pWind->SetFont(20, PLAIN, ROMAN);
+	pWind->DrawString(config.windWidth / 2, config.toolBarHeight, "Score : " + to_string(config.Score));
+}
+
+void game::setLevel(int newLevel)
+{
+	this->level = newLevel;
+	pWind->SetBrush(BLACK);
+	pWind->SetPen(BLACK);
+	pWind->SetFont(20, PLAIN, ROMAN);
+	pWind->DrawString(config.windWidth - 100, config.toolBarHeight, "Level : " + to_string(config.level));
+
+}
+void game::setLives(int newLives)
+{
+	this->level = newLives;
+	pWind->SetBrush(BLACK);
+	pWind->SetPen(BLACK);
+	pWind->SetFont(20, PLAIN, ROMAN);
+	pWind->DrawString(5, config.toolBarHeight, "Lives : " + to_string(config.lives));
+
+}
+
+
+
+void game::incrementScore(int num)
+{
+	score += num;
+}
+
+void game::decrementScore(int num)
+{
+	score -= num;
 }
 
 
@@ -292,16 +280,24 @@ void game::run()
 	//This function reads the position where the user clicks to determine the desired operation
 	int x, y;
 	bool isExit = false;
+	operation* op;
+	char keyPressed;
 
 	//Change the title
 	pWind->ChangeTitle("- - - - - - - - - - SHAPE HUNT (CIE 101 / CIE202 - project) - - - - - - - - - -");
 	toolbarItem clickedItem=ITM_CNT;
 	do
 	{
+	
 		//printMessage("Ready...");
 		//1- Get user click
 		pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
+		//if (shapesGrid->getActiveShape() != nullptr) {
+		//	if (keyPressed) {
+		//		if (keyPressed == 32) // ASCII for space bar
+		//		{
+		//			shapesGrid->handleMatch();
+		//		}
 		//2-Explain the user click
 		//If user clicks on the Toolbar, ask toolbar which item is clicked
 		if (y >= 0 && y < config.toolBarHeight)
@@ -313,20 +309,13 @@ void game::run()
 			if (op)
 				op->Act();
 
-
 			//4-Redraw the grid after each action
 			shapesGrid->draw();
 			gameToolbar->drawStart(pWind);
-			gameToolbar->drawtoolbar(pWind);
-
-	
-
 		}	
 
 	} while (clickedItem!=ITM_EXIT);
 }
-
-////////////////////////////////////////////////////////////////////////////
 
 
 
