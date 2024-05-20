@@ -30,7 +30,6 @@ public:
 	void clearGridArea() const;
 	bool addShape(shape* newShape);
 	void SaveShapes(ofstream& OutFile);
-	void LoadShapes(ifstream& InFile);
 	void setActiveShape(shape* actShape);
 	shape* getActiveShape();
 	void clearGrid();

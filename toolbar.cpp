@@ -137,24 +137,8 @@ void toolbar::drawtoolbar(game* pG)
 	pWind->SetPen(DARKBLUE, 3);
 	pWind->DrawLine(0, height, width, height);
 	drawStart(pWind);
+
 }
-
-
-void toolbar::setScore(int s) 
-{
-	Score = s;
-}
-
-void toolbar::setRemainingLives(int liv) 
-{
-	Lives = liv;
-}
-
-void toolbar::setLevel(int lev)
-{
-	Level = lev;
-}
-
 
 int toolbar::getLevel() const 
 {

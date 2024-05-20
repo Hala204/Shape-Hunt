@@ -44,7 +44,6 @@ public:
 	virtual void resizeUp(double factor) = 0;
 	virtual void resizeDown(double factor) = 0;
 	virtual void Save(ofstream& OutFile) = 0;
-	virtual void Load(ifstream& Infile) = 0;
 	point getRefPoint() const;
 								  
 							  

@@ -154,15 +154,9 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 		printMessage("ITM_SAVE is pressed ");
 		break;
 
-	case ITM_LOAD:
-		op = new operLoad(this);
-		printMessage("ITM_LOAD is pressed ");
-		break;
-
 	case ITM_EXIT:
-		printMessage("ITM_EXIT is pressed ");
+		printMessage("ITM_DELETE is pressed ");
 		break;
-
 	case ITM_ROTATE:
 		op = new operRotate(this);
 		printMessage("ITM_ROTATE is pressed ");

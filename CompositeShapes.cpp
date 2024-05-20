@@ -3,7 +3,7 @@
 #define PII 3.14159265358979323846 
 
 ////////////////////////////////////////////////////  class Sign  ///////////////////////////////////////
-Sign::Sign(game* r_pGame, point ref, color fillcolor):shape(r_pGame, ref),rotation_angle_sign(0)
+Sign::Sign(game* r_pGame, point ref):shape(r_pGame, ref),rotation_angle_sign(0)
 {
 	//calc the ref point of the Sign base and top rectangles relative to the Sign shape
 	point topRef = ref;	//top rect ref is the same as the sign
@@ -92,32 +92,7 @@ void Sign::Save(ofstream& OutFile)
 }
 
 
-void Sign::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
-
-
-
-Car::Car(game* c_pGame, point ref, color fillcolor) : shape(c_pGame, ref),current_rotation_anggg(90)
+Car::Car(game* c_pGame, point ref) : shape(c_pGame, ref),current_rotation_anggg(90)
 {
 	point BodyRef = ref;
 	point windowRef = { ref.x - config.carShape.bodyWidth / 4, ref.y - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 };
@@ -238,32 +213,8 @@ void Car::Save(ofstream& OutFile)
 	OutFile << CAR << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
 }
 
-void Car::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
-
-
 ////////////////////////////////////////////////////  class Ice Cream  ///////////////////////////////////////
-IceCream::IceCream(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), current_rotation_ang(180)
+IceCream::IceCream(game* r_pGame, point ref) :shape(r_pGame, ref), current_rotation_ang(180)
 {
 	//calc the ref point of the Ice Cream cone and scoop relative to the Ice Cream shape
 	point ScoopRef = ref;  //scoop ref is the same as the ice cream shape ref
@@ -314,32 +265,9 @@ void IceCream::Save(ofstream& OutFile)
 	OutFile << ICECREAM << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
 }
 
-void IceCream::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
-
 
 ////////////////////////////////////////////////////  class Rocket  ///////////////////////////////////////
-Rocket::Rocket(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref),current_rotation_ang_(0)
+Rocket::Rocket(game* r_pGame, point ref) :shape(r_pGame, ref),current_rotation_ang_(0)
 {
 	point BodyRef = ref;   //body ref is the same as the rocket shape ref
 	point TopRef = { ref.x, ref.y - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2 };
@@ -418,33 +346,8 @@ void Rocket::Save(ofstream& OutFile)
 
 
 
-void Rocket::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
-
-
-
 ////////////////////////////////////////////////////  class Fish  ///////////////////////////////////////
-Fish::Fish(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref),current_rotation_ang__(90)
+Fish::Fish(game* r_pGame, point ref) :shape(r_pGame, ref),current_rotation_ang__(90)
 {
 	point FishBodyRef = ref;  //FishBody ref is the same as the Fish shape ref
 	point HeadRef = { ref.x + config.FishShape.Headsidelength , ref.y };
@@ -540,31 +443,9 @@ void Fish::Save(ofstream& OutFile)
 	OutFile << FISH << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
 }
 
-void Fish::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
 
 
-
-Watch::Watch(game* r_pGame, point ref, color fillcolor):shape(r_pGame, ref),current_rotation_ang___(180)
+Watch::Watch(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_ang___(180)
 {
 	point watchRef = ref;
 	point upperRectRef = { ref.x, ref.y - config.watchShape.radious - config.watchShape.Rectwidth + 5 };
@@ -589,32 +470,9 @@ void Watch::Save(ofstream& OutFile)
 }
 
 
-void Watch::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
 
 
-
-
-Home::Home(game* r_pGame, point ref, color fillcolor):shape(r_pGame, ref),current_rotation_angg(0)
+Home::Home(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_angg(0)
 {
 	point bodyRef = { ref.x,ref.y };
 	point TriRef = { ref.x , ref.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
@@ -709,30 +567,6 @@ void Home::Save(ofstream& OutFile)
 {
 	OutFile << HOME << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
 }
-
-
-void Home::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
 
 
 void Home::resize(double factor)
