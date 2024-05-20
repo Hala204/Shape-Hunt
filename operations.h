@@ -113,6 +113,7 @@ class operINC : public operation {
 public:
 	operINC(game* e_pGame);
 	virtual void Act();
+	
 };
 
 class operSave :public operation
