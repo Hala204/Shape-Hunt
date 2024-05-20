@@ -83,7 +83,7 @@ void game::randomGenerator()
 		point signShapeRef = { random_x,random_y };
 
 		//create a sign shape
-		shape* psh = new Sign(this, signShapeRef);
+		shape* psh = new Sign(this, signShapeRef,RED);
 
 		//Add the shape to the grid
 		grid* pGrid = this->getGrid();
