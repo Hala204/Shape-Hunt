@@ -143,31 +143,31 @@ void toolbar::drawtoolbar(window* pw)
 
 int toolbar::getLevel() const 
 {
-	return Level;
+	return config.level;
 }
 
 int toolbar::getScore() const 
 {
-	return Score;
+	return config.Score;
 }
 
 int toolbar::getRemainingLives() const
 {
-	return Lives;
+	return config.lives;
 }
 
-void toolbar::setScore(int s)
+void toolbar::setScore(int)
 {
-	Score = s;
+	Score = config.Score;
 }
 
-void toolbar::setRemainingLives(int liv)
+void toolbar::setRemainingLives(int)
 {
-	Lives = liv;
+	Lives = config.lives;
 }
 
-void toolbar::setLevel(int lev)
+void toolbar::setLevel(int)
 {
-	Level = lev;
+	Level = config.level;
 }
 

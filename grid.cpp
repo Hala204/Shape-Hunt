@@ -104,7 +104,7 @@ void grid::clearGrid()
 void grid::SaveShapes(ofstream& OutFile)
 {
 	if (shapeCount > 0)
-		OutFile << shapeCount;
+		OutFile << shapeCount << "\n";
 	for (int i = 0; i < shapeCount; i++)
 	{
 		shapeList[i]->Save(OutFile);
