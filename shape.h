@@ -38,6 +38,7 @@ public:
 	void setRefPoint(point p);
 	virtual void resizeUp(double factor) = 0;
 	virtual void resizeDown(double factor) = 0;
+	virtual void Save(ofstream& OutFile) = 0;
 	point getRefPoint() const;
 								  
 							  

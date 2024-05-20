@@ -74,6 +74,10 @@ void Rect::Rotate()
 
 }
 
+void Rect::Save(ofstream& OutFile)
+{
+	OutFile << RCT << "\n" << hght << "\n" << wdth;
+}
 
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
@@ -120,6 +124,10 @@ void circle::draw() const
 void circle::Rotate() //circle can't be rotated 
 {}
 
+void circle::Save(ofstream& OutFile)
+{
+	OutFile << CRC << "\n" << rad << "\n";
+}
 
 
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
@@ -196,4 +204,9 @@ void Triangle::Rotate()
 void Triangle::resize(double factor)
 {
 	sidelength *= factor;
+}
+
+void Triangle::Save(ofstream& OutFile)
+{
+	OutFile << TRI << "\n" << sidelength << "\n" << rotation_angle;
 }

@@ -27,6 +27,7 @@ public:
   virtual void resizeUp(double factor);
   virtual void resizeDown(double factor);
   virtual void resize(double factor);
+  virtual void Save(ofstream& OutFile) override;
 
   
 };
@@ -48,6 +49,8 @@ public:
   virtual void resize(double factor);
   virtual void resizeUp(double factor);
   virtual void resizeDown(double factor);
+  virtual void Save(ofstream& OutFile) override;
+
 
 
 };
@@ -67,6 +70,7 @@ public:
 	double getbase()const;
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
+	virtual void Save(ofstream& OutFile) override;
 	
 	
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include "CompositeShapes.h"
 #include "toolbar.h"
+#include <fstream>
 
 class game;
 
@@ -28,6 +29,7 @@ public:
 	void draw() const;
 	void clearGridArea() const;
 	bool addShape(shape* newShape);
+	void SaveShapes(ofstream& OutFile);
 	void setActiveShape(shape* actShape);
 	shape* getActiveShape();
 	void clearGrid();
