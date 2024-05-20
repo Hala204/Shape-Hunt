@@ -7,8 +7,11 @@
 __declspec(selectany) //This line to prevent "redefinition error"
 struct 		
 {
-	int	windWidth=1200, windHeight=600,	//Window width and height
-		wx=5, wy=5,			//Window starting coordinates
+	int	windWidth = 1200, windHeight = 600,	//Window width and height
+		wx=5, wy=5,		
+
+	
+		//Window starting coordinates
 
 		//The window is divded into 3 areas: toolbar, Working area, and statusbar
 		toolBarHeight=60,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
@@ -35,6 +38,11 @@ struct
 	int RefX = windWidth *  (2.0 / 3);
 	int RefY = windHeight * (0.5);
 
+     /*double SizeOptions[3] = {0.5,1.0,2.0};
+     double* sighSize = SizeOptions + 1;
+     double* fishSize = SizeOptions + 1;
+     double* carsize = SizeOptions + 1;
+     double* rocketSize = SizeOptions + 1;*/
      double SizeOptions[3] = {0.5,1.0,2.0};
      double* sighSize = SizeOptions + 1;
      double* fishSize = SizeOptions + 1;
@@ -79,9 +87,11 @@ struct
 	}watchShape;
 
 	struct {
-		int hight = 100;
-		int width = 160;
+		int hight = 90;
+		int width = 150;
 		int radius = 10;
+		int sidelength = 170;
+		int smallrectheight = 120, smallrectwidth = 14;
 	}homeshape;
 	 
 	////------ car shape Configuration --------////
@@ -105,7 +115,7 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 
 	
 	
-	//ITM_SIGN,
+	ITM_SIGN,
 	//ITM_RECT,
 	//ITM_CIRC,
 	//ITM_TRI,

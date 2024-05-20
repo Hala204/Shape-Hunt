@@ -25,11 +25,14 @@ class Sign :public shape
 {
 	Rect* base;
 	Rect* top;
+	double rotation_angle_sign;
 public:
 	Sign(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
 
 
 };
@@ -50,6 +53,9 @@ public:
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
+
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
 
 
 };
@@ -73,7 +79,8 @@ public:
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
-
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
 
 };
 
@@ -98,6 +105,8 @@ public:
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
 
 
 };
@@ -113,12 +122,17 @@ class Car : public shape
 	Rect* top;
 	circle* C1;
 	circle* C2;
+	double current_rotation_anggg;
 
 public:
 	Car(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void resizeDown(double factor);
+	virtual void resizeUp(double factor);
 	virtual void resize(double factor);
+	
+
 };
 
 
@@ -135,6 +149,9 @@ public:
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
+
 };
 
 class Home :public shape
@@ -144,10 +161,14 @@ class Home :public shape
 	Rect* leftRect;
 	circle* circleup;
 	circle* circleup1;
+	double current_rotation_angg;
+
 
 public:
 	Home(game* r_pGame, point ref);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
 };

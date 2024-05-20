@@ -15,7 +15,7 @@ toolbar::toolbar(game* pG)
 
 	//First prepare List of images for each toolbar item
 	//basic shapes
-	//toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_Sign.jpg";
+	toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_Sign.jpg";
 	//toolbarItemImages[ITM_RECT] = "images\\toolbarItems\\toolbar_Rect.jpg";
 	//toolbarItemImages[ITM_CIRC] = "images\\toolbarItems\\toolbar_Circ.jpg";
 	//toolbarItemImages[ITM_TRI] = "images\\toolbarItems\\toolbar_Tri.jpg";

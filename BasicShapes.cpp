@@ -8,8 +8,6 @@
 Rect::Rect(game* r_pGame, point ref, int r_hght, int r_wdth):shape(r_pGame,ref)
 {
   pGame = r_pGame;
-  ihght = r_hght;
-  iwdth = r_wdth;
   hght = r_hght;
   wdth = r_wdth;
 }
@@ -28,6 +26,44 @@ void Rect::draw() const
 	pW->DrawRectangle(upperLeft.x, upperLeft.y, lowerBottom.x, lowerBottom.y, FILLED);
 }
 
+
+void Rect::setHeight(double height) {
+	hght = height;
+}
+void Rect::setWidth(double width) {
+	wdth = width;
+}
+double Rect::getHeight() const {
+	return hght;
+}
+double Rect::getWidth() const {
+	return wdth;
+}
+void Rect::resizeUp(double factor) {
+	setHeight(hght * factor);
+	setWidth(wdth * factor);
+	
+	/*if (hght < config.windHeight&& wdth< config.windWidth)
+	 {
+		resizeUp(factor);
+	 }
+	*/
+
+}
+void Rect::resizeDown(double factor) {
+	setHeight(hght * factor);
+	setWidth(wdth *factor);
+
+	/*if (hght > 0 && wdth > 0)
+	{
+		resizeDown(factor);
+	}*/
+}
+
+void Rect::resize(double factor){}
+
+
+
 void Rect::Rotate()
 {
 
@@ -38,11 +74,7 @@ void Rect::Rotate()
 
 }
 
-void Rect::resize(double factor)
-{
-  wdth = iwdth*factor;
-  hght = ihght*factor;
-}
+
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //TODO: Add implementation for class circle here
@@ -50,7 +82,6 @@ circle::circle(game* r_pGame, point ref, int r):shape(r_pGame,ref)
 {
   pGame = r_pGame;
   rad = r;
-  irad = r;
 }
 
 void circle::draw() const
@@ -61,15 +92,36 @@ void circle::draw() const
 	pW->DrawCircle(RefPoint.x, RefPoint.y, rad, FILLED);
 }
 
+	void circle::setRadius(double radius) {
+		rad = radius;
+	}
+	double circle::getRadius() const {
+		return rad;
+	}
+	void circle::resizeUp(double factor) {
+		setRadius(rad * factor);
+
+		//if (2*rad < config.windHeight && 2*rad < config.windWidth)
+		//{
+		//	resizeUp(factor);
+		//}
+	}
+	void circle::resizeDown(double factor) {
+		setRadius(rad * factor);
+		/*if ( rad >0)
+		{
+			resizeDown(factor);
+		}*/
+	}
+
+	void circle::resize(double factor){}
+
+
 void circle::Rotate() //circle can't be rotated 
 {}
 
 
 
-void circle::resize(double factor)
-{
-  rad = irad * factor;
-}
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here
 Triangle::Triangle(game* r_pGame, point ref, int sl,double ra) :shape(r_pGame, ref)
@@ -107,7 +159,33 @@ void Triangle::draw() const
 
 	//pW->DrawTriangle(LeftBottomPoint.x, LeftBottomPoint.y, UpperPoint.x, UpperPoint.y, RightBottomPoint.x, RightBottomPoint.y, FILLED);
 }
+void Triangle::setbase(double BASE)
+{
+	sidelength = BASE;
+}
 
+double Triangle::getbase() const
+{
+	return sidelength;
+}
+
+void Triangle::resizeDown(double factor)
+{
+	setbase(sidelength *factor);
+	/*if (sidelength > 0)
+	resizeDown(factor);*/
+}
+
+void Triangle::resizeUp(double factor)
+{
+	setbase(sidelength * factor);
+	/*if (sidelength < config.windHeight && sidelength < config.windWidth)
+	{
+		resizeUp(factor);
+	}*/
+
+
+}
 
 void Triangle::Rotate()
 {

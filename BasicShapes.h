@@ -16,26 +16,38 @@
 class Rect:public shape
 {
   int hght, wdth;  //height and width of the recangle
-  int ihght, iwdth;
 public:
   Rect(game* r_pGame, point ref, int r_hght, int r_wdth);
   virtual void draw() const;
   virtual void Rotate();
+  void setHeight(double height);
+  void setWidth(double width);
+  double getHeight() const;
+  double getWidth() const;
+  virtual void resizeUp(double factor);
+  virtual void resizeDown(double factor);
   virtual void resize(double factor);
 
-
+  
 };
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //Reference point of the circle is its center
 class circle :public shape
 {
-  int rad, irad;
+  int rad;
 public:  
   circle(game* r_pGame, point ref, int r);  
   virtual void draw() const;
   virtual void Rotate();
+
+  void setRadius(double radius);
+  double getRadius() const;
+ 
+
   virtual void resize(double factor);
+  virtual void resizeUp(double factor);
+  virtual void resizeDown(double factor);
 
 
 };
@@ -51,5 +63,10 @@ public:
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
-
+	void setbase(double BASE);
+	double getbase()const;
+	virtual void resizeUp(double factor);
+	virtual void resizeDown(double factor);
+	
+	
 };
