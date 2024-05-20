@@ -49,6 +49,7 @@ struct
      double* carsize = SizeOptions + 1;
      double* rocketSize = SizeOptions + 1;
 
+
 	////-----  Sign Shape Confoguration ---------////
 	// For the Sign shape, define width and height of both rectangles
 	struct {
@@ -105,6 +106,8 @@ struct
 	int lives = 5;
 	int level = 1;
 	int Score = 0;
+
+
 }config;
 
 
@@ -114,7 +117,7 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	//If you want to change the toolbar items order, just change the order here
 
 	
-	
+	ITM_START_GAME,
 	ITM_SIGN,
 	//ITM_RECT,
 	//ITM_CIRC,

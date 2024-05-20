@@ -9,10 +9,62 @@ operation::operation(game* r_pGame)
 }
 
 
+/////////////////////////////////// class operStartGame  //////////////////
+
+
+operStartGame::operStartGame(game* r_pGame):operation(r_pGame)
+{
+}
+
+void operStartGame::Act()
+{
+    pGame->randomGenerator();
+    //std::srand(static_cast<unsigned int>(std::time(0)));
+    //window* pw = pGame->getWind();
+    //int gameLevel = config.level;
+    //int h = config.windHeight;
+    //int w = config.windWidth;
+    //const int maxNumberOfRandomShapes = 5;
+    //point p[maxNumberOfRandomShapes];
+    //for (int i = 0; i < maxNumberOfRandomShapes ;i++)
+    //{
+    //    //int random_number = std::rand() % (end - start + 1) + start;
+    //    int random_x = std::rand() % (w- config.homeshape.width - config.homeshape.width + 1) + config.homeshape.width;
+    //    int random_y = std::rand() % (h- config.homeshape.hight - config.homeshape.hight + 1) + config.homeshape.hight;
+    //    p[i].x = random_x;
+    //    p[i].y = random_y;
+
+
+    //    int xGrid = config.RefX - config.RefX % config.gridSpacing;
+    //    int yGrid = config.RefY - config.RefX % config.gridSpacing;
+
+    //    //take the aligned point as the sign shape ref point
+    //    point signShapeRef = { random_x,random_y };
+
+    //    //create a sign shape
+    //    shape* psh = new Sign(pGame, signShapeRef);
+
+
+
+    //    psh->draw();
+
+    //}
+
+
+    //switch (gameLevel)
+    //{
+    ////case 1:
+
+    //}
+
+}
+
+
 /////////////////////////////////// class operAddSign  //////////////////
 
 operAddSign::operAddSign(game* r_pGame):operation(r_pGame)
 {
+
 }
 
 void operAddSign::Act()
@@ -245,9 +297,10 @@ void operINC::Act()
 {
     grid* pGrid = pGame->getGrid();
     shape* psh = pGrid->getActiveShape();
-    psh->resizeUp(1.5);
+    if (psh!=nullptr)
+        psh->resizeUp(1.5);
     pGrid->setActiveShape(psh);
-    pGame->getToolbar()->drawtoolbar(pGame);
+    //pGame->getToolbar()->drawtoolbar(pGame);
 }
 
 
@@ -337,3 +390,4 @@ void operSave::Act()
     pGame->getGrid()->SaveShapes(outfile);
     outfile.close();
 }
+
