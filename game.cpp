@@ -66,51 +66,81 @@ void game::randomGenerator()
 	
 	std::srand(static_cast<unsigned int>(std::time(0)));
 	window* pw = pWind;
-	int gameLevel = config.level;
+
+	int gameLevel = 3;// config.level;
+
 	int h = config.windHeight;
 	int w = config.windWidth;
-	const int maxNumberOfRandomShapes = 5;
+
+	const int maxNumberOfRandomShapes = 7;
 	point p[maxNumberOfRandomShapes];
-	for (int i = 0; i < maxNumberOfRandomShapes; i++)
+	for (int i = 0; i < 2*gameLevel-1; i++)
 	{
+		//create random ref point 
 		//int random_number = std::rand() % (end - start + 1) + start;
 		int random_x = std::rand() % (w - config.homeshape.width - config.homeshape.width + 1) + config.homeshape.width;
 		int random_y = std::rand() % (h - config.homeshape.hight - config.homeshape.hight + 1) + config.homeshape.hight;
-		p[i].x = random_x;
-		p[i].y = random_y;
-		int random_shape = std::rand() % (4 - 0 + 1) + 0;
 
+		// create random rotation angle
+		int angles[] = { 90, 180, 270, 360 };
+
+		// Generate a random index in the range 0 to 3
+		int randomIndex = std::rand() % 4;
+
+		// Select the random rotation angle
+		double randomRotationAngle = angles[randomIndex];
+
+		//create random size 
+		int   randomSize= std::rand() % (30 - 10 + 1) + 10; 
+
+		// which random shape
+		int random_shape = std::rand() % (4 - 0 + 1) + 0;
 
 		point ShapeRef = { random_x,random_y };
 
 		grid* pGrid = this->getGrid();
-		shape* psh0=nullptr;
+		shape* psh0 = nullptr;
 
 		//create a sign shape
+
 		switch (random_shape){
 			case 0:
-				psh0 = new Sign(this, ShapeRef, RED);
+				psh0 = new Sign(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
 				pGrid->addShape(psh0);
 				break;
 
 			case 1:
-				psh0 = new Rocket(this, ShapeRef, RED);
+				psh0 = new Rocket(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
 				pGrid->addShape(psh0);
 				break;
 
 			case 2:
-				 psh0 = new Home(this, ShapeRef, RED);
+				 psh0 = new Home(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				pGrid->addShape(psh0);
+				break;
 
-				pGrid->addShape(psh0);
-				break;
 			case 3:
-				 psh0 = new Watch(this, ShapeRef, RED);
+				 psh0 = new Watch(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
 				pGrid->addShape(psh0);
 				break;
+
 			case 4:
-				 psh0 = new Car(this, ShapeRef, RED);
+				 psh0 = new Car(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
 				pGrid->addShape(psh0);
 				break;
+
+			case 5:
+				psh0 = new IceCream(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				pGrid->addShape(psh0);
+				break;
+
+			case 6:
+				psh0 = new Fish(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				pGrid->addShape(psh0);
+
+				break;
+		
+		
 		}
 
 		shapesGrid->draw();
@@ -223,6 +253,10 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_SAVE:
 		op = new operSave(this);
 		printMessage("ITM_SAVE is pressed ");
+		break;
+	case ITM_LOAD:
+		op = new operLoad(this);
+		printMessage("ITM_LOAD is pressed ");
 		break;
 
 	case ITM_EXIT:

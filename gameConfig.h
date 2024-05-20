@@ -7,7 +7,7 @@
 __declspec(selectany) //This line to prevent "redefinition error"
 struct 		
 {
-	int	windWidth = 1200, windHeight = 600,	//Window width and height
+	int	windWidth = 1400, windHeight = 600,	//Window width and height
 		wx=5, wy=5,		
 
 	
@@ -147,6 +147,7 @@ enum toolbarItem //The items of the  toolbar (you should add more items)
 	ITM_SELECT,
 	 
 	ITM_SAVE,
+	ITM_LOAD,
 
 	ITM_EXIT,			//Exit item
 

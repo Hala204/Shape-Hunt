@@ -28,9 +28,11 @@ class Sign :public shape
 	double rotation_angle_sign;
 public:
 	Sign(game* r_pGame, point ref, color fillcolor);
+	Sign(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize);
 	virtual void draw() const;
 	virtual void Rotate();
-	virtual void resize(double factor);
+	virtual void Rotate(double rot);
+	virtual void resize(double randomSize);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
@@ -51,8 +53,11 @@ class IceCream :public shape
 	double current_rotation_ang;
 public:
 	IceCream(game* r_pGame, point ref, color fillcolor);
+	IceCream(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize);
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void Rotate(double rot);
+
 	virtual void resize(double factor);
 
 	virtual void resizeUp(double factor);
@@ -79,8 +84,10 @@ class Rocket :public shape
 
 public:
 	Rocket(game* r_pGame, point ref, color fillcolor);
+	Rocket(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize);
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void Rotate(double randomRotationAngle);
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
@@ -107,8 +114,11 @@ class Fish :public shape
 
 public:
 	Fish(game* r_pGame, point ref, color fillcolor);
+	Fish(game* r_pGame, point ref, color fillcolor,double randomRotationAngle,double randomSize);
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void Rotate(double rot);
+
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
@@ -132,8 +142,11 @@ class Car : public shape
 
 public:
 	Car(game* r_pGame, point ref, color fillcolor);
+	Car(game* r_pGame, point ref, color fillcolor, double randomRotationAngle,double  randomSize);
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void Rotate(double rot);
+
 	virtual void resizeDown(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resize(double factor);
@@ -155,8 +168,12 @@ class Watch :public shape
 
 public:
 	Watch(game* r_pGame, point ref, color fillcolor);
+	Watch(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize);
+
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void Rotate(double rot);
+
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
@@ -177,8 +194,11 @@ class Home :public shape
 
 public:
 	Home(game* r_pGame, point ref, color fillcolor);
+	Home(game* r_pGame, point ref, color fillcolor,double randomRotationAngle, double randomSize);
 	virtual void draw() const;
 	virtual void Rotate();
+	virtual void Rotate( double randomRotationAngle);
+
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);

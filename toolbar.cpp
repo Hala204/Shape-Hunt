@@ -41,6 +41,8 @@ toolbar::toolbar(game* pG)
 	toolbarItemImages[ITM_HINT] = "images\\toolbarItems\\hint.jpg";
 	toolbarItemImages[ITM_SELECT] = "images\\toolbarItems\\select.jpg";
 	toolbarItemImages[ITM_SAVE] = "images\\toolbarItems\\save.jpg";
+	toolbarItemImages[ITM_LOAD] = "images\\toolbarItems\\load.jpg";
+
 	toolbarItemImages[ITM_EXIT] = "images\\toolbarItems\\toolbar_Exit.jpg";
 
 	//TODO: Prepare image for each toolbar item and add it to the list

@@ -12,10 +12,61 @@ Sign::Sign(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), rota
 	base = new Rect(pGame, baseRef, config.sighShape.baseHeight, config.sighShape.baseWdth);
 }
 
+Sign::Sign(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize) :shape(r_pGame, ref), rotation_angle_sign(0)
+{
+	//calc the ref point of the Sign base and top rectangles relative to the Sign shape
+	point topRef = ref;	//top rect ref is the same as the sign
+	point baseRef = { ref.x, ref.y + config.sighShape.topHeight / 2 + config.sighShape.baseHeight / 2 };
+	top = new Rect(pGame, topRef, config.sighShape.topHeight, config.sighShape.topWdth);
+	base = new Rect(pGame, baseRef, config.sighShape.baseHeight, config.sighShape.baseWdth);
+
+	this->Rotate(randomRotationAngle);
+	this->resize(randomSize);
+}
+
 void Sign::draw() const
 {
 	base->draw();
 	top->draw();
+}
+
+void Sign::Rotate(double rot)
+{
+	base->Rotate();
+	top->Rotate();
+
+	point NewtopRef = RefPoint;
+
+	point NewbaseRef;
+
+	rotation_angle_sign += rot;
+	double s = rotation_angle_sign;
+	if (s >= 90 && s < 180)
+	{
+		NewbaseRef = { RefPoint.x - config.sighShape.topWdth / 2 - config.sighShape.baseHeight / 2 + 25 , RefPoint.y };
+	}
+
+	else if (s >= 180 && s < 270)
+	{
+		NewbaseRef = { RefPoint.x  , RefPoint.y - config.sighShape.topWdth / 2 - config.sighShape.baseHeight / 2 + 25 };
+
+	}
+	else if (s >= 270 && s < 360)
+	{
+		NewbaseRef = { RefPoint.x + config.sighShape.topWdth / 2 + config.sighShape.baseHeight / 2 - 25 , RefPoint.y };
+
+	}
+	else
+	{
+		NewbaseRef = { RefPoint.x  , RefPoint.y + config.sighShape.topWdth / 2 + config.sighShape.baseHeight / 2 - 25 };
+
+		rotation_angle_sign = 0;
+
+
+	}
+	base->setRefPoint(NewbaseRef);
+	top->setRefPoint(NewtopRef);
+
 }
 
 
@@ -132,6 +183,25 @@ Car::Car(game* c_pGame, point ref, color fillcolor) : shape(c_pGame, ref), curre
 	RightWheel = new circle(pGame, RightWheelRef, config.carShape.wheelRadius);
 }
 
+Car::Car(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize) : shape(r_pGame, ref), current_rotation_anggg(90)
+{
+	point BodyRef = ref;
+	point windowRef = { ref.x - config.carShape.bodyWidth / 4, ref.y - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 };
+	point roofRef = { ref.x + config.carShape.bodyWidth / 8, ref.y - config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2 };
+	point LeftWheelRef = { ref.x - config.carShape.bodyWidth / 4, ref.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
+	point RightWheelRef = { ref.x + config.carShape.bodyWidth / 4, ref.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
+	// Create the components of the car
+	Body = new Rect(pGame, BodyRef, config.carShape.bodyHeight, config.carShape.bodyWidth);
+	Roof = new Rect(pGame, roofRef, config.carShape.roofHeight, config.carShape.roofWidth);
+	Window = new Triangle(pGame, windowRef, config.carShape.windowSide, config.carShape.rotation);
+	LeftWheel = new circle(pGame, LeftWheelRef, config.carShape.wheelRadius);
+	RightWheel = new circle(pGame, RightWheelRef, config.carShape.wheelRadius);
+
+	this->Rotate(randomRotationAngle);
+	this->resize(randomSize);
+
+}
+
 void Car::draw() const
 {
 	Body->draw();
@@ -200,6 +270,65 @@ void Car::Rotate()
 	RightWheel->setRefPoint(RightWheelRef);
 
 
+}
+
+void Car::Rotate(double rot)
+{
+	Body->Rotate();
+	Roof->Rotate();
+	Window->Rotate();
+	LeftWheel->Rotate();
+	RightWheel->Rotate();
+
+
+	point BodyRef = RefPoint;
+	point RoofRef;
+	point WindowRef;
+	point LeftWheelRef;
+	point RightWheelRef;
+
+	current_rotation_anggg += rot;
+	double s = current_rotation_anggg;
+	if (s >= 180 && s < 270)
+	{
+		RoofRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.roofHeight / 2 , RefPoint.y + config.carShape.bodyWidth / 8 };
+		WindowRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.windowSide / 2 , RefPoint.y - config.carShape.bodyWidth / 4 };
+		LeftWheelRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius, RefPoint.y - config.carShape.bodyWidth / 4 };
+		RightWheelRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius, RefPoint.y + config.carShape.bodyWidth / 4 };
+
+	}
+
+	else if (s >= 270 && s < 360)
+	{
+		RoofRef = { RefPoint.x - config.carShape.bodyWidth / 8 , RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.roofHeight / 2 };
+		WindowRef = { RefPoint.x + config.carShape.bodyWidth / 4 , RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.windowSide / 2 };
+		LeftWheelRef = { RefPoint.x + config.carShape.bodyWidth / 4 , RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius };
+		RightWheelRef = { RefPoint.x - config.carShape.bodyWidth / 4 , RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.wheelRadius };
+
+	}
+	else if (s >= 360)
+	{
+		RoofRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2 , RefPoint.y - config.carShape.bodyWidth / 8 };
+		WindowRef = { RefPoint.x - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 , RefPoint.y + config.carShape.bodyWidth / 4 };
+		LeftWheelRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius, RefPoint.y + config.carShape.bodyWidth / 4 };
+		RightWheelRef = { RefPoint.x + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius, RefPoint.y - config.carShape.bodyWidth / 4 };
+		current_rotation_anggg = 0;
+
+	}
+	else
+	{
+		RoofRef = { RefPoint.x + config.carShape.bodyWidth / 8, RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.roofHeight / 2 };
+		WindowRef = { RefPoint.x - config.carShape.bodyWidth / 4, RefPoint.y - config.carShape.bodyHeight / 2 - config.carShape.windowSide / 2 };
+		LeftWheelRef = { RefPoint.x - config.carShape.bodyWidth / 4, RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
+		RightWheelRef = { RefPoint.x + config.carShape.bodyWidth / 4, RefPoint.y + config.carShape.bodyHeight / 2 + config.carShape.wheelRadius };
+
+
+	}
+	Body->setRefPoint(BodyRef);
+	Roof->setRefPoint(RoofRef);
+	Window->setRefPoint(WindowRef);
+	LeftWheel->setRefPoint(LeftWheelRef);
+	RightWheel->setRefPoint(RightWheelRef);
 }
 
 void Car::resize(double)
@@ -272,6 +401,17 @@ IceCream::IceCream(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, re
 	Cone = new Triangle(pGame, ConeRef, config.IceCreamShape._sidelength, current_rotation_ang);
 }
 
+IceCream::IceCream(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize) :shape(r_pGame, ref), current_rotation_ang(180)
+{
+	point ScoopRef = ref;  //scoop ref is the same as the ice cream shape ref
+	point ConeRef = { ref.x , ref.y + config.IceCreamShape._sidelength / 2 };
+	Scoop = new circle(pGame, ScoopRef, config.IceCreamShape._radius);
+	Cone = new Triangle(pGame, ConeRef, config.IceCreamShape._sidelength, current_rotation_ang);
+
+	this->Rotate(randomRotationAngle);
+	this->resize(randomSize);
+}
+
 void IceCream::draw() const
 {
 	Scoop->draw();
@@ -305,8 +445,38 @@ void IceCream::Rotate()
 	Cone->setRefPoint(NewConeRef);
 }
 
+void IceCream::Rotate(double rot)
+{
+	Scoop->Rotate();
+	Cone->Rotate();
+
+	point NewScoopRef = RefPoint;
+	point NewConeRef;
+
+	current_rotation_ang += rot;
+	double s = current_rotation_ang;
+	if (s >= 270 && s < 360)
+		NewConeRef = { RefPoint.x - config.IceCreamShape._sidelength / 2 ,RefPoint.y };
+	else if (s >= 360)
+	{
+		NewConeRef = { RefPoint.x ,RefPoint.y - config.IceCreamShape._sidelength / 2 };
+		current_rotation_ang = 0;
+	}
+	else if (s >= 90 && s < 180)
+		NewConeRef = { RefPoint.x + config.IceCreamShape._sidelength / 2,RefPoint.y };
+	else
+		NewConeRef = { RefPoint.x ,RefPoint.y + config.IceCreamShape._sidelength / 2 };
+
+	Scoop->setRefPoint(NewScoopRef);
+	Cone->setRefPoint(NewConeRef);
+}
+
 void IceCream::resize(double factor)
 {
+	if (factor > 1)
+		resizeUp(factor);
+	else
+		resizeDown(factor);
 }
 
 void IceCream::Save(ofstream& OutFile)
@@ -353,6 +523,21 @@ Rocket::Rocket(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), 
 
 }
 
+Rocket::Rocket(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize) :shape(r_pGame, ref), current_rotation_ang_(0)
+{
+	point BodyRef = ref;   //body ref is the same as the rocket shape ref
+	point TopRef = { ref.x, ref.y - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2 };
+	point BottomRight{ ref.x + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 , ref.y + config.RocketShape.bodyhght / 2 - 20 };
+	point BottomLeft{ ref.x - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 , ref.y + config.RocketShape.bodyhght / 2 - 20 };
+
+	Body = new Rect(pGame, BodyRef, config.RocketShape.bodyhght, config.RocketShape.bodywdth);
+	Top = new Triangle(pGame, TopRef, config.RocketShape.___sidelength, current_rotation_ang_);
+	_BottomLeft = new Triangle(pGame, BottomLeft, config.RocketShape.__sl, config.RocketShape.r_ang1);
+	_BottomRight = new Triangle(pGame, BottomRight, config.RocketShape.__sl, config.RocketShape.r_ang2);
+	this->Rotate(randomRotationAngle);
+	this->resize(randomSize);
+}
+
 void Rocket::draw() const
 {
 	Body->draw();
@@ -375,6 +560,55 @@ void Rocket::Rotate()
 	point NewBottomRightRef;
 	point  NewBottomLeftRef;
 	current_rotation_ang_ += 90;
+	double s = current_rotation_ang_;
+	if (s >= 90 && s < 180)
+	{
+		NewTopRef = { RefPoint.x + config.RocketShape.bodyhght / 2 + config.RocketShape.___sidelength / 2,RefPoint.y };
+		NewBottomRightRef = { RefPoint.x - config.RocketShape.bodyhght / 2 + 20 ,  RefPoint.y + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 };
+		NewBottomLeftRef = { RefPoint.x - config.RocketShape.bodyhght / 2 + 20 ,  RefPoint.y - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 };
+
+	}
+	else if (s >= 180 && s < 270)
+	{
+		NewTopRef = { RefPoint.x ,RefPoint.y + config.RocketShape.bodyhght / 2 + config.RocketShape.___sidelength / 2 };
+		NewBottomRightRef = { RefPoint.x - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 , RefPoint.y - config.RocketShape.bodyhght / 2 + 20 };
+		NewBottomLeftRef = { RefPoint.x + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 , RefPoint.y - config.RocketShape.bodyhght / 2 + 20 };
+
+	}
+	else if (s >= 270 && s < 360)
+	{
+		NewTopRef = { RefPoint.x - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2,RefPoint.y };
+		NewBottomRightRef = { RefPoint.x + config.RocketShape.bodyhght / 2 - 20 ,  RefPoint.y - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 };
+		NewBottomLeftRef = { RefPoint.x + config.RocketShape.bodyhght / 2 - 20 ,  RefPoint.y + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 };
+	}
+	else
+	{
+		NewTopRef = { RefPoint.x ,RefPoint.y - config.RocketShape.bodyhght / 2 - config.RocketShape.___sidelength / 2 };
+		NewBottomRightRef = { RefPoint.x + config.RocketShape.bodywdth / 2 + config.RocketShape.__sl / 2 , RefPoint.y + config.RocketShape.bodyhght / 2 - 20 };
+		NewBottomLeftRef = { RefPoint.x - config.RocketShape.bodywdth / 2 - config.RocketShape.__sl / 2 , RefPoint.y + config.RocketShape.bodyhght / 2 - 20 };
+		current_rotation_ang_ = 0;
+	}
+
+	Body->setRefPoint(NewBodyRef);
+	Top->setRefPoint(NewTopRef);
+	_BottomRight->setRefPoint(NewBottomRightRef);
+	_BottomLeft->setRefPoint(NewBottomLeftRef);
+
+}
+
+void Rocket::Rotate(double randomRotationAngle)
+{
+
+	Body->Rotate();
+	Top->Rotate();
+	_BottomLeft->Rotate();
+	_BottomRight->Rotate();
+
+	point NewBodyRef = RefPoint;
+	point NewTopRef;
+	point NewBottomRightRef;
+	point  NewBottomLeftRef;
+	current_rotation_ang_ += randomRotationAngle;
 	double s = current_rotation_ang_;
 	if (s >= 90 && s < 180)
 	{
@@ -460,6 +694,25 @@ Fish::Fish(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), curr
 
 }
 
+Fish::Fish(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize) :shape(r_pGame, ref), current_rotation_ang__(90)
+{
+	point FishBodyRef = ref;  //FishBody ref is the same as the Fish shape ref
+	point HeadRef = { ref.x + config.FishShape.Headsidelength , ref.y };
+	point TailRef = { ref.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5 ,ref.y };
+	point AboveFinsRef = { ref.x , ref.y + config.FishShape.fradius };
+	point BelowFinsRef = { ref.x , ref.y - config.FishShape.fradius };
+
+	FishBody = new circle(pGame, FishBodyRef, config.FishShape.fradius);
+	Tail = new Triangle(pGame, TailRef, config.FishShape.Tailsidelength, 90);
+	Head = new Triangle(pGame, HeadRef, config.FishShape.Headsidelength, 90);
+	AboveFins = new Rect(pGame, AboveFinsRef, config.FishShape.Finshght, config.FishShape.Finswdth);
+	BelowFins = new Rect(pGame, BelowFinsRef, config.FishShape.Finshght, config.FishShape.Finswdth);
+
+	this->Rotate(randomRotationAngle);
+	this->resize(randomSize);
+
+}
+
 void Fish::draw() const
 {
 	Head->draw();
@@ -531,8 +784,73 @@ void Fish::Rotate()
 
 }
 
+void Fish::Rotate(double rot)
+{
+	Head->Rotate();
+	AboveFins->Rotate();
+	BelowFins->Rotate();
+	Tail->Rotate();
+	FishBody->Rotate();
+
+	point FishBodyRef = RefPoint;
+	point AboveFinsRef;
+	point BelowFinsRef;
+	point HeadRef;
+	point TailRef;
+
+	//point HeadRef = { ref.x + config.FishShape.Headsidelength , ref.y };
+	//point TailRef = { ref.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5 ,ref.y };
+
+
+	current_rotation_ang__ += rot;
+	double s = current_rotation_ang__;
+	if (s >= 180 && s < 270)
+	{
+		AboveFinsRef = { RefPoint.x + config.FishShape.fradius,RefPoint.y };
+		BelowFinsRef = { RefPoint.x - config.FishShape.fradius,RefPoint.y };
+		HeadRef = { RefPoint.x , RefPoint.y + config.FishShape.Headsidelength };
+		TailRef = { RefPoint.x , RefPoint.y - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5 };
+	}
+	else if (s >= 270 && s < 360)
+	{
+		AboveFinsRef = { RefPoint.x ,RefPoint.y + config.FishShape.fradius };
+		BelowFinsRef = { RefPoint.x ,RefPoint.y - config.FishShape.fradius };
+		HeadRef = { RefPoint.x - config.FishShape.Headsidelength , RefPoint.y };
+		TailRef = { RefPoint.x + config.FishShape.fradius + config.FishShape.Tailsidelength / 2 - 5, RefPoint.y };
+
+	}
+	else if (s >= 360)
+	{
+		AboveFinsRef = { RefPoint.x + config.FishShape.fradius,RefPoint.y };
+		BelowFinsRef = { RefPoint.x - config.FishShape.fradius,RefPoint.y };
+		HeadRef = { RefPoint.x , RefPoint.y - config.FishShape.Headsidelength };
+		TailRef = { RefPoint.x , RefPoint.y + config.FishShape.fradius + config.FishShape.Tailsidelength / 2 - 5 };
+		current_rotation_ang__ = 0;
+
+	}
+	else
+	{
+		AboveFinsRef = { RefPoint.x ,RefPoint.y + config.FishShape.fradius };
+		BelowFinsRef = { RefPoint.x ,RefPoint.y - config.FishShape.fradius };
+		HeadRef = { RefPoint.x + config.FishShape.Headsidelength , RefPoint.y };
+		TailRef = { RefPoint.x - config.FishShape.fradius - config.FishShape.Tailsidelength / 2 + 5, RefPoint.y };
+
+	}
+
+	Head->setRefPoint(HeadRef);
+	AboveFins->setRefPoint(AboveFinsRef);
+	BelowFins->setRefPoint(BelowFinsRef);
+	Tail->setRefPoint(TailRef);
+	FishBody->setRefPoint(FishBodyRef);
+
+}
+
 void Fish::resize(double factor)
 {
+	if (factor > 1)
+		resizeUp(factor);
+	else
+		resizeDown(factor);
 }
 
 void Fish::Save(ofstream& OutFile)
@@ -575,11 +893,30 @@ Watch::Watch(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), cu
 	lowerTri = new Triangle(pGame, lowerTriRef, config.watchShape.sidelength, 180);
 }
 
+Watch::Watch(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize) :shape(r_pGame, ref), current_rotation_ang___(180)
+{
+	point watchRef = ref;
+	point upperRectRef = { ref.x, ref.y - config.watchShape.radious - config.watchShape.Rectwidth + 5 };
+	point lowerTriRef = { ref.x, ref.y + config.watchShape.radious + config.watchShape.sidelength - 35 };
+
+	watchbody = new circle(pGame, watchRef, config.watchShape.radious);
+	upperRect = new Rect(pGame, upperRectRef, config.watchShape.Rectwidth, config.watchShape.RectHeight);
+	lowerTri = new Triangle(pGame, lowerTriRef, config.watchShape.sidelength, 180);
+
+	this->Rotate(randomRotationAngle);
+	this->resize(randomSize);
+}
+
 
 
 
 void Watch::resize(double factor)
 {
+	if (factor > 1)
+		resizeUp(factor);
+
+	else
+		resizeDown(factor);
 }
 
 
@@ -628,6 +965,25 @@ Home::Home(game* r_pGame, point ref, color fillcolor) :shape(r_pGame, ref), curr
 	leftRect = new Rect(pGame, leftRectRef, config.homeshape.smallrectheight, config.homeshape.smallrectwidth);
 	circleup = new circle(pGame, circRef, config.homeshape.radius);
 	circleup1 = new circle(pGame, circRef1, config.homeshape.radius);
+
+}
+
+Home::Home(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, double randomSize) :shape(r_pGame, ref), current_rotation_angg(0)
+{
+	point bodyRef = { ref.x,ref.y };
+	point TriRef = { ref.x , ref.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
+	point leftRectRef = { ref.x - config.homeshape.width / 2 + 11, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
+	point circRef = { ref.x - config.homeshape.width / 2 - config.homeshape.radius + 15, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 };
+	point circRef1 = { ref.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };
+
+
+	HomeBody = new Rect(pGame, bodyRef, config.homeshape.hight, config.homeshape.width);
+	upperTri = new Triangle(pGame, TriRef, config.homeshape.sidelength, 0);
+	leftRect = new Rect(pGame, leftRectRef, config.homeshape.smallrectheight, config.homeshape.smallrectwidth);
+	circleup = new circle(pGame, circRef, config.homeshape.radius);
+	circleup1 = new circle(pGame, circRef1, config.homeshape.radius);
+	this->Rotate(randomRotationAngle);
+	this->resize(randomSize);
 
 }
 
@@ -704,6 +1060,70 @@ void Home::Rotate()
 	circleup1->setRefPoint(circleup1Ref);
 }
 
+void Home::Rotate(double randomRotationAngle)
+{
+	HomeBody->Rotate();
+	upperTri->Rotate();
+	leftRect->Rotate();
+	circleup->Rotate();
+	circleup1->Rotate();
+
+	point HomeBodyRef = RefPoint;
+	point upperTriRef;
+	point leftRectRef;
+	point circleupRef;
+	point circleup1Ref;
+
+	/*point TriRef = { ref.x , ref.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
+	point leftRectRef = { ref.x - config.homeshape.width / 2 + 11, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
+	point circRef = { ref.x - config.homeshape.width / 2 - config.homeshape.radius + 15, ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 };
+	point circRef1 = { ref.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  ref.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };*/
+
+
+	current_rotation_angg += randomRotationAngle;
+	double s = current_rotation_angg;
+	if (s >= 90 && s < 180)
+	{
+		upperTriRef = { RefPoint.x + config.homeshape.hight / 2 + config.homeshape.sidelength / 2 , RefPoint.y };
+		leftRectRef = { RefPoint.x + config.homeshape.hight / 2 + config.homeshape.smallrectheight / 2  , RefPoint.y - config.homeshape.width / 2 + 11 };
+		circleupRef = { RefPoint.x + config.homeshape.hight / 2 + config.homeshape.smallrectheight + 17 , RefPoint.y - config.homeshape.width / 2 - config.homeshape.radius + 15 };
+		circleup1Ref = { RefPoint.x + config.homeshape.hight / 2 + config.homeshape.smallrectheight + 35 , RefPoint.y - config.homeshape.width / 2 - config.homeshape.radius - 5 };
+
+
+	}
+	else if (s >= 180 && s < 270)
+	{
+		upperTriRef = { RefPoint.x , RefPoint.y + config.homeshape.hight / 2 + config.homeshape.sidelength / 2 };
+		leftRectRef = { RefPoint.x + config.homeshape.width / 2 - 11,RefPoint.y + config.homeshape.hight / 2 + config.homeshape.smallrectheight / 2 };
+		circleupRef = { RefPoint.x + config.homeshape.width / 2 + config.homeshape.radius - 15 , RefPoint.y + config.homeshape.hight / 2 + config.homeshape.smallrectheight + 17 };
+		circleup1Ref = { RefPoint.x + config.homeshape.width / 2 + config.homeshape.radius + 5 , RefPoint.y + config.homeshape.hight / 2 + config.homeshape.smallrectheight + 35 };
+
+
+	}
+	else if (s >= 270 && s < 360)
+	{
+		upperTriRef = { RefPoint.x - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 , RefPoint.y };
+		leftRectRef = { RefPoint.x - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2  , RefPoint.y + config.homeshape.width / 2 - 11 };
+		circleupRef = { RefPoint.x - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 , RefPoint.y + config.homeshape.width / 2 + config.homeshape.radius - 15 };
+		circleup1Ref = { RefPoint.x - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 , RefPoint.y + config.homeshape.width / 2 + config.homeshape.radius + 5 };
+
+	}
+	else
+	{
+		upperTriRef = { RefPoint.x , RefPoint.y - config.homeshape.hight / 2 - config.homeshape.sidelength / 2 };
+		leftRectRef = { RefPoint.x - config.homeshape.width / 2 + 11, RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight / 2 };
+		circleupRef = { RefPoint.x - config.homeshape.width / 2 - config.homeshape.radius + 15, RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 17 };
+		circleup1Ref = { RefPoint.x - config.homeshape.width / 2 - config.homeshape.radius - 5 ,  RefPoint.y - config.homeshape.hight / 2 - config.homeshape.smallrectheight - 35 };
+		current_rotation_angg = 0;
+	}
+
+	HomeBody->setRefPoint(HomeBodyRef);
+	upperTri->setRefPoint(upperTriRef);
+	leftRect->setRefPoint(leftRectRef);
+	circleup->setRefPoint(circleupRef);
+	circleup1->setRefPoint(circleup1Ref);
+}
+
 
 void Home::Save(ofstream& OutFile)
 {
@@ -737,7 +1157,12 @@ void Home::Load(ifstream& Infile)
 
 void Home::resize(double factor)
 {
+	if (factor > 1)
+		resizeUp(factor);
+	else
+		resizeDown(factor);
 }
+
 void Sign::resizeDown(double factor)
 {
 	point oldRefPoint = top->getRefPoint();
@@ -754,7 +1179,13 @@ void Sign::resizeDown(double factor)
 	base->setRefPoint(newRefBase);
 
 }
-void Sign::resize(double factor) {}
+void Sign::resize(double factor) {
+	if (factor > 1)
+		this->resizeDown(factor);
+	else
+		this->resizeUp(factor);
+
+}
 
 
 
@@ -999,6 +1430,11 @@ void Rocket::resizeDown(double factor) {
 
 void Rocket::resize(double factor)
 {
+	if (factor > 1)
+		this->resizeUp(factor);
+	else
+		this->resizeDown(factor);
+
 }
 
 
@@ -1155,6 +1591,50 @@ void Watch::Rotate()
 
 
 	current_rotation_ang___ += 90;
+	double s = current_rotation_ang___;
+
+	if (s >= 270 && s < 360)
+	{
+		upperRectRef = { RefPoint.x + config.watchShape.radious + config.watchShape.Rectwidth - 5 ,RefPoint.y };
+		lowerTriRef = { RefPoint.x - config.watchShape.radious - config.watchShape.sidelength + 35 ,RefPoint.y };
+	}
+	else if (s >= 360)
+	{
+		upperRectRef = { RefPoint.x ,RefPoint.y + config.watchShape.radious + config.watchShape.Rectwidth - 5 };
+		lowerTriRef = { RefPoint.x ,RefPoint.y - config.watchShape.radious - config.watchShape.sidelength + 35 };
+		current_rotation_ang___ = 0;
+
+	}
+	else if (s >= 90 && s < 180)
+	{
+		upperRectRef = { RefPoint.x - config.watchShape.radious - config.watchShape.Rectwidth + 5 ,RefPoint.y };
+		lowerTriRef = { RefPoint.x + config.watchShape.radious + config.watchShape.sidelength - 35 ,RefPoint.y };
+	}
+	else
+	{
+		upperRectRef = { RefPoint.x ,RefPoint.y - config.watchShape.radious - config.watchShape.Rectwidth + 5 };
+		lowerTriRef = { RefPoint.x ,RefPoint.y + config.watchShape.radious + config.watchShape.sidelength - 35 };
+	}
+
+	watchbody->setRefPoint(watchRef);
+	upperRect->setRefPoint(upperRectRef);
+	lowerTri->setRefPoint(lowerTriRef);
+
+
+}
+
+void Watch::Rotate(double rot)
+{
+	watchbody->Rotate();
+	upperRect->Rotate();
+	lowerTri->Rotate();
+
+	point watchRef = RefPoint;
+	point upperRectRef;
+	point lowerTriRef;
+
+
+	current_rotation_ang___ += rot;
 	double s = current_rotation_ang___;
 
 	if (s >= 270 && s < 360)
