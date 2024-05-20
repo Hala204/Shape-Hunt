@@ -16,6 +16,7 @@ toolbar::toolbar(game* pG)
 
 	//First prepare List of images for each toolbar item
 	//basic shapes
+	toolbarItemImages[ITM_START_GAME] = "images\\toolbarItems\\startgame.jpg";
 	toolbarItemImages[ITM_SIGN] = "images\\toolbarItems\\toolbar_Sign.jpg";
 	//toolbarItemImages[ITM_RECT] = "images\\toolbarItems\\toolbar_Rect.jpg";
 	//toolbarItemImages[ITM_CIRC] = "images\\toolbarItems\\toolbar_Circ.jpg";
@@ -89,11 +90,9 @@ void toolbar::drawStart(window* wind)
 
 }
 
-void toolbar::drawtoolbar(game* pG)
+void toolbar::drawtoolbar(window* pw)
 {
-	height = config.toolBarHeight;
-	width = config.windWidth;
-	this->pGame = pG;
+
 	window* pWind = pGame->getWind();
 
 	//You can draw the tool bar icons in any way you want.
