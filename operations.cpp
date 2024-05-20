@@ -30,7 +30,7 @@ void operAddSign::Act()
 	point signShapeRef = { xGrid,yGrid };
 
 	//create a sign shape
-	shape* psh = new Sign(pGame, signShapeRef);
+	shape* psh = new Sign(pGame, signShapeRef,RED);
 
 	//Add the shape to the grid
 	grid* pGrid = pGame->getGrid();
@@ -58,7 +58,7 @@ void operAddIceCream::Act()
     point IceCreamShapeRef = { xGrid,yGrid };
 
     //create an Ice Cream shape
-    shape* psh = new IceCream(pGame, IceCreamShapeRef);
+    shape* psh = new IceCream(pGame, IceCreamShapeRef,RED);
 
     //Add the shape to the grid
     grid* pGrid = pGame->getGrid();
@@ -85,7 +85,7 @@ void operAddRocket::Act()
     point RocketShapeRef = { xGrid,yGrid };
 
     //create a Rocket shape
-    shape* psh = new Rocket(pGame, RocketShapeRef);
+    shape* psh = new Rocket(pGame, RocketShapeRef,RED);
 
     //Add the shape to the grid
     grid* pGrid = pGame->getGrid();
@@ -113,7 +113,7 @@ void operAddFish::Act()
     point FishShapeRef = { xGrid,yGrid };
 
     //create a Fish shape
-    shape* psh = new Fish(pGame, FishShapeRef);
+    shape* psh = new Fish(pGame, FishShapeRef,RED);
 
     //Add the shape to the grid
     grid* pGrid = pGame->getGrid();
@@ -266,7 +266,7 @@ void operAddWatch::Act()
 
 
 
-    shape* psh = new Watch(pGame,watchRefPoint);
+    shape* psh = new Watch(pGame,watchRefPoint,RED);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
@@ -291,7 +291,7 @@ void operAddHome::Act()
 
 
 
-    shape* psh = new Home(pGame, homeRefPoint);
+    shape* psh = new Home(pGame, homeRefPoint,RED);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
@@ -311,7 +311,7 @@ operAddCar::operAddCar(game* r_pGame):operation(r_pGame)
 
 
 
-    shape* psh = new Car(pGame, homeRefPoint);
+    shape* psh = new Car(pGame, homeRefPoint,RED);
 
     grid* pGrid = pGame->getGrid();
     pGrid->setActiveShape(psh);
@@ -335,4 +335,25 @@ void operSave::Act()
     outfile << CurrentScore << "\n" << CurrentLevel << "\n" << RemainingLives << "\n";
     pGame->getGrid()->SaveShapes(outfile);
     outfile.close();
+}
+
+/////////////////////////// OperLoad //////////////////////////
+operLoad::operLoad(game* r_pGame) : operation(r_pGame)
+{
+}
+void operLoad::Act()
+{
+    ifstream infile;
+    infile.open("test.txt");
+    if (infile) {
+        int CurrentLevel, RemainingLives, CurrentScore;
+        infile >> CurrentScore >> CurrentLevel >> RemainingLives;
+        pGame->getToolbar()->setScore(CurrentScore);
+        pGame->getToolbar()->setLevel(CurrentLevel);
+        pGame->getToolbar()->setRemainingLives(RemainingLives);
+        pGame->getGrid()->LoadShapes(infile);
+        infile.close();
+    }
+    else
+        pGame->printMessage("There is no such file in the directory");
 }

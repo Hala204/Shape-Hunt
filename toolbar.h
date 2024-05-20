@@ -15,6 +15,9 @@ public:
 	toolbar(game* r_pGame);
 	toolbarItem getItemClicked(int x);	//handles clicks on toolbar icons, returns the "enum" of the clicekd item
 	void drawStart(window* wind);
+	void setLevel(int);
+	void setScore(int);
+	void setRemainingLives(int);
 	int getLevel() const;
 	int getScore() const;
 	int getRemainingLives() const;

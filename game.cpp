@@ -162,6 +162,13 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 		printMessage("ITM_ROTATE is pressed ");
 
 		break;
+
+	case ITM_LOAD:
+		op = new operLoad(this);
+	    printMessage("ITM_LOAD is pressed ");
+		break;
+
+
 	case ITM_DEL:
 		op = new operDEL(this);
 		printMessage("ITM_DELETE is pressed ");
