@@ -247,6 +247,7 @@ void operINC::Act()
     shape* psh = pGrid->getActiveShape();
     psh->resizeUp(1.5);
     pGrid->setActiveShape(psh);
+    pGame->getToolbar()->drawtoolbar(pGame);
 }
 
 
