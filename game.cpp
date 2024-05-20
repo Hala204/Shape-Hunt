@@ -78,23 +78,45 @@ void game::randomGenerator()
 		int random_y = std::rand() % (h - config.homeshape.hight - config.homeshape.hight + 1) + config.homeshape.hight;
 		p[i].x = random_x;
 		p[i].y = random_y;
+		int random_shape = std::rand() % (4 - 0 + 1) + 0;
 
 
-		point signShapeRef = { random_x,random_y };
+		point ShapeRef = { random_x,random_y };
+
+		grid* pGrid = this->getGrid();
+		shape* psh0=nullptr;
 
 		//create a sign shape
-		shape* psh = new Sign(this, signShapeRef,RED);
+		switch (random_shape){
+			case 0:
+				psh0 = new Sign(this, ShapeRef, RED);
+				pGrid->addShape(psh0);
+				break;
 
-		//Add the shape to the grid
-		grid* pGrid = this->getGrid();
+			case 1:
+				psh0 = new Rocket(this, ShapeRef, RED);
+				pGrid->addShape(psh0);
+				break;
 
-		pGrid->addShape(psh);
-		
+			case 2:
+				 psh0 = new Home(this, ShapeRef, RED);
+
+				pGrid->addShape(psh0);
+				break;
+			case 3:
+				 psh0 = new Watch(this, ShapeRef, RED);
+				pGrid->addShape(psh0);
+				break;
+			case 4:
+				 psh0 = new Car(this, ShapeRef, RED);
+				pGrid->addShape(psh0);
+				break;
+		}
 
 		shapesGrid->draw();
 		gameToolbar->drawStart(pWind);
 		gameToolbar->drawtoolbar(pWind);
-
+		
 	}
 
 

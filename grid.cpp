@@ -1,7 +1,7 @@
 #include "grid.h"
 #include "game.h"
 #include "gameConfig.h"
-
+#include <iostream>
 
 grid::grid(point r_uprleft, int wdth, int hght, game* pG)
 {
@@ -73,7 +73,11 @@ bool grid::addShape(shape* newShape)
 
 	//Here we assume that the above checks are passed
 	shapeList[shapeCount++] = newShape;
+
+
 	return true;
+	
+
 }
 
 void grid::setActiveShape(shape* actShape)
