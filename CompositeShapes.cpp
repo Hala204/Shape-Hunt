@@ -198,7 +198,7 @@ void Car::Rotate()
 
 }
 
-void Car::resize(double factor)
+void Car::resize(double)
 {
 	point newWindowRef;
 	newWindowRef.x = RefPoint.x + (-config.carShape.bodyWidth / 4)  ** config.carsize;
@@ -1216,7 +1216,7 @@ void Home::resizeUp(double factor) {
 void Home::resizeDown(double factor) {
 	point oldRefPoint = HomeBody->getRefPoint();
 
-	
+
 	HomeBody->resizeDown(factor);
 	upperTri->resizeDown(factor);
 	leftRect->resizeDown(factor);
@@ -1245,7 +1245,16 @@ void Home::resizeDown(double factor) {
 	circleup->setRefPoint(newCircRefPoint);
 	circleup1->setRefPoint(newCircRef1Point);
 
-
-
-
 }
+
+
+//void Home::resize(double factor)
+//{
+//
+//	HomeBody->resize(factor);
+//	upperTri->resize(factor);
+//	leftRect->resize(factor);
+//	circleup->resize(factor);
+//	circleup1->resize(factor);
+//
+//}
