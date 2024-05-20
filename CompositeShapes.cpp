@@ -86,6 +86,12 @@ void Sign::resizeUp(double factor)
 
 }
 
+void Sign::Save(ofstream& OutFile)
+{
+	OutFile << SIGN << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+}
+
+
 Car::Car(game* c_pGame, point ref) : shape(c_pGame, ref),current_rotation_anggg(90)
 {
 	point BodyRef = ref;
@@ -202,6 +208,11 @@ void Car::resize(double)
 	RightWheel->resize(*config.carsize);
 }
 
+void Car::Save(ofstream& OutFile)
+{
+	OutFile << CAR << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+}
+
 ////////////////////////////////////////////////////  class Ice Cream  ///////////////////////////////////////
 IceCream::IceCream(game* r_pGame, point ref) :shape(r_pGame, ref), current_rotation_ang(180)
 {
@@ -248,6 +259,12 @@ void IceCream::Rotate()
 void IceCream::resize(double factor)
 {
 }
+
+void IceCream::Save(ofstream& OutFile)
+{
+	OutFile << ICECREAM << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+}
+
 
 ////////////////////////////////////////////////////  class Rocket  ///////////////////////////////////////
 Rocket::Rocket(game* r_pGame, point ref) :shape(r_pGame, ref),current_rotation_ang_(0)
@@ -322,6 +339,10 @@ void Rocket::Rotate()
 	
 }
 
+void Rocket::Save(ofstream& OutFile)
+{
+	OutFile << ROCKET << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+}
 
 
 
@@ -417,6 +438,13 @@ void Fish::resize(double factor)
 {
 }
 
+void Fish::Save(ofstream& OutFile)
+{
+	OutFile << FISH << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+}
+
+
+
 Watch::Watch(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_ang___(180)
 {
 	point watchRef = ref;
@@ -434,6 +462,15 @@ Watch::Watch(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_ang_
 void Watch::resize(double factor)
 {
 }
+
+
+void Watch::Save(ofstream& OutFile)
+{
+	OutFile << WATCH << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+}
+
+
+
 
 Home::Home(game* r_pGame, point ref):shape(r_pGame, ref),current_rotation_angg(0)
 {
@@ -524,6 +561,13 @@ void Home::Rotate()
 	circleup->setRefPoint(circleupRef);
 	circleup1->setRefPoint(circleup1Ref);
 }
+
+
+void Home::Save(ofstream& OutFile)
+{
+	OutFile << HOME << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+}
+
 
 void Home::resize(double factor)
 {

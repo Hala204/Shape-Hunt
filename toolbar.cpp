@@ -86,3 +86,17 @@ void toolbar::drawStart(window* wind)
 	wind->DrawLine(0, height + 20, width + 20, height + 20);
 }
 
+int toolbar::getLevel() const 
+{
+	return Level;
+}
+
+int toolbar::getScore() const 
+{
+	return Score;
+}
+
+int toolbar::getRemainingLives() const
+{
+	return Lives;
+}

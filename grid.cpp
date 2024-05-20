@@ -85,9 +85,21 @@ shape* grid::getActiveShape()
 
 void grid::clearGrid()
 {
-	delete activeShape;
-	activeShape = nullptr;
-	this->draw();
+	if (activeShape != nullptr)
+	{
+		delete activeShape;
+		activeShape = nullptr;
+		this->draw();
+	}
 }
 
 
+void grid::SaveShapes(ofstream& OutFile)
+{
+	if (shapeCount > 0)
+		OutFile << shapeCount;
+	for (int i = 0; i < shapeCount; i++)
+	{
+		shapeList[i]->Save(OutFile);
+	}
+}

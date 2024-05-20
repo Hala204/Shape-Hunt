@@ -55,8 +55,8 @@ void game::createToolBar()
 void game::createGrid()
 {	
 	//calc some grid parameters
-	point gridUpperLeftPoint = { 0, config.toolBarHeight +20 };
-	int gridHeight = config.windHeight - config.toolBarHeight +20 - config.statusBarHeight;
+	point gridUpperLeftPoint = { 0, config.toolBarHeight };
+	int gridHeight = config.windHeight - config.toolBarHeight  - config.statusBarHeight;
 	//create the grid
 	shapesGrid = new grid(gridUpperLeftPoint, config.windWidth, gridHeight, this);
 }
@@ -148,9 +148,12 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 	case ITM_SELECT:
 		printMessage("ITM_SELECT is pressed ");
 		break;
+
 	case ITM_SAVE:
-		printMessage("ITM_DELETE is pressed ");
+		op = new operSave(this);
+		printMessage("ITM_SAVE is pressed ");
 		break;
+
 	case ITM_EXIT:
 		printMessage("ITM_DELETE is pressed ");
 		break;
@@ -228,6 +231,10 @@ grid* game::getGrid() const
 	return shapesGrid;
 }
 
+toolbar* game::getToolbar() const
+{
+	return gameToolbar;
+}
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -265,6 +272,7 @@ void game::run()
 	} while (clickedItem!=ITM_EXIT);
 }
 
+////////////////////////////////////////////////////////////////////////////
 
 
 
