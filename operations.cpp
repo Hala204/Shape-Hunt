@@ -386,7 +386,7 @@ void operSave::Act()
     int RemainingLives = pGame->getToolbar()->getRemainingLives();
     ofstream outfile;
     outfile.open("test.txt");
-    outfile << CurrentScore << "\n" << CurrentLevel << "\n" << RemainingLives << "\n";
+    outfile << CurrentScore << "\t" << CurrentLevel << "\t" << RemainingLives << "\n";
     pGame->getGrid()->SaveShapes(outfile);
     outfile.close();
 }
