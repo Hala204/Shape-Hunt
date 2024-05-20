@@ -27,14 +27,14 @@ class Sign :public shape
 	Rect* top;
 	double rotation_angle_sign;
 public:
-	Sign(game* r_pGame, point ref);
+	Sign(game* r_pGame, point ref, color fillcolor);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-
+	virtual void Load(ifstream& Infile) override;
 
 };
 
@@ -50,7 +50,7 @@ class IceCream :public shape
 	circle* Scoop;
 	double current_rotation_ang;
 public:
-	IceCream(game* r_pGame, point ref);
+	IceCream(game* r_pGame, point ref, color fillcolor);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
@@ -58,6 +58,7 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& Infile) override;
 
 
 };
@@ -77,13 +78,14 @@ class Rocket :public shape
 	double current_rotation_ang_;
 
 public:
-	Rocket(game* r_pGame, point ref);
+	Rocket(game* r_pGame, point ref, color fillcolor);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& Infile) override;
 
 };
 
@@ -104,13 +106,14 @@ class Fish :public shape
 	double current_rotation_ang__;
 
 public:
-	Fish(game* r_pGame, point ref);
+	Fish(game* r_pGame, point ref, color fillcolor);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& Infile) override;
 
 };
 
@@ -128,13 +131,14 @@ class Car : public shape
 	double current_rotation_anggg;
 
 public:
-	Car(game* r_pGame, point ref);
+	Car(game* r_pGame, point ref, color fillcolor);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resizeDown(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resize(double factor);
 	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& Infile) override;
 
 	
 
@@ -150,13 +154,14 @@ class Watch :public shape
 	double current_rotation_ang___;
 
 public:
-	Watch(game* r_pGame, point ref);
+	Watch(game* r_pGame, point ref, color fillcolor);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& Infile) override;
 
 };
 
@@ -171,12 +176,12 @@ class Home :public shape
 
 
 public:
-	Home(game* r_pGame, point ref);
+	Home(game* r_pGame, point ref, color fillcolor);
 	virtual void draw() const;
 	virtual void Rotate();
 	virtual void resize(double factor);
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-
+	virtual void Load(ifstream& Infile) override;
 };

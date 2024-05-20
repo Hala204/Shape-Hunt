@@ -79,6 +79,11 @@ void Rect::Save(ofstream& OutFile)
 	OutFile << RCT << "\n" << hght << "\n" << wdth;
 }
 
+void Rect::Load(ifstream& InFile)
+{
+	InFile >> hght >> wdth;
+}
+
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
 //TODO: Add implementation for class circle here
@@ -127,6 +132,11 @@ void circle::Rotate() //circle can't be rotated
 void circle::Save(ofstream& OutFile)
 {
 	OutFile << CRC << "\n" << rad << "\n";
+}
+
+void circle::Load(ifstream& InFile)
+{
+	InFile >> rad;
 }
 
 
@@ -209,4 +219,9 @@ void Triangle::resize(double factor)
 void Triangle::Save(ofstream& OutFile)
 {
 	OutFile << TRI << "\n" << sidelength << "\n" << rotation_angle;
+}
+
+void Triangle::Load(ifstream& InFile)
+{
+	InFile >> sidelength >> rotation_angle;
 }

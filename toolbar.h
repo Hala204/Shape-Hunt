@@ -19,6 +19,10 @@ public:
 	int getLevel() const;
 	int getScore() const;
 	int getRemainingLives() const;
+	void setLevel(int);
+	void setScore(int);
+	void setRemainingLives(int);
+
 
 };
 
