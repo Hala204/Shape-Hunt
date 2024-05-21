@@ -149,20 +149,104 @@ void operAddIceCream::Act()
 {
     window* pw = pGame->getWind();
 
+    //TODO:
+    // Don't allow adding new shape if there is alreday an active shape
 
     //align reference point to the nearest grid point
     int xGrid = config.RefX - config.RefX % config.gridSpacing;
     int yGrid = config.RefY - config.RefX % config.gridSpacing;
 
-    //take the aligned point as the ice cream shape ref point
-    point IceCreamShapeRef = { xGrid,yGrid };
+    //take the aligned point as the sign shape ref point
+    point signShapeRef = { xGrid,yGrid };
 
-    //create an Ice Cream shape
-    shape* psh = new IceCream(pGame, IceCreamShapeRef, RED);
 
-    //Add the shape to the grid
-    grid* pGrid = pGame->getGrid();
-    pGrid->setActiveShape(psh);
+    /////////////////////// move shapes 
+    pw->FlushKeyQueue();
+
+    pw->SetFont(20, BOLD, BY_NAME, "Arial");
+
+    pw->SetBuffering(true);
+
+    int RectULX = xGrid;
+    int RectULY = yGrid;
+
+    bool bDragging = false;
+
+
+    char cKeyData;
+    keytype kType;
+
+    // Loop until there escape is pressed
+    do
+    {
+
+
+        kType = pw->GetKeyPress(cKeyData);
+
+
+        //Create and draw the grid
+        //this->pGame->createGrid();
+        this->pGame->getGrid()->draw();	//draw the grid and all shapes it contains.
+
+        this->pGame->createToolBar();
+
+        //Create and clear the status bar
+        this->pGame->clearStatusBar();
+        this->pGame->printMessage("you can move the shape now to match the generated shapes, press exit when you finish ");
+
+
+
+
+
+        if (kType == ARROW)
+        {
+            switch (cKeyData)
+            {
+            case 2:	//Down Arrow
+                RectULY += 10;
+                break;
+            case 4:	//left Arrow
+                RectULX -= 10;
+                break;
+            case 6:	//Down Arrow
+                RectULX += 10;
+                break;
+            case 8:	//Down Arrow
+                RectULY -= 10;
+                break;
+            }
+
+        }
+
+
+
+        shape* psh = NULL;
+        if (psh)
+            delete psh;
+
+
+        psh = new IceCream(pGame, signShapeRef, RED);
+        grid* pGrid = pGame->getGrid();
+
+        pGrid->setActiveShape(psh);
+
+        signShapeRef.x = RectULX;
+
+        signShapeRef.y = RectULY;
+
+        pw->SetPen(BLUE);
+        pw->SetBrush(BLUE);
+        //this->pGame->getGrid()->draw();
+        pw->UpdateBuffer();
+        psh->draw();
+        this->pGame->getGrid()->draw();
+
+        //
+
+
+    } while (kType != ESCAPE);
+
+    pw->SetBuffering(false);
 
 }
 
@@ -176,20 +260,104 @@ void operAddRocket::Act()
 {
     window* pw = pGame->getWind();
 
+    //TODO:
+    // Don't allow adding new shape if there is alreday an active shape
 
     //align reference point to the nearest grid point
     int xGrid = config.RefX - config.RefX % config.gridSpacing;
     int yGrid = config.RefY - config.RefX % config.gridSpacing;
 
-    //take the aligned point as the Rocket shape ref point
-    point RocketShapeRef = { xGrid,yGrid };
+    //take the aligned point as the sign shape ref point
+    point signShapeRef = { xGrid,yGrid };
 
-    //create a Rocket shape
-    shape* psh = new Rocket(pGame, RocketShapeRef, RED);
 
-    //Add the shape to the grid
-    grid* pGrid = pGame->getGrid();
-    pGrid->setActiveShape(psh);
+    /////////////////////// move shapes 
+    pw->FlushKeyQueue();
+
+    pw->SetFont(20, BOLD, BY_NAME, "Arial");
+
+    pw->SetBuffering(true);
+
+    int RectULX = xGrid;
+    int RectULY = yGrid;
+
+    bool bDragging = false;
+
+
+    char cKeyData;
+    keytype kType;
+
+    // Loop until there escape is pressed
+    do
+    {
+
+
+        kType = pw->GetKeyPress(cKeyData);
+
+
+        //Create and draw the grid
+        //this->pGame->createGrid();
+        this->pGame->getGrid()->draw();	//draw the grid and all shapes it contains.
+
+        this->pGame->createToolBar();
+
+        //Create and clear the status bar
+        this->pGame->clearStatusBar();
+        this->pGame->printMessage("you can move the shape now to match the generated shapes, press exit when you finish ");
+
+
+
+
+
+        if (kType == ARROW)
+        {
+            switch (cKeyData)
+            {
+            case 2:	//Down Arrow
+                RectULY += 10;
+                break;
+            case 4:	//left Arrow
+                RectULX -= 10;
+                break;
+            case 6:	//Down Arrow
+                RectULX += 10;
+                break;
+            case 8:	//Down Arrow
+                RectULY -= 10;
+                break;
+            }
+
+        }
+
+
+
+        shape* psh = NULL;
+        if (psh)
+            delete psh;
+
+
+        psh = new Rocket(pGame, signShapeRef, RED);
+        grid* pGrid = pGame->getGrid();
+
+        pGrid->setActiveShape(psh);
+
+        signShapeRef.x = RectULX;
+
+        signShapeRef.y = RectULY;
+
+        pw->SetPen(BLUE);
+        pw->SetBrush(BLUE);
+        //this->pGame->getGrid()->draw();
+        pw->UpdateBuffer();
+        psh->draw();
+        this->pGame->getGrid()->draw();
+
+        //
+
+
+    } while (kType != ESCAPE);
+
+    pw->SetBuffering(false);
 
 }
 
@@ -204,20 +372,104 @@ void operAddFish::Act()
 {
     window* pw = pGame->getWind();
 
+    //TODO:
+    // Don't allow adding new shape if there is alreday an active shape
 
     //align reference point to the nearest grid point
     int xGrid = config.RefX - config.RefX % config.gridSpacing;
     int yGrid = config.RefY - config.RefX % config.gridSpacing;
 
-    //take the aligned point as the Fish shape ref point
-    point FishShapeRef = { xGrid,yGrid };
+    //take the aligned point as the sign shape ref point
+    point signShapeRef = { xGrid,yGrid };
 
-    //create a Fish shape
-    shape* psh = new Fish(pGame, FishShapeRef, RED);
 
-    //Add the shape to the grid
-    grid* pGrid = pGame->getGrid();
-    pGrid->setActiveShape(psh);
+    /////////////////////// move shapes 
+    pw->FlushKeyQueue();
+
+    pw->SetFont(20, BOLD, BY_NAME, "Arial");
+
+    pw->SetBuffering(true);
+
+    int RectULX = xGrid;
+    int RectULY = yGrid;
+
+    bool bDragging = false;
+
+
+    char cKeyData;
+    keytype kType;
+
+    // Loop until there escape is pressed
+    do
+    {
+
+
+        kType = pw->GetKeyPress(cKeyData);
+
+
+        //Create and draw the grid
+        //this->pGame->createGrid();
+        this->pGame->getGrid()->draw();	//draw the grid and all shapes it contains.
+
+        this->pGame->createToolBar();
+
+        //Create and clear the status bar
+        this->pGame->clearStatusBar();
+        this->pGame->printMessage("you can move the shape now to match the generated shapes, press exit when you finish ");
+
+
+
+
+
+        if (kType == ARROW)
+        {
+            switch (cKeyData)
+            {
+            case 2:	//Down Arrow
+                RectULY += 10;
+                break;
+            case 4:	//left Arrow
+                RectULX -= 10;
+                break;
+            case 6:	//Down Arrow
+                RectULX += 10;
+                break;
+            case 8:	//Down Arrow
+                RectULY -= 10;
+                break;
+            }
+
+        }
+
+
+
+        shape* psh = NULL;
+        if (psh)
+            delete psh;
+
+
+        psh = new Fish(pGame, signShapeRef, RED);
+        grid* pGrid = pGame->getGrid();
+
+        pGrid->setActiveShape(psh);
+
+        signShapeRef.x = RectULX;
+
+        signShapeRef.y = RectULY;
+
+        pw->SetPen(BLUE);
+        pw->SetBrush(BLUE);
+        //this->pGame->getGrid()->draw();
+        pw->UpdateBuffer();
+        psh->draw();
+        this->pGame->getGrid()->draw();
+
+        //
+
+
+    } while (kType != ESCAPE);
+
+    pw->SetBuffering(false);
 
 }
 
@@ -360,18 +612,104 @@ void operAddWatch::Act()
 {
     window* pw = pGame->getWind();
 
+    //TODO:
+    // Don't allow adding new shape if there is alreday an active shape
+
+    //align reference point to the nearest grid point
     int xGrid = config.RefX - config.RefX % config.gridSpacing;
-    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
 
-    point watchRefPoint = { xGrid, yGrid };
+    //take the aligned point as the sign shape ref point
+    point signShapeRef = { xGrid,yGrid };
+
+
+    /////////////////////// move shapes 
+    pw->FlushKeyQueue();
+
+    pw->SetFont(20, BOLD, BY_NAME, "Arial");
+
+    pw->SetBuffering(true);
+
+    int RectULX = xGrid;
+    int RectULY = yGrid;
+
+    bool bDragging = false;
+
+
+    char cKeyData;
+    keytype kType;
+
+    // Loop until there escape is pressed
+    do
+    {
+
+
+        kType = pw->GetKeyPress(cKeyData);
+
+
+        //Create and draw the grid
+        //this->pGame->createGrid();
+        this->pGame->getGrid()->draw();	//draw the grid and all shapes it contains.
+
+        this->pGame->createToolBar();
+
+        //Create and clear the status bar
+        this->pGame->clearStatusBar();
+        this->pGame->printMessage("you can move the shape now to match the generated shapes, press exit when you finish ");
 
 
 
 
-    shape* psh = new Watch(pGame, watchRefPoint, RED);
 
-    grid* pGrid = pGame->getGrid();
-    pGrid->setActiveShape(psh);
+        if (kType == ARROW)
+        {
+            switch (cKeyData)
+            {
+            case 2:	//Down Arrow
+                RectULY += 10;
+                break;
+            case 4:	//left Arrow
+                RectULX -= 10;
+                break;
+            case 6:	//Down Arrow
+                RectULX += 10;
+                break;
+            case 8:	//Down Arrow
+                RectULY -= 10;
+                break;
+            }
+
+        }
+
+
+
+        shape* psh = NULL;
+        if (psh)
+            delete psh;
+
+
+        psh = new Watch(pGame, signShapeRef, RED);
+        grid* pGrid = pGame->getGrid();
+
+        pGrid->setActiveShape(psh);
+
+        signShapeRef.x = RectULX;
+
+        signShapeRef.y = RectULY;
+
+        pw->SetPen(BLUE);
+        pw->SetBrush(BLUE);
+        //this->pGame->getGrid()->draw();
+        pw->UpdateBuffer();
+        psh->draw();
+        this->pGame->getGrid()->draw();
+
+        //
+
+
+    } while (kType != ESCAPE);
+
+    pw->SetBuffering(false);
 }
 
 
@@ -384,15 +722,104 @@ void operAddHome::Act()
 {
     window* pw = pGame->getWind();
 
+    //TODO:
+    // Don't allow adding new shape if there is alreday an active shape
+
+    //align reference point to the nearest grid point
     int xGrid = config.RefX - config.RefX % config.gridSpacing;
-    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
 
-    point homeRefPoint = { xGrid, yGrid };
+    //take the aligned point as the sign shape ref point
+    point signShapeRef = { xGrid,yGrid };
 
-    shape* psh = new Home(pGame, homeRefPoint, RED);
 
-    grid* pGrid = pGame->getGrid();
-    pGrid->setActiveShape(psh);
+    /////////////////////// move shapes 
+    pw->FlushKeyQueue();
+
+    pw->SetFont(20, BOLD, BY_NAME, "Arial");
+
+    pw->SetBuffering(true);
+
+    int RectULX = xGrid;
+    int RectULY = yGrid;
+
+    bool bDragging = false;
+
+
+    char cKeyData;
+    keytype kType;
+
+    // Loop until there escape is pressed
+    do
+    {
+
+
+        kType = pw->GetKeyPress(cKeyData);
+
+
+        //Create and draw the grid
+        //this->pGame->createGrid();
+        this->pGame->getGrid()->draw();	//draw the grid and all shapes it contains.
+
+        this->pGame->createToolBar();
+
+        //Create and clear the status bar
+        this->pGame->clearStatusBar();
+        this->pGame->printMessage("you can move the shape now to match the generated shapes, press exit when you finish ");
+
+
+
+
+
+        if (kType == ARROW)
+        {
+            switch (cKeyData)
+            {
+            case 2:	//Down Arrow
+                RectULY += 10;
+                break;
+            case 4:	//left Arrow
+                RectULX -= 10;
+                break;
+            case 6:	//Down Arrow
+                RectULX += 10;
+                break;
+            case 8:	//Down Arrow
+                RectULY -= 10;
+                break;
+            }
+
+        }
+
+
+
+        shape* psh = NULL;
+        if (psh)
+            delete psh;
+
+
+        psh = new Home(pGame, signShapeRef, RED);
+        grid* pGrid = pGame->getGrid();
+
+        pGrid->setActiveShape(psh);
+
+        signShapeRef.x = RectULX;
+
+        signShapeRef.y = RectULY;
+
+        pw->SetPen(BLUE);
+        pw->SetBrush(BLUE);
+        //this->pGame->getGrid()->draw();
+        pw->UpdateBuffer();
+        psh->draw();
+        this->pGame->getGrid()->draw();
+
+        //
+
+
+    } while (kType != ESCAPE);
+
+    pw->SetBuffering(false);
 
 }
 
@@ -400,19 +827,104 @@ operAddCar::operAddCar(game* r_pGame) :operation(r_pGame)
 {
     window* pw = pGame->getWind();
 
+    //TODO:
+    // Don't allow adding new shape if there is alreday an active shape
+
+    //align reference point to the nearest grid point
     int xGrid = config.RefX - config.RefX % config.gridSpacing;
-    int yGrid = config.RefY - config.RefY % config.gridSpacing;
+    int yGrid = config.RefY - config.RefX % config.gridSpacing;
 
-    point homeRefPoint = { xGrid, yGrid };
-
-
-
+    //take the aligned point as the sign shape ref point
+    point signShapeRef = { xGrid,yGrid };
 
 
-    shape* psh = new Car(pGame, homeRefPoint, RED);
+    /////////////////////// move shapes 
+    pw->FlushKeyQueue();
 
-    grid* pGrid = pGame->getGrid();
-    pGrid->setActiveShape(psh);
+    pw->SetFont(20, BOLD, BY_NAME, "Arial");
+
+    pw->SetBuffering(true);
+
+    int RectULX = xGrid;
+    int RectULY = yGrid;
+
+    bool bDragging = false;
+
+
+    char cKeyData;
+    keytype kType;
+
+    // Loop until there escape is pressed
+    do
+    {
+
+
+        kType = pw->GetKeyPress(cKeyData);
+
+
+        //Create and draw the grid
+        //this->pGame->createGrid();
+        this->pGame->getGrid()->draw();	//draw the grid and all shapes it contains.
+
+        this->pGame->createToolBar();
+
+        //Create and clear the status bar
+        this->pGame->clearStatusBar();
+        this->pGame->printMessage("you can move the shape now to match the generated shapes, press exit when you finish ");
+
+
+
+
+
+        if (kType == ARROW)
+        {
+            switch (cKeyData)
+            {
+            case 2:	//Down Arrow
+                RectULY += 10;
+                break;
+            case 4:	//left Arrow
+                RectULX -= 10;
+                break;
+            case 6:	//Down Arrow
+                RectULX += 10;
+                break;
+            case 8:	//Down Arrow
+                RectULY -= 10;
+                break;
+            }
+
+        }
+
+
+
+        shape* psh = NULL;
+        if (psh)
+            delete psh;
+
+
+        psh = new Car(pGame, signShapeRef, RED);
+        grid* pGrid = pGame->getGrid();
+
+        pGrid->setActiveShape(psh);
+
+        signShapeRef.x = RectULX;
+
+        signShapeRef.y = RectULY;
+
+        pw->SetPen(BLUE);
+        pw->SetBrush(BLUE);
+        //this->pGame->getGrid()->draw();
+        pw->UpdateBuffer();
+        psh->draw();
+        this->pGame->getGrid()->draw();
+
+        //
+
+
+    } while (kType != ESCAPE);
+
+    pw->SetBuffering(false);
 }
 
 void operAddCar::Act()
