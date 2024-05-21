@@ -19,3 +19,7 @@ point shape::getRefPoint() const
 {
 	return RefPoint;
 }
+int shape::getrotated() const 
+{
+	return rotated;
+}

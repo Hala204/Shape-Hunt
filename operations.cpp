@@ -398,10 +398,10 @@ operLoad::operLoad(game* r_pGame) : operation(r_pGame)
 void operLoad::Act()
 {
     ifstream infile;
-    infile.open("text.txt");
-    if (infile) {
-        int CurrentLevel, RemainingLives, CurrentScore;
-        infile >> CurrentScore >> CurrentLevel >> RemainingLives;
+    infile.open("test.txt");
+    int CurrentLevel, RemainingLives, CurrentScore;
+    if (infile >> CurrentScore >> CurrentLevel >> RemainingLives) 
+    {
         pGame->getToolbar()->setScore(CurrentScore);
         pGame->getToolbar()->setLevel(CurrentLevel);
         pGame->getToolbar()->setRemainingLives(RemainingLives);

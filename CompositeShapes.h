@@ -36,7 +36,6 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
 
 };
 
@@ -63,7 +62,6 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
 
 
 };
@@ -92,7 +90,6 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
 
 };
 
@@ -123,7 +120,6 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
 
 };
 
@@ -151,7 +147,6 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resize(double factor);
 	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
 
 
 
@@ -178,7 +173,6 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
 
 };
 
@@ -203,5 +197,4 @@ public:
 	virtual void resizeUp(double factor);
 	virtual void resizeDown(double factor);
 	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& Infile) override;
 };

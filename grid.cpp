@@ -127,30 +127,60 @@ void grid::LoadShapes(ifstream& InFile)
 		color clr(red, green, blue);
 		shape* sh = nullptr;
 
-		switch (shapetype)
-		{
-		case SIGN:
-			sh = new Sign(pGame, pnt, clr);
-			break;
-		case CAR:
-			sh = new Car(pGame, pnt, clr);
-			break;
-		case HOME:
-			sh = new Home(pGame, pnt, clr);
-			break;
-		case ICECREAM:
-			sh = new IceCream(pGame, pnt, clr);
-			break;
-		case ROCKET:
-			sh = new Rocket(pGame, pnt, clr);
-			break;
-		case FISH:
-			sh = new Fish(pGame, pnt, clr);
-			break;
-		case WATCH:
-			sh = new Watch(pGame, pnt, clr);
-		}
-		sh->Load(InFile);
-		addShape(sh);
+		int _x = x;
+		int _y = y;
+		point ShapeRef = { _x,_y };
+		grid* pGrid = this->pGame->getGrid();
+		shape* psh0 = nullptr;
+
+			switch (shapetype) 
+			{
+			case SIGN:
+				psh0 = new Sign(pGame, pnt, clr);
+				pGrid->addShape(psh0);
+				break;
+
+			case ROCKET:
+				psh0 = new Rocket(pGame, pnt, clr);
+				pGrid->addShape(psh0);
+				break;
+
+			case HOME:
+				psh0 = new Home(pGame, pnt, clr);
+				pGrid->addShape(psh0);
+				break;
+
+			case WATCH:
+				psh0 = new Watch(pGame, pnt, clr);
+				pGrid->addShape(psh0);
+				break;
+
+			case CAR:
+				psh0 = new Car(pGame, pnt, clr);
+				pGrid->addShape(psh0);
+				break;
+
+			case ICECREAM:
+				psh0 = new IceCream(pGame, pnt, clr);
+				pGrid->addShape(psh0);
+				break;
+
+			case FISH:
+				psh0 = new Fish(pGame, pnt, clr);
+				pGrid->addShape(psh0);
+
+				break;
+
+
+			}
+
+			this->pGame->getGrid()->draw();
+			this->pGame->getToolbar()->drawStart(this->pGame->getWind());
+			this->pGame->getToolbar()->drawtoolbar(this->pGame->getWind());
+
+		
 	}
+
+
+
 }
