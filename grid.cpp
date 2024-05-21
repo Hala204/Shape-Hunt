@@ -184,3 +184,67 @@ void grid::LoadShapes(ifstream& InFile)
 
 
 }
+
+
+void grid::handleMatch() {
+	// Loop through shapes to find if the click is inside any shape
+	for (int i = 0; i < shapeCount; i++) {
+		// Check if the active shape and the clicked shape match
+		if (activeShape->Match(shapeList[i])) {
+			// Match found, print message and delete both shapes
+			pGame->printMessage("Match Successed, KEEP UP THE GOOD WORK!");
+			delete activeShape;
+			delete shapeList[i];
+			activeShape = nullptr;
+			shapeList[i] = nullptr;
+			draw();
+			pGame->incrementScore(2);// Redraw the grid without the deleted shapes
+			shapeCount--;
+			break;
+		}
+		else {
+			// Shapes don't match, print message
+			pGame->printMessage("Match Failed, TRY AFAIN!");
+			pGame->decrementScore(1);
+		}
+	}
+	if (shapeCount == 0) {
+
+		pGame->setLevel(pGame->getLevel() + 1);
+		pGame->clearStatusBar();
+
+		pGame->printMessage("You moved up to level" + to_string(pGame->getLevel()));
+
+	}
+
+}
+void grid::selectgamelevel()
+{
+
+	pGame->printMessage("please Enter your game level");
+	string slevel = pGame->getSrting();
+	while (!checkdigit(slevel)) {
+		pGame->printMessage("please Enter a valid number");
+		slevel = pGame->getSrting();
+	}
+
+	int level = stoi(slevel);
+	if (level == 0) {
+		pGame->printMessage("please Enter a valid number");
+		slevel = pGame->getSrting();
+	}
+	else
+		pGame->setLevel(level);
+
+}
+
+bool grid::checkdigit(string s)
+{
+	for (int i = 0; i < s.size(); i++) {
+		if (isdigit(s[i]))
+			return true;
+		else
+			return false;
+
+	}
+}

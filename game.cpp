@@ -337,6 +337,45 @@ toolbar* game::getToolbar() const
 	return gameToolbar;
 }
 
+void game::setScore(int newScore)
+{
+	this->score = newScore;
+	pWind->SetBrush(BLACK);
+	pWind->SetPen(BLACK);
+	pWind->SetFont(20, PLAIN, ROMAN);
+	pWind->DrawString(config.windWidth / 2, config.toolBarHeight, "Score : " + to_string(config.Score));
+}
+
+void game::setLevel(int newLevel)
+{
+	this->level = newLevel;
+	pWind->SetBrush(BLACK);
+	pWind->SetPen(BLACK);
+	pWind->SetFont(20, PLAIN, ROMAN);
+	pWind->DrawString(config.windWidth - 100, config.toolBarHeight, "Level : " + to_string(config.level));
+
+}
+void game::setLives(int newLives)
+{
+	this->level = newLives;
+	pWind->SetBrush(BLACK);
+	pWind->SetPen(BLACK);
+	pWind->SetFont(20, PLAIN, ROMAN);
+	pWind->DrawString(5, config.toolBarHeight, "Lives : " + to_string(config.lives));
+
+}
+
+
+
+void game::incrementScore(int num)
+{
+	score += num;
+}
+
+void game::decrementScore(int num)
+{
+	score -= num;
+}
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -345,12 +384,28 @@ void game::run()
 	//This function reads the position where the user clicks to determine the desired operation
 	int x, y;
 	bool isExit = false;
+	char keyPressed;
 
 	//Change the title
 	pWind->ChangeTitle("- - - - - - - - - - SHAPE HUNT (CIE 101 / CIE202 - project) - - - - - - - - - -");
 	toolbarItem clickedItem=ITM_CNT;
 	do
 	{
+
+		pWind->GetKeyPress(keyPressed);
+		if (shapesGrid->getActiveShape() != nullptr) {
+			if (keyPressed) {
+				if (keyPressed == 32) // ASCII for space bar
+				{
+					shapesGrid->handleMatch();
+				}
+				//printMessage("Ready...");
+				//1- Get user click
+			}
+		}
+
+
+
 		//printMessage("Ready...");
 		//1- Get user click
 		pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click

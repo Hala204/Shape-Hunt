@@ -34,5 +34,10 @@ public:
 	void setActiveShape(shape* actShape);
 	shape* getActiveShape();
 	void clearGrid();
+	void selectgamelevel();
+	bool checkdigit(string s);
+	//shape* getShapeList();
+	int getShapeCount() const;
+	void handleMatch();
 
 };

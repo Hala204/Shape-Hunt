@@ -69,6 +69,15 @@ void Sign::Rotate(double rot)
 	top->setRefPoint(NewtopRef);
 
 }
+bool Sign::Match(shape* sh)
+{
+	Sign* sign = dynamic_cast<Sign*> (sh);
+	if (sign) {
+		return base->Match(sign->base) && top->Match(sign->top);
+	}
+	return false;
+
+}
 
 
 void Sign::Rotate()
@@ -345,6 +354,14 @@ void Car::Save(ofstream& OutFile)
 {
 	OutFile << "Car" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
+bool Car::Match(shape* sh)
+{
+	Car* car = dynamic_cast<Car*> (sh);
+	if (car) {
+		return Body->Match(car->Body) && Roof->Match(car->Roof) && Window->Match(car->Window) && LeftWheel->Match(car->LeftWheel) && RightWheel->Match(car->RightWheel);
+	}
+	return false;
+}
 
 
 
@@ -442,7 +459,15 @@ void IceCream::Save(ofstream& OutFile)
 	OutFile << "Ice Cream" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
+bool IceCream::Match(shape* sh)
+{
+	IceCream* ice = dynamic_cast<IceCream*> (sh);
+	if (ice) {
+		return Scoop->Match(ice->Scoop) && Cone->Match(ice->Cone);
+	}
+	return false;
 
+}
 
 
 ////////////////////////////////////////////////////  class Rocket  ///////////////////////////////////////
@@ -587,7 +612,15 @@ void Rocket::Save(ofstream& OutFile)
 	OutFile << "Rocket" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
+bool Rocket::Match(shape* sh)
+{
+	Rocket* rocket = dynamic_cast<Rocket*> (sh);
+	if (rocket) {
+		return Body->Match(rocket->Body) && Top->Match(rocket->Top) && _BottomLeft->Match(rocket->_BottomLeft) && _BottomRight->Match(rocket->_BottomRight);
+	}
+	return false;
 
+}
 
 
 
@@ -771,6 +804,15 @@ void Fish::Save(ofstream& OutFile)
 {
 	OutFile << "Fish" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
+bool Fish::Match(shape* sh)
+{
+	Fish* fish = dynamic_cast<Fish*> (sh);
+	if (fish) {
+		return Head->Match(fish->Head) && AboveFins->Match(fish->AboveFins) && BelowFins->Match(fish->BelowFins) && Tail->Match(fish->Tail) && FishBody->Match(fish->FishBody);
+	}
+	return false;
+
+}
 
 
 
@@ -819,6 +861,16 @@ void Watch::Save(ofstream& OutFile)
 
 
 
+bool Watch::Match(shape* sh)
+{
+	Watch* WATCH = dynamic_cast<Watch*> (sh);
+	if (WATCH)
+	{
+		return watchbody->Match(WATCH->watchbody) && lowerTri->Match(WATCH->lowerTri) && upperRect->Match(WATCH->upperRect);
+	}
+	return false;
+
+}
 
 
 
@@ -1009,6 +1061,19 @@ void Home::resize(double factor)
 	else
 		resizeDown(factor);
 }
+
+
+bool Home::Match(shape* sh)
+{
+	Home* home = dynamic_cast<Home*> (sh);
+	if (home)
+	{
+		return HomeBody->Match(home->HomeBody) && upperTri->Match(home->upperTri) && leftRect->Match(home->leftRect) && circleup->Match(circleup) && circleup1->Match(home->circleup1);
+	}
+	return false;
+
+}
+
 
 void Sign::resizeDown(double factor)
 {

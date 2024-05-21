@@ -46,6 +46,7 @@ public:
 	virtual void resizeDown(double factor) = 0;
 	virtual void Save(ofstream& OutFile) = 0;
 	point getRefPoint() const;
+	virtual bool Match(shape* sh) = 0;
 								  
 							  
 	//-- The following functions should be supported by the shape class

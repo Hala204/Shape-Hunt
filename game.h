@@ -17,6 +17,9 @@ class game
 	
 	window* pWind;	//Pointer to the CMU graphics window
 	grid* shapesGrid;
+	int level;
+	int score;
+	int lives;
 
 public:
 	game();
@@ -38,6 +41,19 @@ public:
 
 	//creates an operation according to the toolbar item clicked
 	operation* createRequiredOperation(toolbarItem clickedItem);
+
+	int getLevel() const { return level; }
+	int getScore() const { return score; }
+	int getLives() const { return lives; }
+
+
+	void setLevel(int newLevel);
+
+	void setScore(int newScore);
+
+	void setLives(int newLives);
+	void incrementScore(int num);
+	void decrementScore(int num);
 
 
 

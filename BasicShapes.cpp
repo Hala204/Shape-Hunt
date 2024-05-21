@@ -79,6 +79,15 @@ void Rect::Save(ofstream& OutFile)
 	OutFile << RCT << "\n" << hght << "\n" << wdth;
 }
 
+bool Rect::Match(shape* sh)
+{
+	Rect* rec = dynamic_cast<Rect*> (sh);
+	if (rec) {
+		return RefPoint.x == rec->getRefPoint().x && RefPoint.y == rec->getRefPoint().y && hght == rec->hght && wdth == rec->wdth;
+	}
+	return false;
+}
+
 
 
 ////////////////////////////////////////////////////  class circle  ///////////////////////////////////////
@@ -130,7 +139,14 @@ void circle::Save(ofstream& OutFile)
 	OutFile << CRC << "\n" << rad << "\n";
 }
 
-
+bool circle::Match(shape* sh)
+{
+	circle* cir = dynamic_cast<circle*> (sh);
+	if (cir) {
+		return RefPoint.x == cir->getRefPoint().x && RefPoint.y == cir->getRefPoint().y && rad == cir->rad;
+	}
+	return false;
+}
 ////////////////////////////////////////////////////  class triangle  ///////////////////////////////////////
 //TODO: Add implementation for class triangle here
 Triangle::Triangle(game* r_pGame, point ref, int sl, double ra) :shape(r_pGame, ref)
@@ -210,4 +226,13 @@ void Triangle::resize(double factor)
 void Triangle::Save(ofstream& OutFile)
 {
 	OutFile << TRI << "\n" << sidelength << "\n" << rotation_angle;
+}
+
+bool Triangle::Match(shape* sh)
+{
+	Triangle* tri = dynamic_cast<Triangle*> (sh);
+	if (tri) {
+		return RefPoint.x == tri->getRefPoint().x && RefPoint.y == tri->getRefPoint().y && sidelength == tri->sidelength;
+	}
+	return false;
 }
