@@ -5,6 +5,9 @@
 
 game::game()
 {
+	this->level=1 ;
+	this->score = 0;
+	this->lives = 5;
 
 	//Create the main window
 	createWind(config.windWidth, config.windHeight, config.wx, config.wy);
@@ -19,6 +22,16 @@ game::game()
 
 	//Create and clear the status bar
 	clearStatusBar();
+}
+
+void game::cleanUp() {
+
+
+	if (shapesGrid != nullptr)
+	{
+		delete shapesGrid;
+		shapesGrid  = nullptr;
+	}
 }
 
 game::~game()
@@ -66,89 +79,89 @@ void game::randomGenerator()
 	
 	std::srand(static_cast<unsigned int>(std::time(0)));
 	window* pw = pWind;
+	//for (int i = 0; i < 4; i++) {
+		int gameLevel = this->level;
 
-	int gameLevel = 3;// config.level;
+		int h = config.windHeight;
+		int w = config.windWidth;
 
-	int h = config.windHeight;
-	int w = config.windWidth;
+		const int maxNumberOfRandomShapes = 7;
+		point p[maxNumberOfRandomShapes];
+		for (int i = 0; i < 2 * gameLevel - 1; i++)
+		{
+			//create random ref point 
+			//int random_number = std::rand() % (end - start + 1) + start;
+			int random_x = std::rand() % (w - config.homeshape.width - config.homeshape.width + 1) + config.homeshape.width;
+			int random_y = std::rand() % (h - config.homeshape.hight - config.homeshape.hight + 1) + config.homeshape.hight;
 
-	const int maxNumberOfRandomShapes = 7;
-	point p[maxNumberOfRandomShapes];
-	for (int i = 0; i < 2*gameLevel-1; i++)
-	{
-		//create random ref point 
-		//int random_number = std::rand() % (end - start + 1) + start;
-		int random_x = std::rand() % (w - config.homeshape.width - config.homeshape.width + 1) + config.homeshape.width;
-		int random_y = std::rand() % (h - config.homeshape.hight - config.homeshape.hight + 1) + config.homeshape.hight;
+			// create random rotation angle
+			int angles[] = { 90, 180, 270, 360 };
 
-		// create random rotation angle
-		int angles[] = { 90, 180, 270, 360 };
+			// Generate a random index in the range 0 to 3
+			int randomIndex = std::rand() % 4;
 
-		// Generate a random index in the range 0 to 3
-		int randomIndex = std::rand() % 4;
+			// Select the random rotation angle
+			double randomRotationAngle = angles[randomIndex];
 
-		// Select the random rotation angle
-		double randomRotationAngle = angles[randomIndex];
+			//create random size 
+			int   randomSize = std::rand() % (30 - 10 + 1) + 10;
 
-		//create random size 
-		int   randomSize= std::rand() % (30 - 10 + 1) + 10; 
+			// which random shape
+			int random_shape = std::rand() % (4 - 0 + 1) + 0;
 
-		// which random shape
-		int random_shape = std::rand() % (4 - 0 + 1) + 0;
+			point ShapeRef = { random_x,random_y };
 
-		point ShapeRef = { random_x,random_y };
+			grid* pGrid = this->getGrid();
+			shape* psh0 = nullptr;
 
-		grid* pGrid = this->getGrid();
-		shape* psh0 = nullptr;
+			//create a sign shape
 
-		//create a sign shape
-
-		switch (random_shape){
+			switch (random_shape) {
 			case 0:
-				psh0 = new Sign(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				psh0 = new Sign(this, ShapeRef, RED, randomRotationAngle, randomSize / 20);
 				pGrid->addShape(psh0);
 				break;
 
 			case 1:
-				psh0 = new Rocket(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				psh0 = new Rocket(this, ShapeRef, RED, randomRotationAngle, randomSize / 20);
 				pGrid->addShape(psh0);
 				break;
 
 			case 2:
-				 psh0 = new Home(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				psh0 = new Home(this, ShapeRef, RED, randomRotationAngle, randomSize / 20);
 				pGrid->addShape(psh0);
 				break;
 
 			case 3:
-				 psh0 = new Watch(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				psh0 = new Watch(this, ShapeRef, RED, randomRotationAngle, randomSize / 20);
 				pGrid->addShape(psh0);
 				break;
 
 			case 4:
-				 psh0 = new Car(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				psh0 = new Car(this, ShapeRef, RED, randomRotationAngle, randomSize / 20);
 				pGrid->addShape(psh0);
 				break;
 
 			case 5:
-				psh0 = new IceCream(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				psh0 = new IceCream(this, ShapeRef, RED, randomRotationAngle, randomSize / 20);
 				pGrid->addShape(psh0);
 				break;
 
 			case 6:
-				psh0 = new Fish(this, ShapeRef, RED, randomRotationAngle, randomSize/20);
+				psh0 = new Fish(this, ShapeRef, RED, randomRotationAngle, randomSize / 20);
 				pGrid->addShape(psh0);
 
 				break;
-		
-		
+
+
+			}
+
+			shapesGrid->draw();
+			gameToolbar->drawStart(pWind);
+			gameToolbar->drawtoolbar(pWind);
+
 		}
-
-		shapesGrid->draw();
-		gameToolbar->drawStart(pWind);
-		gameToolbar->drawtoolbar(pWind);
-		
-	}
-
+	
 
 
 
@@ -344,7 +357,7 @@ void game::setScore(int newScore)
 	pWind->SetBrush(BLACK);
 	pWind->SetPen(BLACK);
 	pWind->SetFont(20, PLAIN, ROMAN);
-	pWind->DrawString(config.windWidth / 2, config.toolBarHeight, "Score : " + to_string(config.Score));
+	pWind->DrawString(config.windWidth / 2, config.toolBarHeight, "Score : " + to_string(level));
 }
 
 void game::setLevel(int newLevel)
@@ -353,7 +366,7 @@ void game::setLevel(int newLevel)
 	pWind->SetBrush(BLACK);
 	pWind->SetPen(BLACK);
 	pWind->SetFont(20, PLAIN, ROMAN);
-	pWind->DrawString(config.windWidth - 100, config.toolBarHeight, "Level : " + to_string(config.level));
+	pWind->DrawString(config.windWidth - 100, config.toolBarHeight, "Level : " + to_string(this->level));
 
 }
 void game::setLives(int newLives)
@@ -362,7 +375,7 @@ void game::setLives(int newLives)
 	pWind->SetBrush(BLACK);
 	pWind->SetPen(BLACK);
 	pWind->SetFont(20, PLAIN, ROMAN);
-	pWind->DrawString(5, config.toolBarHeight, "Lives : " + to_string(config.lives));
+	pWind->DrawString(5, config.toolBarHeight, "Lives : " + to_string(this->lives));
 
 }
 
@@ -398,7 +411,7 @@ void game::run()
 			if (keyPressed) {
 				if (keyPressed == 32) // ASCII for space bar
 				{
-					shapesGrid->handleMatch();
+					bool i =shapesGrid->handleMatch();
 				}
 				//printMessage("Ready...");
 				//1- Get user click

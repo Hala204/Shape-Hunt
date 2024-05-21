@@ -101,6 +101,8 @@ void grid::clearGrid()
 }
 
 
+
+
 void grid::SaveShapes(ofstream& OutFile)
 {
 	if (shapeCount > 0)
@@ -186,7 +188,7 @@ void grid::LoadShapes(ifstream& InFile)
 }
 
 
-void grid::handleMatch() {
+bool grid::handleMatch() {
 	// Loop through shapes to find if the click is inside any shape
 	for (int i = 0; i < shapeCount; i++) {
 		// Check if the active shape and the clicked shape match
@@ -205,46 +207,50 @@ void grid::handleMatch() {
 		else {
 			// Shapes don't match, print message
 			pGame->printMessage("Match Failed, TRY AFAIN!");
-			pGame->decrementScore(1);
+			//pGame->decrementScore(0);
 		}
 	}
-	if (shapeCount == 0) {
-
+	int temp = shapeCount;
+	if (temp == 0) {
+		temp++; 
 		pGame->setLevel(pGame->getLevel() + 1);
 		pGame->clearStatusBar();
 
 		pGame->printMessage("You moved up to level" + to_string(pGame->getLevel()));
+		return true;
 
 	}
 
 }
-void grid::selectgamelevel()
-{
+//void grid::selectgamelevel()
+//{
+//
+//	pGame->printMessage("please Enter your game level");
+//	string slevel = pGame->getSrting();
+//	while (!checkdigit(slevel)) {
+//		pGame->printMessage("please Enter a valid number");
+//		slevel = pGame->getSrting();
+//	}
+//
+//	int level = stoi(slevel);
+//	if (level == 0) {
+//		pGame->printMessage("please Enter a valid number");
+//		slevel = pGame->getSrting();
+//	}
+//	else
+//		pGame->setLevel(level);
+//
+//}
 
-	pGame->printMessage("please Enter your game level");
-	string slevel = pGame->getSrting();
-	while (!checkdigit(slevel)) {
-		pGame->printMessage("please Enter a valid number");
-		slevel = pGame->getSrting();
-	}
+//bool grid::checkdigit(string s)
+//{
+//	for (int i = 0; i < s.size(); i++) {
+//		if (isdigit(s[i]))
+//			return true;
+//		else
+//			return false;
+//
+//	}
+//}
 
-	int level = stoi(slevel);
-	if (level == 0) {
-		pGame->printMessage("please Enter a valid number");
-		slevel = pGame->getSrting();
-	}
-	else
-		pGame->setLevel(level);
 
-}
-
-bool grid::checkdigit(string s)
-{
-	for (int i = 0; i < s.size(); i++) {
-		if (isdigit(s[i]))
-			return true;
-		else
-			return false;
-
-	}
-}

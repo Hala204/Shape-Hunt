@@ -43,9 +43,9 @@ public:
 	//creates an operation according to the toolbar item clicked
 	operation* createRequiredOperation(toolbarItem clickedItem);
 
-	int getLevel() const { return level; }
+	int getLevel() const { return this->level; }
 	int getScore() const { return score; }
-	int getLives() const { return lives; }
+	int getLives() const { return this->lives; }
 
 
 	void setLevel(int newLevel);

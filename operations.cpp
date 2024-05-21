@@ -85,21 +85,22 @@ void operAddSign::Act()
 
 
 
+
         if (kType == ARROW)
         {
             switch (cKeyData)
             {
             case 2:	//Down Arrow
-                RectULY += 10;
+                RectULY += 1;
                 break;
             case 4:	//left Arrow
-                RectULX -= 10;
+                RectULX -= 1;
                 break;
             case 6:	//Down Arrow
-                RectULX += 10;
+                RectULX += 1;
                 break;
             case 8:	//Down Arrow
-                RectULY -= 10;
+                RectULY -= 1;
                 break;
             }
 
@@ -129,7 +130,10 @@ void operAddSign::Act()
         this->pGame->getGrid()->draw();
 
         //
-
+        bool i= this->pGame->getGrid()->handleMatch();
+        if (i == true)
+            break;
+        //this->pGame->getWind()->WaitMouseClick(x, y);
 
     } while (kType != ESCAPE);
 
@@ -204,16 +208,16 @@ void operAddIceCream::Act()
             switch (cKeyData)
             {
             case 2:	//Down Arrow
-                RectULY += 10;
+                RectULY += 1;
                 break;
             case 4:	//left Arrow
-                RectULX -= 10;
+                RectULX -= 1;
                 break;
             case 6:	//Down Arrow
-                RectULX += 10;
+                RectULX += 1;
                 break;
             case 8:	//Down Arrow
-                RectULY -= 10;
+                RectULY -= 1;
                 break;
             }
 
@@ -241,6 +245,9 @@ void operAddIceCream::Act()
         pw->UpdateBuffer();
         psh->draw();
         this->pGame->getGrid()->draw();
+        bool i = this->pGame->getGrid()->handleMatch();
+        if (i == true)
+            break;
 
         //
 
@@ -315,16 +322,16 @@ void operAddRocket::Act()
             switch (cKeyData)
             {
             case 2:	//Down Arrow
-                RectULY += 10;
+                RectULY += 1;
                 break;
             case 4:	//left Arrow
-                RectULX -= 10;
+                RectULX -= 1;
                 break;
             case 6:	//Down Arrow
-                RectULX += 10;
+                RectULX += 1;
                 break;
             case 8:	//Down Arrow
-                RectULY -= 10;
+                RectULY -= 1;
                 break;
             }
 
@@ -352,6 +359,9 @@ void operAddRocket::Act()
         pw->UpdateBuffer();
         psh->draw();
         this->pGame->getGrid()->draw();
+        bool i = this->pGame->getGrid()->handleMatch();
+        if (i == true)
+            break;
 
         //
 
@@ -427,16 +437,16 @@ void operAddFish::Act()
             switch (cKeyData)
             {
             case 2:	//Down Arrow
-                RectULY += 10;
+                RectULY += 1;
                 break;
             case 4:	//left Arrow
-                RectULX -= 10;
+                RectULX -= 1;
                 break;
             case 6:	//Down Arrow
-                RectULX += 10;
+                RectULX += 1;
                 break;
             case 8:	//Down Arrow
-                RectULY -= 10;
+                RectULY -= 1;
                 break;
             }
 
@@ -464,6 +474,9 @@ void operAddFish::Act()
         pw->UpdateBuffer();
         psh->draw();
         this->pGame->getGrid()->draw();
+        bool i = this->pGame->getGrid()->handleMatch();
+        if (i == true)
+            break;
 
         //
 
@@ -667,16 +680,16 @@ void operAddWatch::Act()
             switch (cKeyData)
             {
             case 2:	//Down Arrow
-                RectULY += 10;
+                RectULY += 1;
                 break;
             case 4:	//left Arrow
-                RectULX -= 10;
+                RectULX -= 1;
                 break;
             case 6:	//Down Arrow
-                RectULX += 10;
+                RectULX += 1;
                 break;
             case 8:	//Down Arrow
-                RectULY -= 10;
+                RectULY -= 1;
                 break;
             }
 
@@ -704,7 +717,9 @@ void operAddWatch::Act()
         pw->UpdateBuffer();
         psh->draw();
         this->pGame->getGrid()->draw();
-
+        bool i = this->pGame->getGrid()->handleMatch();
+        if (i == true)
+            break;
         //
 
 
@@ -777,16 +792,16 @@ void operAddHome::Act()
             switch (cKeyData)
             {
             case 2:	//Down Arrow
-                RectULY += 10;
+                RectULY += 1;
                 break;
             case 4:	//left Arrow
-                RectULX -= 10;
+                RectULX -= 1;
                 break;
             case 6:	//Down Arrow
-                RectULX += 10;
+                RectULX += 1;
                 break;
             case 8:	//Down Arrow
-                RectULY -= 10;
+                RectULY -= 1;
                 break;
             }
 
@@ -814,7 +829,9 @@ void operAddHome::Act()
         pw->UpdateBuffer();
         psh->draw();
         this->pGame->getGrid()->draw();
-
+        bool i = this->pGame->getGrid()->handleMatch();
+        if (i == true)
+            break;
         //
 
 
@@ -882,16 +899,16 @@ operAddCar::operAddCar(game* r_pGame) :operation(r_pGame)
             switch (cKeyData)
             {
             case 2:	//Down Arrow
-                RectULY += 10;
+                RectULY += 1;
                 break;
             case 4:	//left Arrow
-                RectULX -= 10;
+                RectULX -= 1;
                 break;
             case 6:	//Down Arrow
-                RectULX += 10;
+                RectULX += 1;
                 break;
             case 8:	//Down Arrow
-                RectULY -= 10;
+                RectULY -= 1;
                 break;
             }
 
@@ -919,11 +936,13 @@ operAddCar::operAddCar(game* r_pGame) :operation(r_pGame)
         pw->UpdateBuffer();
         psh->draw();
         this->pGame->getGrid()->draw();
+        bool i = this->pGame->getGrid()->handleMatch();
+        if (i==true)
+            break;
+        
 
-        //
 
-
-    } while (kType != ESCAPE);
+    } while (kType != ESCAPE );
 
     pw->SetBuffering(false);
 }
@@ -938,9 +957,9 @@ operSave::operSave(game* r_pGame) : operation(r_pGame)
 }
 void operSave::Act()
 {
-    int CurrentScore = pGame->getToolbar()->getScore();
-    int CurrentLevel = pGame->getToolbar()->getLevel();
-    int RemainingLives = pGame->getToolbar()->getRemainingLives();
+    int CurrentScore = pGame->getScore();
+    int CurrentLevel = pGame->getLevel();
+    int RemainingLives = pGame->getLives();
     ofstream outfile;
     outfile.open("test.txt");
     outfile << CurrentScore << "\t" << CurrentLevel << "\t" << RemainingLives << "\n";
@@ -959,9 +978,9 @@ void operLoad::Act()
     int CurrentLevel, RemainingLives, CurrentScore;
     if (infile >> CurrentScore >> CurrentLevel >> RemainingLives) 
     {
-        pGame->getToolbar()->setScore(CurrentScore);
-        pGame->getToolbar()->setLevel(CurrentLevel);
-        pGame->getToolbar()->setRemainingLives(RemainingLives);
+        pGame->setScore(CurrentScore);
+        pGame->setLevel(CurrentLevel);
+        pGame->setLives(RemainingLives);
         pGame->getGrid()->LoadShapes(infile);
         infile.close();
     }
@@ -982,9 +1001,9 @@ void operExit::Act()
         cin >> response;
 
         if (response == 'y' || response == 'Y') {
-            int CurrentScore = pGame->getToolbar()->getScore();
-            int CurrentLevel = pGame->getToolbar()->getLevel();
-            int RemainingLives = pGame->getToolbar()->getRemainingLives();
+            int CurrentScore = pGame->getScore();
+            int CurrentLevel = pGame->getLevel();
+            int RemainingLives = pGame->getLives();
             ofstream outfile;
             outfile.open("test.txt");
             outfile << CurrentScore << "\t" << CurrentLevel << "\t" << RemainingLives << "\n";
@@ -995,3 +1014,4 @@ void operExit::Act()
         pGame->cleanUp();
         exit(0); 
 }
+

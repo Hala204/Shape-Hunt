@@ -20,8 +20,8 @@ Sign::Sign(game* r_pGame, point ref, color fillcolor, double randomRotationAngle
 	top = new Rect(pGame, topRef, config.sighShape.topHeight, config.sighShape.topWdth);
 	base = new Rect(pGame, baseRef, config.sighShape.baseHeight, config.sighShape.baseWdth);
 
-	this->Rotate(randomRotationAngle);
-	this->resize(randomSize);
+	//this->Rotate();
+	//this->resize(randomSize);
 }
 
 void Sign::draw() const
@@ -185,8 +185,8 @@ Car::Car(game* r_pGame, point ref, color fillcolor, double randomRotationAngle, 
 	LeftWheel = new circle(pGame, LeftWheelRef, config.carShape.wheelRadius);
 	RightWheel = new circle(pGame, RightWheelRef, config.carShape.wheelRadius);
 
-	this->Rotate(randomRotationAngle);
-	this->resize(randomSize);
+	//this->Rotate();
+	//this->resize(randomSize);
 
 }
 
@@ -383,8 +383,8 @@ IceCream::IceCream(game* r_pGame, point ref, color fillcolor, double randomRotat
 	Scoop = new circle(pGame, ScoopRef, config.IceCreamShape._radius);
 	Cone = new Triangle(pGame, ConeRef, config.IceCreamShape._sidelength, current_rotation_ang);
 
-	this->Rotate(randomRotationAngle);
-	this->resize(randomSize);
+	//this->Rotate();
+	//this->resize(randomSize);
 }
 
 void IceCream::draw() const
@@ -496,8 +496,8 @@ Rocket::Rocket(game* r_pGame, point ref, color fillcolor, double randomRotationA
 	Top = new Triangle(pGame, TopRef, config.RocketShape.___sidelength, current_rotation_ang_);
 	_BottomLeft = new Triangle(pGame, BottomLeft, config.RocketShape.__sl, config.RocketShape.r_ang1);
 	_BottomRight = new Triangle(pGame, BottomRight, config.RocketShape.__sl, config.RocketShape.r_ang2);
-	this->Rotate(randomRotationAngle);
-	this->resize(randomSize);
+	//this->Rotate();
+	//this->resize(randomSize);
 }
 
 void Rocket::draw() const
@@ -655,8 +655,8 @@ Fish::Fish(game* r_pGame, point ref, color fillcolor, double randomRotationAngle
 	AboveFins = new Rect(pGame, AboveFinsRef, config.FishShape.Finshght, config.FishShape.Finswdth);
 	BelowFins = new Rect(pGame, BelowFinsRef, config.FishShape.Finshght, config.FishShape.Finswdth);
 
-	this->Rotate(randomRotationAngle);
-	this->resize(randomSize);
+	//this->Rotate();
+	//this->resize(randomSize);
 
 }
 
@@ -837,8 +837,8 @@ Watch::Watch(game* r_pGame, point ref, color fillcolor, double randomRotationAng
 	upperRect = new Rect(pGame, upperRectRef, config.watchShape.Rectwidth, config.watchShape.RectHeight);
 	lowerTri = new Triangle(pGame, lowerTriRef, config.watchShape.sidelength, 180);
 
-	this->Rotate(randomRotationAngle);
-	this->resize(randomSize);
+	//this->Rotate();
+	//this->resize(randomSize);
 }
 
 
@@ -905,8 +905,8 @@ Home::Home(game* r_pGame, point ref, color fillcolor, double randomRotationAngle
 	leftRect = new Rect(pGame, leftRectRef, config.homeshape.smallrectheight, config.homeshape.smallrectwidth);
 	circleup = new circle(pGame, circRef, config.homeshape.radius);
 	circleup1 = new circle(pGame, circRef1, config.homeshape.radius);
-	this->Rotate(randomRotationAngle);
-	this->resize(randomSize);
+	//this->Rotate();
+	//this->resize(randomSize);
 
 }
 

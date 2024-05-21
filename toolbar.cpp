@@ -7,6 +7,8 @@
 toolbar::toolbar(game* pG)
 {	
 
+
+
 	height = config.toolBarHeight;
 	width = config.windWidth;
 	this->pGame = pG;
@@ -84,9 +86,9 @@ void toolbar::drawStart(window* wind)
 	wind->SetBrush(BLACK);
 	wind->SetPen(BLACK);
 	wind->SetFont(20, PLAIN, ROMAN);
-	wind->DrawString(5, height, "Lives : " + to_string(config.lives));
-	wind->DrawString(width / 2, height, "Score : " + to_string(config.Score));
-	wind->DrawString(width - 100, height, "Level : " + to_string(config.level));
+	wind->DrawString(5, height, "Lives : " + to_string(this->pGame->getLives()));
+	wind->DrawString(width / 2, height, "Score : " + to_string(this->pGame->getScore()));
+	wind->DrawString(width - 100, height, "Level : " + to_string(this->pGame->getLevel()));
 	wind->SetPen(DARKBLUE, 3);
 	wind->DrawLine(0, height + 20, width + 20, height + 20);
 
@@ -137,37 +139,7 @@ void toolbar::drawtoolbar(window* pw)
 	//Draw a line under the toolbar
 	pWind->SetPen(DARKBLUE, 3);
 	pWind->DrawLine(0, height, width, height);
-	drawStart(pWind);
+	//drawStart(pWind);
 
-}
-
-int toolbar::getLevel() const 
-{
-	return config.level;
-}
-
-int toolbar::getScore() const 
-{
-	return config.Score;
-}
-
-int toolbar::getRemainingLives() const
-{
-	return config.lives;
-}
-
-void toolbar::setScore(int)
-{
-	Score = config.Score;
-}
-
-void toolbar::setRemainingLives(int)
-{
-	Lives = config.lives;
-}
-
-void toolbar::setLevel(int)
-{
-	Level = config.level;
 }
 
