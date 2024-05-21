@@ -32,6 +32,7 @@ public:
 	void createToolBar();		//creates the toolbar
 	void createGrid();		//creates the shapes grid
 	void randomGenerator();
+	void cleanUp();
 
 
 	window* getWind() const;		//returns a pointer to the graphics window

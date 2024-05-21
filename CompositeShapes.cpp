@@ -149,7 +149,7 @@ void Sign::resizeUp(double factor)
 
 void Sign::Save(ofstream& OutFile)
 {
-	OutFile << "Sign" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
+	OutFile << SIGN << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
 
@@ -352,7 +352,7 @@ void Car::resize(double)
 
 void Car::Save(ofstream& OutFile)
 {
-	OutFile << "Car" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
+	OutFile << CAR << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 bool Car::Match(shape* sh)
 {
@@ -456,7 +456,7 @@ void IceCream::resize(double factor)
 
 void IceCream::Save(ofstream& OutFile)
 {
-	OutFile << "Ice Cream" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
+	OutFile << ICECREAM << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
 bool IceCream::Match(shape* sh)
@@ -609,7 +609,7 @@ void Rocket::Rotate(double randomRotationAngle)
 
 void Rocket::Save(ofstream& OutFile)
 {
-	OutFile << "Rocket" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
+	OutFile << ROCKET << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
 bool Rocket::Match(shape* sh)
@@ -802,7 +802,7 @@ void Fish::resize(double factor)
 
 void Fish::Save(ofstream& OutFile)
 {
-	OutFile << "Fish" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
+	OutFile << FISH << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 bool Fish::Match(shape* sh)
 {
@@ -856,7 +856,7 @@ void Watch::resize(double factor)
 
 void Watch::Save(ofstream& OutFile)
 {
-	OutFile << "Watch" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
+	OutFile << WATCH << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
 
@@ -1050,7 +1050,7 @@ void Home::Rotate(double randomRotationAngle)
 
 void Home::Save(ofstream& OutFile)
 {
-	OutFile << "Home" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
+	OutFile << HOME << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
 
