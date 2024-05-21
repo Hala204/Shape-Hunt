@@ -189,7 +189,7 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 		break;
 	case ITM_SIGN:
 		op = new operAddSign(this);
-		printMessage("sign is pressed ");
+		printMessage("sign is pressed, you can move it by arrows ");
 		break;
 
 	//	break;
