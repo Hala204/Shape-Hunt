@@ -140,31 +140,9 @@ void Sign::resizeUp(double factor)
 
 void Sign::Save(ofstream& OutFile)
 {
-	OutFile << SIGN << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+	OutFile << "Sign" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
-
-void Sign::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
 
 
 
@@ -365,30 +343,9 @@ void Car::resize(double)
 
 void Car::Save(ofstream& OutFile)
 {
-	OutFile << CAR << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+	OutFile << "Car" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
-void Car::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
 
 
 
@@ -482,30 +439,9 @@ void IceCream::resize(double factor)
 
 void IceCream::Save(ofstream& OutFile)
 {
-	OutFile << ICECREAM << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+	OutFile << "Ice Cream" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
-void IceCream::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
 
 
 
@@ -648,32 +584,9 @@ void Rocket::Rotate(double randomRotationAngle)
 
 void Rocket::Save(ofstream& OutFile)
 {
-	OutFile << ROCKET << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+	OutFile << "Rocket" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
-
-
-void Rocket::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
 
 
 
@@ -856,29 +769,7 @@ void Fish::resize(double factor)
 
 void Fish::Save(ofstream& OutFile)
 {
-	OutFile << FISH << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
-}
-
-void Fish::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
+	OutFile << "Fish" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
 
@@ -923,31 +814,10 @@ void Watch::resize(double factor)
 
 void Watch::Save(ofstream& OutFile)
 {
-	OutFile << WATCH << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+	OutFile << "Watch" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
 
 
-void Watch::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
 
 
 
@@ -1128,32 +998,8 @@ void Home::Rotate(double randomRotationAngle)
 
 void Home::Save(ofstream& OutFile)
 {
-	OutFile << HOME << "\n" << RefPoint.x << "\n" << RefPoint.y << "\n" << fillColor.ucRed << "\n" << fillColor.ucGreen << "\n" << fillColor.ucBlue << "\n";
+	OutFile << "Home" << "\t" << RefPoint.x << "\t" << RefPoint.y << "\t" << fillColor.ucRed << "\t" << fillColor.ucGreen << "\t" << fillColor.ucBlue << "\n";
 }
-
-
-void Home::Load(ifstream& Infile)
-{
-
-	int resized, rotated;
-	Infile >> resized >> rotated;
-	if (resized > 0)
-	{
-		for (int i = 0; i < resized; i++)
-			this->resizeUp(1.5);
-	}
-	else if (resized < 0)
-	{
-		for (int i = 0; i > resized; i--)
-			this->resizeDown(0.5);
-	}
-	if (rotated > 0)
-	{
-		for (int i = 0; i < rotated; i++)
-			this->Rotate();
-	}
-}
-
 
 
 void Home::resize(double factor)
