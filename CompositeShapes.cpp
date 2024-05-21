@@ -26,6 +26,7 @@ Sign::Sign(game* r_pGame, point ref, color fillcolor, double randomRotationAngle
 
 void Sign::draw() const
 {
+
 	base->draw();
 	top->draw();
 }

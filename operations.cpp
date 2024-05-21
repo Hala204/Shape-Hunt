@@ -20,43 +20,7 @@ operStartGame::operStartGame(game* r_pGame):operation(r_pGame)
 void operStartGame::Act()
 {
     pGame->randomGenerator();
-    //std::srand(static_cast<unsigned int>(std::time(0)));
-    //window* pw = pGame->getWind();
-    //int gameLevel = config.level;
-    //int h = config.windHeight;
-    //int w = config.windWidth;
-    //const int maxNumberOfRandomShapes = 5;
-    //point p[maxNumberOfRandomShapes];
-    //for (int i = 0; i < maxNumberOfRandomShapes ;i++)
-    //{
-    //    //int random_number = std::rand() % (end - start + 1) + start;
-    //    int random_x = std::rand() % (w- config.homeshape.width - config.homeshape.width + 1) + config.homeshape.width;
-    //    int random_y = std::rand() % (h- config.homeshape.hight - config.homeshape.hight + 1) + config.homeshape.hight;
-    //    p[i].x = random_x;
-    //    p[i].y = random_y;
 
-
-    //    int xGrid = config.RefX - config.RefX % config.gridSpacing;
-    //    int yGrid = config.RefY - config.RefX % config.gridSpacing;
-
-    //    //take the aligned point as the sign shape ref point
-    //    point signShapeRef = { random_x,random_y };
-
-    //    //create a sign shape
-    //    shape* psh = new Sign(pGame, signShapeRef);
-
-
-
-    //    psh->draw();
-
-    //}
-
-
-    //switch (gameLevel)
-    //{
-    ////case 1:
-
-    //}
 
 }
 
@@ -82,12 +46,96 @@ void operAddSign::Act()
     //take the aligned point as the sign shape ref point
     point signShapeRef = { xGrid,yGrid };
 
-    //create a sign shape
-    shape* psh = new Sign(pGame, signShapeRef, RED);
 
-    //Add the shape to the grid
-    grid* pGrid = pGame->getGrid();
-    pGrid->setActiveShape(psh);
+    /////////////////////// move shapes 
+    pw->FlushKeyQueue();
+
+    pw->SetFont(20, BOLD, BY_NAME, "Arial");
+
+    pw->SetBuffering(true);
+
+    int RectULX = xGrid;
+    int RectULY = yGrid;
+
+    bool bDragging = false;
+
+
+    char cKeyData;
+    keytype kType;
+
+    // Loop until there escape is pressed
+    do
+    {
+
+
+        kType = pw->GetKeyPress(cKeyData);
+        
+
+        //Create and draw the grid
+        //this->pGame->createGrid();
+        this->pGame->getGrid()->draw();	//draw the grid and all shapes it contains.
+
+        this->pGame->createToolBar();
+
+        //Create and clear the status bar
+        this->pGame->clearStatusBar();
+        this->pGame->printMessage("you can move the shape now to match the generated shapes, press exit when you finish ");
+
+
+
+
+
+        if (kType == ARROW)
+        {
+            switch (cKeyData)
+            {
+            case 2:	//Down Arrow
+                RectULY += 10;
+                break;
+            case 4:	//left Arrow
+                RectULX -= 10;
+                break;
+            case 6:	//Down Arrow
+                RectULX += 10;
+                break;
+            case 8:	//Down Arrow
+                RectULY -= 10;
+                break;
+            }
+
+        }
+
+
+
+        shape* psh=NULL;
+        if (psh)
+        delete psh;
+
+
+        psh = new Sign(pGame, signShapeRef, RED);
+        grid* pGrid = pGame->getGrid();
+
+        pGrid->setActiveShape(psh);
+
+        signShapeRef.x = RectULX;
+
+        signShapeRef.y = RectULY;
+
+        pw->SetPen(BLUE);
+        pw->SetBrush(BLUE);
+        //this->pGame->getGrid()->draw();
+        pw->UpdateBuffer();
+        psh->draw();
+        this->pGame->getGrid()->draw();
+
+        //
+
+
+    } while (kType != ESCAPE);
+
+    pw->SetBuffering(false);
+
+    
 
 }
 
@@ -341,10 +389,6 @@ void operAddHome::Act()
     int yGrid = config.RefY - config.RefY % config.gridSpacing;
 
     point homeRefPoint = { xGrid, yGrid };
-
-
-
-
 
     shape* psh = new Home(pGame, homeRefPoint, RED);
 
