@@ -260,7 +260,8 @@ operation* game::createRequiredOperation(toolbarItem clickedItem)
 		break;
 
 	case ITM_EXIT:
-		printMessage("ITM_DELETE is pressed ");
+		op = new operExit(this);
+		printMessage("ITM_EXIT is pressed ");
 		break;
 	case ITM_ROTATE:
 		op = new operRotate(this);
@@ -341,6 +342,15 @@ toolbar* game::getToolbar() const
 	return gameToolbar;
 }
 
+void game::cleanUp() {
+
+
+	if (shapesGrid != nullptr) 
+	{
+		delete shapesGrid;
+		shapesGrid = nullptr;
+	}
+}
 
 
 ////////////////////////////////////////////////////////////////////////

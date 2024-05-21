@@ -2,6 +2,7 @@
 #include "game.h"
 #include "BasicShapes.h"
 #include "CompositeShapes.h"
+#include <iostream>
 /////////////////////////////////// class operation  //////////////////
 operation::operation(game* r_pGame)
 {
@@ -410,4 +411,31 @@ void operLoad::Act()
     }
     else
         pGame->printMessage("No such file exists in the directory");
+}
+
+/////////////////////////////////// class operExit  //////////////////
+
+operExit::operExit(game* r_pGame) : operation(r_pGame)
+{
+}
+
+void operExit::Act()
+{
+        cout << "Do you want to save the game before exiting? (y/n): ";
+        char response;
+        cin >> response;
+
+        if (response == 'y' || response == 'Y') {
+            int CurrentScore = pGame->getToolbar()->getScore();
+            int CurrentLevel = pGame->getToolbar()->getLevel();
+            int RemainingLives = pGame->getToolbar()->getRemainingLives();
+            ofstream outfile;
+            outfile.open("test.txt");
+            outfile << CurrentScore << "\t" << CurrentLevel << "\t" << RemainingLives << "\n";
+            pGame->getGrid()->SaveShapes(outfile);
+            outfile.close();
+            this->pGame->getGrid()->SaveShapes(outfile);
+        }
+        pGame->cleanUp();
+        exit(0); 
 }
