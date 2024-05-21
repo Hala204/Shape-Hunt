@@ -12,11 +12,6 @@ struct point
 
 enum ShapeType
 {
-	//Basic shapes
-	RCT,	//rectangle
-	CRC,	//circle
-	TRI,	//triangle
-
 	//Composite shapes
 	SIGN,	//a street sign
 	CAR,
@@ -25,7 +20,10 @@ enum ShapeType
 	FISH,
 	HOME,
 	WATCH,
-	//TODO: Add more types
+	//Basic shapes
+	RCT,	//rectangle
+	CRC,	//circle
+	TRI,	//triangle
 };
 
 //Base class for all shapes including Basic shapes, Composite shapes

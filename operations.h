@@ -138,3 +138,10 @@ public:
 	operLoad(game* r_pGame);
 	virtual void Act();
 };
+
+class operExit :public operation
+{
+public:
+	operExit(game* r_pGame);
+	virtual void Act();
+};
