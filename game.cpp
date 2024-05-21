@@ -150,11 +150,7 @@ void game::randomGenerator()
 	}
 
 
-	switch (gameLevel)
-	{
-		//case 1:
 
-	}
 
 }
 

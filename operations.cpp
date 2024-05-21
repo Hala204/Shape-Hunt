@@ -71,7 +71,7 @@ void operAddSign::Act()
         
 
         //Create and draw the grid
-        this->pGame->createGrid();
+        //this->pGame->createGrid();
         this->pGame->getGrid()->draw();	//draw the grid and all shapes it contains.
 
         this->pGame->createToolBar();
@@ -104,7 +104,6 @@ void operAddSign::Act()
 
         }
 
-        // Draw rectangle
 
 
         shape* psh=NULL;
@@ -124,11 +123,11 @@ void operAddSign::Act()
         pw->SetPen(BLUE);
         pw->SetBrush(BLUE);
         //this->pGame->getGrid()->draw();
-
-        psh->draw();
-
-
         pw->UpdateBuffer();
+        psh->draw();
+        this->pGame->getGrid()->draw();
+
+        //
 
 
     } while (kType != ESCAPE);
